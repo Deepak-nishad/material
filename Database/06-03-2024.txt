@@ -1,0 +1,1427 @@
+mysql> rwrwerwerwe
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rwrwerwerwe' at line 1
+mysql> select database();
++------------+
+| database() |
++------------+
+| saleel     |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use world;
+Database changed
+mysql> show fields from emp;
+ERROR 1146 (42S02): Table 'world.emp' doesn't exist
+mysql> show fields from emp from saleel;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> use saleel;
+Database changed
+mysql> show tables from saleel;
++---------------------+
+| Tables_in_saleel    |
++---------------------+
+| a                   |
+| agent               |
+| andor               |
+| b                   |
+| blanktablea         |
+| blanktableb         |
+| blog                |
+| bonus               |
+| books               |
+| candidate           |
+| client              |
+| coalesce            |
+| comments            |
+| company             |
+| customer            |
+| customers           |
+| demodept1           |
+| demodept2           |
+| dept                |
+| dept1               |
+| docs                |
+| dummy               |
+| duplicate           |
+| emp                 |
+| emp1                |
+| emp2                |
+| emp_attendance      |
+| emp_cards           |
+| emp_phone           |
+| empj                |
+| envelope            |
+| food                |
+| hobby               |
+| item                |
+| key_parts           |
+| leadtable           |
+| licence             |
+| location            |
+| mass_table          |
+| menucard            |
+| nearest             |
+| new                 |
+| newbooks            |
+| nullif              |
+| numberstring        |
+| ord                 |
+| orderdetails        |
+| orders              |
+| pivot_table         |
+| plumber             |
+| plumber_service_map |
+| points              |
+| price               |
+| product             |
+| product_sales       |
+| products            |
+| quarterly_revenue   |
+| r                   |
+| r1                  |
+| r2                  |
+| races               |
+| regexpr             |
+| replacedept         |
+| revenue             |
+| rockets             |
+| runners             |
+| runningserver       |
+| sales               |
+| sales_channel       |
+| salespeople         |
+| salesperson         |
+| salgrade            |
+| server              |
+| service             |
+| seta                |
+| setb                |
+| softdrink           |
+| sort                |
+| stadium             |
+| states              |
+| station             |
+| status              |
+| stringnumber        |
+| tablea              |
+| tableaa             |
+| tableb              |
+| tablebb             |
+| tasks               |
+| temp1               |
+| traintimetable      |
+| transactions        |
+| vote_response       |
+| votes               |
+| warehouse           |
+| yearly_revenue      |
+| z                   |
++---------------------+
+96 rows in set (0.00 sec)
+
+mysql> show full tables from saleel;
++---------------------+------------+
+| Tables_in_saleel    | Table_type |
++---------------------+------------+
+| a                   | BASE TABLE |
+| agent               | BASE TABLE |
+| andor               | BASE TABLE |
+| b                   | BASE TABLE |
+| blanktablea         | BASE TABLE |
+| blanktableb         | BASE TABLE |
+| blog                | BASE TABLE |
+| bonus               | BASE TABLE |
+| books               | BASE TABLE |
+| candidate           | BASE TABLE |
+| client              | BASE TABLE |
+| coalesce            | BASE TABLE |
+| comments            | BASE TABLE |
+| company             | BASE TABLE |
+| customer            | BASE TABLE |
+| customers           | BASE TABLE |
+| demodept1           | BASE TABLE |
+| demodept2           | BASE TABLE |
+| dept                | BASE TABLE |
+| dept1               | BASE TABLE |
+| docs                | BASE TABLE |
+| dummy               | BASE TABLE |
+| duplicate           | BASE TABLE |
+| emp                 | BASE TABLE |
+| emp1                | BASE TABLE |
+| emp2                | BASE TABLE |
+| emp_attendance      | BASE TABLE |
+| emp_cards           | BASE TABLE |
+| emp_phone           | BASE TABLE |
+| empj                | BASE TABLE |
+| envelope            | BASE TABLE |
+| food                | BASE TABLE |
+| hobby               | BASE TABLE |
+| item                | BASE TABLE |
+| key_parts           | BASE TABLE |
+| leadtable           | BASE TABLE |
+| licence             | BASE TABLE |
+| location            | BASE TABLE |
+| mass_table          | BASE TABLE |
+| menucard            | BASE TABLE |
+| nearest             | BASE TABLE |
+| new                 | BASE TABLE |
+| newbooks            | BASE TABLE |
+| nullif              | BASE TABLE |
+| numberstring        | BASE TABLE |
+| ord                 | BASE TABLE |
+| orderdetails        | BASE TABLE |
+| orders              | BASE TABLE |
+| pivot_table         | BASE TABLE |
+| plumber             | BASE TABLE |
+| plumber_service_map | BASE TABLE |
+| points              | BASE TABLE |
+| price               | BASE TABLE |
+| product             | BASE TABLE |
+| product_sales       | BASE TABLE |
+| products            | BASE TABLE |
+| quarterly_revenue   | BASE TABLE |
+| r                   | BASE TABLE |
+| r1                  | BASE TABLE |
+| r2                  | BASE TABLE |
+| races               | BASE TABLE |
+| regexpr             | BASE TABLE |
+| replacedept         | BASE TABLE |
+| revenue             | BASE TABLE |
+| rockets             | BASE TABLE |
+| runners             | BASE TABLE |
+| runningserver       | BASE TABLE |
+| sales               | VIEW       |
+| sales_channel       | BASE TABLE |
+| salespeople         | BASE TABLE |
+| salesperson         | BASE TABLE |
+| salgrade            | BASE TABLE |
+| server              | BASE TABLE |
+| service             | BASE TABLE |
+| seta                | BASE TABLE |
+| setb                | BASE TABLE |
+| softdrink           | BASE TABLE |
+| sort                | BASE TABLE |
+| stadium             | BASE TABLE |
+| states              | BASE TABLE |
+| station             | BASE TABLE |
+| status              | BASE TABLE |
+| stringnumber        | BASE TABLE |
+| tablea              | BASE TABLE |
+| tableaa             | BASE TABLE |
+| tableb              | BASE TABLE |
+| tablebb             | BASE TABLE |
+| tasks               | BASE TABLE |
+| temp1               | BASE TABLE |
+| traintimetable      | BASE TABLE |
+| transactions        | BASE TABLE |
+| vote_response       | BASE TABLE |
+| votes               | BASE TABLE |
+| warehouse           | BASE TABLE |
+| yearly_revenue      | BASE TABLE |
+| z                   | BASE TABLE |
++---------------------+------------+
+96 rows in set (0.00 sec)
+
+mysql> show full tables from saleel;
++---------------------+------------+
+| Tables_in_saleel    | Table_type |
++---------------------+------------+
+| a                   | BASE TABLE |
+| agent               | BASE TABLE |
+| andor               | BASE TABLE |
+| b                   | BASE TABLE |
+| blanktablea         | BASE TABLE |
+| blanktableb         | BASE TABLE |
+| blog                | BASE TABLE |
+| bonus               | BASE TABLE |
+| books               | BASE TABLE |
+| candidate           | BASE TABLE |
+| client              | BASE TABLE |
+| coalesce            | BASE TABLE |
+| comments            | BASE TABLE |
+| company             | BASE TABLE |
+| customer            | BASE TABLE |
+| customers           | BASE TABLE |
+| demodept1           | BASE TABLE |
+| demodept2           | BASE TABLE |
+| dept                | BASE TABLE |
+| dept1               | BASE TABLE |
+| docs                | BASE TABLE |
+| dummy               | BASE TABLE |
+| duplicate           | BASE TABLE |
+| emp                 | BASE TABLE |
+| emp1                | BASE TABLE |
+| emp2                | BASE TABLE |
+| emp_attendance      | BASE TABLE |
+| emp_cards           | BASE TABLE |
+| emp_phone           | BASE TABLE |
+| empj                | BASE TABLE |
+| envelope            | BASE TABLE |
+| food                | BASE TABLE |
+| hobby               | BASE TABLE |
+| item                | BASE TABLE |
+| key_parts           | BASE TABLE |
+| leadtable           | BASE TABLE |
+| licence             | BASE TABLE |
+| location            | BASE TABLE |
+| mass_table          | BASE TABLE |
+| menucard            | BASE TABLE |
+| nearest             | BASE TABLE |
+| new                 | BASE TABLE |
+| newbooks            | BASE TABLE |
+| nullif              | BASE TABLE |
+| numberstring        | BASE TABLE |
+| ord                 | BASE TABLE |
+| orderdetails        | BASE TABLE |
+| orders              | BASE TABLE |
+| pivot_table         | BASE TABLE |
+| plumber             | BASE TABLE |
+| plumber_service_map | BASE TABLE |
+| points              | BASE TABLE |
+| price               | BASE TABLE |
+| product             | BASE TABLE |
+| product_sales       | BASE TABLE |
+| products            | BASE TABLE |
+| quarterly_revenue   | BASE TABLE |
+| r                   | BASE TABLE |
+| r1                  | BASE TABLE |
+| r2                  | BASE TABLE |
+| races               | BASE TABLE |
+| regexpr             | BASE TABLE |
+| replacedept         | BASE TABLE |
+| revenue             | BASE TABLE |
+| rockets             | BASE TABLE |
+| runners             | BASE TABLE |
+| runningserver       | BASE TABLE |
+| sales               | VIEW       |
+| sales_channel       | BASE TABLE |
+| salespeople         | BASE TABLE |
+| salesperson         | BASE TABLE |
+| salgrade            | BASE TABLE |
+| server              | BASE TABLE |
+| service             | BASE TABLE |
+| seta                | BASE TABLE |
+| setb                | BASE TABLE |
+| softdrink           | BASE TABLE |
+| sort                | BASE TABLE |
+| stadium             | BASE TABLE |
+| states              | BASE TABLE |
+| station             | BASE TABLE |
+| status              | BASE TABLE |
+| stringnumber        | BASE TABLE |
+| tablea              | BASE TABLE |
+| tableaa             | BASE TABLE |
+| tableb              | BASE TABLE |
+| tablebb             | BASE TABLE |
+| tasks               | BASE TABLE |
+| temp1               | BASE TABLE |
+| traintimetable      | BASE TABLE |
+| transactions        | BASE TABLE |
+| vote_response       | BASE TABLE |
+| votes               | BASE TABLE |
+| warehouse           | BASE TABLE |
+| yearly_revenue      | BASE TABLE |
+| z                   | BASE TABLE |
++---------------------+------------+
+96 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables from saleel;
++---------------------+
+| Tables_in_saleel    |
++---------------------+
+| a                   |
+| agent               |
+| andor               |
+| b                   |
+| blanktablea         |
+| blanktableb         |
+| blog                |
+| bonus               |
+| books               |
+| candidate           |
+| client              |
+| coalesce            |
+| comments            |
+| company             |
+| customer            |
+| customers           |
+| demodept1           |
+| demodept2           |
+| dept                |
+| dept1               |
+| docs                |
+| dummy               |
+| duplicate           |
+| emp                 |
+| emp1                |
+| emp2                |
+| emp_attendance      |
+| emp_cards           |
+| emp_phone           |
+| empj                |
+| envelope            |
+| food                |
+| hobby               |
+| item                |
+| key_parts           |
+| leadtable           |
+| licence             |
+| location            |
+| mass_table          |
+| menucard            |
+| nearest             |
+| new                 |
+| newbooks            |
+| nullif              |
+| numberstring        |
+| ord                 |
+| orderdetails        |
+| orders              |
+| pivot_table         |
+| plumber             |
+| plumber_service_map |
+| points              |
+| price               |
+| product             |
+| product_sales       |
+| products            |
+| quarterly_revenue   |
+| r                   |
+| r1                  |
+| r2                  |
+| races               |
+| regexpr             |
+| replacedept         |
+| revenue             |
+| rockets             |
+| runners             |
+| runningserver       |
+| sales               |
+| sales_channel       |
+| salespeople         |
+| salesperson         |
+| salgrade            |
+| server              |
+| service             |
+| seta                |
+| setb                |
+| softdrink           |
+| sort                |
+| stadium             |
+| states              |
+| station             |
+| status              |
+| stringnumber        |
+| tablea              |
+| tableaa             |
+| tableb              |
+| tablebb             |
+| tasks               |
+| temp1               |
+| traintimetable      |
+| transactions        |
+| vote_response       |
+| votes               |
+| warehouse           |
+| yearly_revenue      |
+| z                   |
++---------------------+
+96 rows in set (0.00 sec)
+
+mysql> show full tables from saleel;
++---------------------+------------+
+| Tables_in_saleel    | Table_type |
++---------------------+------------+
+| a                   | BASE TABLE |
+| agent               | BASE TABLE |
+| andor               | BASE TABLE |
+| b                   | BASE TABLE |
+| blanktablea         | BASE TABLE |
+| blanktableb         | BASE TABLE |
+| blog                | BASE TABLE |
+| bonus               | BASE TABLE |
+| books               | BASE TABLE |
+| candidate           | BASE TABLE |
+| client              | BASE TABLE |
+| coalesce            | BASE TABLE |
+| comments            | BASE TABLE |
+| company             | BASE TABLE |
+| customer            | BASE TABLE |
+| customers           | BASE TABLE |
+| demodept1           | BASE TABLE |
+| demodept2           | BASE TABLE |
+| dept                | BASE TABLE |
+| dept1               | BASE TABLE |
+| docs                | BASE TABLE |
+| dummy               | BASE TABLE |
+| duplicate           | BASE TABLE |
+| emp                 | BASE TABLE |
+| emp1                | BASE TABLE |
+| emp2                | BASE TABLE |
+| emp_attendance      | BASE TABLE |
+| emp_cards           | BASE TABLE |
+| emp_phone           | BASE TABLE |
+| empj                | BASE TABLE |
+| envelope            | BASE TABLE |
+| food                | BASE TABLE |
+| hobby               | BASE TABLE |
+| item                | BASE TABLE |
+| key_parts           | BASE TABLE |
+| leadtable           | BASE TABLE |
+| licence             | BASE TABLE |
+| location            | BASE TABLE |
+| mass_table          | BASE TABLE |
+| menucard            | BASE TABLE |
+| nearest             | BASE TABLE |
+| new                 | BASE TABLE |
+| newbooks            | BASE TABLE |
+| nullif              | BASE TABLE |
+| numberstring        | BASE TABLE |
+| ord                 | BASE TABLE |
+| orderdetails        | BASE TABLE |
+| orders              | BASE TABLE |
+| pivot_table         | BASE TABLE |
+| plumber             | BASE TABLE |
+| plumber_service_map | BASE TABLE |
+| points              | BASE TABLE |
+| price               | BASE TABLE |
+| product             | BASE TABLE |
+| product_sales       | BASE TABLE |
+| products            | BASE TABLE |
+| quarterly_revenue   | BASE TABLE |
+| r                   | BASE TABLE |
+| r1                  | BASE TABLE |
+| r2                  | BASE TABLE |
+| races               | BASE TABLE |
+| regexpr             | BASE TABLE |
+| replacedept         | BASE TABLE |
+| revenue             | BASE TABLE |
+| rockets             | BASE TABLE |
+| runners             | BASE TABLE |
+| runningserver       | BASE TABLE |
+| sales               | VIEW       |
+| sales_channel       | BASE TABLE |
+| salespeople         | BASE TABLE |
+| salesperson         | BASE TABLE |
+| salgrade            | BASE TABLE |
+| server              | BASE TABLE |
+| service             | BASE TABLE |
+| seta                | BASE TABLE |
+| setb                | BASE TABLE |
+| softdrink           | BASE TABLE |
+| sort                | BASE TABLE |
+| stadium             | BASE TABLE |
+| states              | BASE TABLE |
+| station             | BASE TABLE |
+| status              | BASE TABLE |
+| stringnumber        | BASE TABLE |
+| tablea              | BASE TABLE |
+| tableaa             | BASE TABLE |
+| tableb              | BASE TABLE |
+| tablebb             | BASE TABLE |
+| tasks               | BASE TABLE |
+| temp1               | BASE TABLE |
+| traintimetable      | BASE TABLE |
+| transactions        | BASE TABLE |
+| vote_response       | BASE TABLE |
+| votes               | BASE TABLE |
+| warehouse           | BASE TABLE |
+| yearly_revenue      | BASE TABLE |
+| z                   | BASE TABLE |
++---------------------+------------+
+96 rows in set (0.00 sec)
+
+mysql> show tables from saleel;
++---------------------+
+| Tables_in_saleel    |
++---------------------+
+| a                   |
+| agent               |
+| andor               |
+| b                   |
+| blanktablea         |
+| blanktableb         |
+| blog                |
+| bonus               |
+| books               |
+| candidate           |
+| client              |
+| coalesce            |
+| comments            |
+| company             |
+| customer            |
+| customers           |
+| demodept1           |
+| demodept2           |
+| dept                |
+| dept1               |
+| docs                |
+| dummy               |
+| duplicate           |
+| emp                 |
+| emp1                |
+| emp2                |
+| emp_attendance      |
+| emp_cards           |
+| emp_phone           |
+| empj                |
+| envelope            |
+| food                |
+| hobby               |
+| item                |
+| key_parts           |
+| leadtable           |
+| licence             |
+| location            |
+| mass_table          |
+| menucard            |
+| nearest             |
+| new                 |
+| newbooks            |
+| nullif              |
+| numberstring        |
+| ord                 |
+| orderdetails        |
+| orders              |
+| pivot_table         |
+| plumber             |
+| plumber_service_map |
+| points              |
+| price               |
+| product             |
+| product_sales       |
+| products            |
+| quarterly_revenue   |
+| r                   |
+| r1                  |
+| r2                  |
+| races               |
+| regexpr             |
+| replacedept         |
+| revenue             |
+| rockets             |
+| runners             |
+| runningserver       |
+| sales               |
+| sales_channel       |
+| salespeople         |
+| salesperson         |
+| salgrade            |
+| server              |
+| service             |
+| seta                |
+| setb                |
+| softdrink           |
+| sort                |
+| stadium             |
+| states              |
+| station             |
+| status              |
+| stringnumber        |
+| tablea              |
+| tableaa             |
+| tableb              |
+| tablebb             |
+| tasks               |
+| temp1               |
+| traintimetable      |
+| transactions        |
+| vote_response       |
+| votes               |
+| warehouse           |
+| yearly_revenue      |
+| z                   |
++---------------------+
+96 rows in set (0.00 sec)
+
+mysql> show full tables from saleel;
++---------------------+------------+
+| Tables_in_saleel    | Table_type |
++---------------------+------------+
+| a                   | BASE TABLE |
+| agent               | BASE TABLE |
+| andor               | BASE TABLE |
+| b                   | BASE TABLE |
+| blanktablea         | BASE TABLE |
+| blanktableb         | BASE TABLE |
+| blog                | BASE TABLE |
+| bonus               | BASE TABLE |
+| books               | BASE TABLE |
+| candidate           | BASE TABLE |
+| client              | BASE TABLE |
+| coalesce            | BASE TABLE |
+| comments            | BASE TABLE |
+| company             | BASE TABLE |
+| customer            | BASE TABLE |
+| customers           | BASE TABLE |
+| demodept1           | BASE TABLE |
+| demodept2           | BASE TABLE |
+| dept                | BASE TABLE |
+| dept1               | BASE TABLE |
+| docs                | BASE TABLE |
+| dummy               | BASE TABLE |
+| duplicate           | BASE TABLE |
+| emp                 | BASE TABLE |
+| emp1                | BASE TABLE |
+| emp2                | BASE TABLE |
+| emp_attendance      | BASE TABLE |
+| emp_cards           | BASE TABLE |
+| emp_phone           | BASE TABLE |
+| empj                | BASE TABLE |
+| envelope            | BASE TABLE |
+| food                | BASE TABLE |
+| hobby               | BASE TABLE |
+| item                | BASE TABLE |
+| key_parts           | BASE TABLE |
+| leadtable           | BASE TABLE |
+| licence             | BASE TABLE |
+| location            | BASE TABLE |
+| mass_table          | BASE TABLE |
+| menucard            | BASE TABLE |
+| nearest             | BASE TABLE |
+| new                 | BASE TABLE |
+| newbooks            | BASE TABLE |
+| nullif              | BASE TABLE |
+| numberstring        | BASE TABLE |
+| ord                 | BASE TABLE |
+| orderdetails        | BASE TABLE |
+| orders              | BASE TABLE |
+| pivot_table         | BASE TABLE |
+| plumber             | BASE TABLE |
+| plumber_service_map | BASE TABLE |
+| points              | BASE TABLE |
+| price               | BASE TABLE |
+| product             | BASE TABLE |
+| product_sales       | BASE TABLE |
+| products            | BASE TABLE |
+| quarterly_revenue   | BASE TABLE |
+| r                   | BASE TABLE |
+| r1                  | BASE TABLE |
+| r2                  | BASE TABLE |
+| races               | BASE TABLE |
+| regexpr             | BASE TABLE |
+| replacedept         | BASE TABLE |
+| revenue             | BASE TABLE |
+| rockets             | BASE TABLE |
+| runners             | BASE TABLE |
+| runningserver       | BASE TABLE |
+| sales               | VIEW       |
+| sales_channel       | BASE TABLE |
+| salespeople         | BASE TABLE |
+| salesperson         | BASE TABLE |
+| salgrade            | BASE TABLE |
+| server              | BASE TABLE |
+| service             | BASE TABLE |
+| seta                | BASE TABLE |
+| setb                | BASE TABLE |
+| softdrink           | BASE TABLE |
+| sort                | BASE TABLE |
+| stadium             | BASE TABLE |
+| states              | BASE TABLE |
+| station             | BASE TABLE |
+| status              | BASE TABLE |
+| stringnumber        | BASE TABLE |
+| tablea              | BASE TABLE |
+| tableaa             | BASE TABLE |
+| tableb              | BASE TABLE |
+| tablebb             | BASE TABLE |
+| tasks               | BASE TABLE |
+| temp1               | BASE TABLE |
+| traintimetable      | BASE TABLE |
+| transactions        | BASE TABLE |
+| vote_response       | BASE TABLE |
+| votes               | BASE TABLE |
+| warehouse           | BASE TABLE |
+| yearly_revenue      | BASE TABLE |
+| z                   | BASE TABLE |
++---------------------+------------+
+96 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
++--------------------+
+128 rows in set (0.00 sec)
+
+mysql>
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
++--------------------+
+128 rows in set (0.00 sec)
+
+mysql> use information_schema;
+Database changed
+mysql> select datanase();
+ERROR 1305 (42000): FUNCTION information_schema.datanase does not exist
+mysql> select database();
++--------------------+
+| database()         |
++--------------------+
+| information_schema |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ADMINISTRABLE_ROLE_AUTHORIZATIONS     |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        |
+| CHECK_CONSTRAINTS                     |
+| COLLATION_CHARACTER_SET_APPLICABILITY |
+| COLLATIONS                            |
+| COLUMN_PRIVILEGES                     |
+| COLUMN_STATISTICS                     |
+| COLUMNS                               |
+| COLUMNS_EXTENSIONS                    |
+| ENABLED_ROLES                         |
+| ENGINES                               |
+| EVENTS                                |
+| FILES                                 |
+| INNODB_BUFFER_PAGE                    |
+| INNODB_BUFFER_PAGE_LRU                |
+| INNODB_BUFFER_POOL_STATS              |
+| INNODB_CACHED_INDEXES                 |
+| INNODB_CMP                            |
+| INNODB_CMP_PER_INDEX                  |
+| INNODB_CMP_PER_INDEX_RESET            |
+| INNODB_CMP_RESET                      |
+| INNODB_CMPMEM                         |
+| INNODB_CMPMEM_RESET                   |
+| INNODB_COLUMNS                        |
+| INNODB_DATAFILES                      |
+| INNODB_FIELDS                         |
+| INNODB_FOREIGN                        |
+| INNODB_FOREIGN_COLS                   |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_FT_CONFIG                      |
+| INNODB_FT_DEFAULT_STOPWORD            |
+| INNODB_FT_DELETED                     |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_INDEXES                        |
+| INNODB_METRICS                        |
+| INNODB_SESSION_TEMP_TABLESPACES       |
+| INNODB_TABLES                         |
+| INNODB_TABLESPACES                    |
+| INNODB_TABLESPACES_BRIEF              |
+| INNODB_TABLESTATS                     |
+| INNODB_TEMP_TABLE_INFO                |
+| INNODB_TRX                            |
+| INNODB_VIRTUAL                        |
+| KEY_COLUMN_USAGE                      |
+| KEYWORDS                              |
+| OPTIMIZER_TRACE                       |
+| PARAMETERS                            |
+| PARTITIONS                            |
+| PLUGINS                               |
+| PROCESSLIST                           |
+| PROFILING                             |
+| REFERENTIAL_CONSTRAINTS               |
+| RESOURCE_GROUPS                       |
+| ROLE_COLUMN_GRANTS                    |
+| ROLE_ROUTINE_GRANTS                   |
+| ROLE_TABLE_GRANTS                     |
+| ROUTINES                              |
+| SCHEMA_PRIVILEGES                     |
+| SCHEMATA                              |
+| SCHEMATA_EXTENSIONS                   |
+| ST_GEOMETRY_COLUMNS                   |
+| ST_SPATIAL_REFERENCE_SYSTEMS          |
+| ST_UNITS_OF_MEASURE                   |
+| STATISTICS                            |
+| TABLE_CONSTRAINTS                     |
+| TABLE_CONSTRAINTS_EXTENSIONS          |
+| TABLE_PRIVILEGES                      |
+| TABLES                                |
+| TABLES_EXTENSIONS                     |
+| TABLESPACES                           |
+| TABLESPACES_EXTENSIONS                |
+| TRIGGERS                              |
+| USER_ATTRIBUTES                       |
+| USER_PRIVILEGES                       |
+| VIEW_ROUTINE_USAGE                    |
+| VIEW_TABLE_USAGE                      |
+| VIEWS                                 |
++---------------------------------------+
+79 rows in set (0.00 sec)
+
+mysql>
+mysql> show columns from tables;
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| Field           | Type                                                               | Null | Key | Default | Extra |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| TABLE_CATALOG   | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_SCHEMA    | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_NAME      | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_TYPE      | enum('BASE TABLE','VIEW','SYSTEM VIEW')                            | NO   |     | NULL    |       |
+| ENGINE          | varchar(64)                                                        | YES  |     | NULL    |       |
+| VERSION         | int                                                                | YES  |     | NULL    |       |
+| ROW_FORMAT      | enum('Fixed','Dynamic','Compressed','Redundant','Compact','Paged') | YES  |     | NULL    |       |
+| TABLE_ROWS      | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AVG_ROW_LENGTH  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_LENGTH     | bigint unsigned                                                    | YES  |     | NULL    |       |
+| MAX_DATA_LENGTH | bigint unsigned                                                    | YES  |     | NULL    |       |
+| INDEX_LENGTH    | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_FREE       | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AUTO_INCREMENT  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| CREATE_TIME     | timestamp                                                          | NO   |     | NULL    |       |
+| UPDATE_TIME     | datetime                                                           | YES  |     | NULL    |       |
+| CHECK_TIME      | datetime                                                           | YES  |     | NULL    |       |
+| TABLE_COLLATION | varchar(64)                                                        | YES  |     | NULL    |       |
+| CHECKSUM        | bigint                                                             | YES  |     | NULL    |       |
+| CREATE_OPTIONS  | varchar(256)                                                       | YES  |     | NULL    |       |
+| TABLE_COMMENT   | text                                                               | YES  |     | NULL    |       |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+21 rows in set (0.00 sec)
+
+mysql>
+mysql> show columns from tables;
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| Field           | Type                                                               | Null | Key | Default | Extra |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| TABLE_CATALOG   | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_SCHEMA    | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_NAME      | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_TYPE      | enum('BASE TABLE','VIEW','SYSTEM VIEW')                            | NO   |     | NULL    |       |
+| ENGINE          | varchar(64)                                                        | YES  |     | NULL    |       |
+| VERSION         | int                                                                | YES  |     | NULL    |       |
+| ROW_FORMAT      | enum('Fixed','Dynamic','Compressed','Redundant','Compact','Paged') | YES  |     | NULL    |       |
+| TABLE_ROWS      | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AVG_ROW_LENGTH  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_LENGTH     | bigint unsigned                                                    | YES  |     | NULL    |       |
+| MAX_DATA_LENGTH | bigint unsigned                                                    | YES  |     | NULL    |       |
+| INDEX_LENGTH    | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_FREE       | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AUTO_INCREMENT  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| CREATE_TIME     | timestamp                                                          | NO   |     | NULL    |       |
+| UPDATE_TIME     | datetime                                                           | YES  |     | NULL    |       |
+| CHECK_TIME      | datetime                                                           | YES  |     | NULL    |       |
+| TABLE_COLLATION | varchar(64)                                                        | YES  |     | NULL    |       |
+| CHECKSUM        | bigint                                                             | YES  |     | NULL    |       |
+| CREATE_OPTIONS  | varchar(256)                                                       | YES  |     | NULL    |       |
+| TABLE_COMMENT   | text                                                               | YES  |     | NULL    |       |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+21 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> show full tables from saleel;
++---------------------+------------+
+| Tables_in_saleel    | Table_type |
++---------------------+------------+
+| a                   | BASE TABLE |
+| agent               | BASE TABLE |
+| andor               | BASE TABLE |
+| b                   | BASE TABLE |
+| blanktablea         | BASE TABLE |
+| blanktableb         | BASE TABLE |
+| blog                | BASE TABLE |
+| bonus               | BASE TABLE |
+| books               | BASE TABLE |
+| candidate           | BASE TABLE |
+| client              | BASE TABLE |
+| coalesce            | BASE TABLE |
+| comments            | BASE TABLE |
+| company             | BASE TABLE |
+| customer            | BASE TABLE |
+| customers           | BASE TABLE |
+| demodept1           | BASE TABLE |
+| demodept2           | BASE TABLE |
+| dept                | BASE TABLE |
+| dept1               | BASE TABLE |
+| docs                | BASE TABLE |
+| dummy               | BASE TABLE |
+| duplicate           | BASE TABLE |
+| emp                 | BASE TABLE |
+| emp1                | BASE TABLE |
+| emp2                | BASE TABLE |
+| emp_attendance      | BASE TABLE |
+| emp_cards           | BASE TABLE |
+| emp_phone           | BASE TABLE |
+| empj                | BASE TABLE |
+| envelope            | BASE TABLE |
+| food                | BASE TABLE |
+| hobby               | BASE TABLE |
+| item                | BASE TABLE |
+| key_parts           | BASE TABLE |
+| leadtable           | BASE TABLE |
+| licence             | BASE TABLE |
+| location            | BASE TABLE |
+| mass_table          | BASE TABLE |
+| menucard            | BASE TABLE |
+| nearest             | BASE TABLE |
+| new                 | BASE TABLE |
+| newbooks            | BASE TABLE |
+| nullif              | BASE TABLE |
+| numberstring        | BASE TABLE |
+| ord                 | BASE TABLE |
+| orderdetails        | BASE TABLE |
+| orders              | BASE TABLE |
+| pivot_table         | BASE TABLE |
+| plumber             | BASE TABLE |
+| plumber_service_map | BASE TABLE |
+| points              | BASE TABLE |
+| price               | BASE TABLE |
+| product             | BASE TABLE |
+| product_sales       | BASE TABLE |
+| products            | BASE TABLE |
+| quarterly_revenue   | BASE TABLE |
+| r                   | BASE TABLE |
+| r1                  | BASE TABLE |
+| r2                  | BASE TABLE |
+| races               | BASE TABLE |
+| regexpr             | BASE TABLE |
+| replacedept         | BASE TABLE |
+| revenue             | BASE TABLE |
+| rockets             | BASE TABLE |
+| runners             | BASE TABLE |
+| runningserver       | BASE TABLE |
+| sales               | VIEW       |
+| sales_channel       | BASE TABLE |
+| salespeople         | BASE TABLE |
+| salesperson         | BASE TABLE |
+| salgrade            | BASE TABLE |
+| server              | BASE TABLE |
+| service             | BASE TABLE |
+| seta                | BASE TABLE |
+| setb                | BASE TABLE |
+| softdrink           | BASE TABLE |
+| sort                | BASE TABLE |
+| stadium             | BASE TABLE |
+| states              | BASE TABLE |
+| station             | BASE TABLE |
+| status              | BASE TABLE |
+| stringnumber        | BASE TABLE |
+| tablea              | BASE TABLE |
+| tableaa             | BASE TABLE |
+| tableb              | BASE TABLE |
+| tablebb             | BASE TABLE |
+| tasks               | BASE TABLE |
+| temp1               | BASE TABLE |
+| traintimetable      | BASE TABLE |
+| transactions        | BASE TABLE |
+| vote_response       | BASE TABLE |
+| votes               | BASE TABLE |
+| warehouse           | BASE TABLE |
+| yearly_revenue      | BASE TABLE |
+| z                   | BASE TABLE |
++---------------------+------------+
+96 rows in set (0.00 sec)
+
+mysql>
+
+
+--------------------------------------------------------
+
+
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql> show columns from tables;
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| Field           | Type                                                               | Null | Key | Default | Extra |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+| TABLE_CATALOG   | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_SCHEMA    | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_NAME      | varchar(64)                                                        | YES  |     | NULL    |       |
+| TABLE_TYPE      | enum('BASE TABLE','VIEW','SYSTEM VIEW')                            | NO   |     | NULL    |       |
+| ENGINE          | varchar(64)                                                        | YES  |     | NULL    |       |
+| VERSION         | int                                                                | YES  |     | NULL    |       |
+| ROW_FORMAT      | enum('Fixed','Dynamic','Compressed','Redundant','Compact','Paged') | YES  |     | NULL    |       |
+| TABLE_ROWS      | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AVG_ROW_LENGTH  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_LENGTH     | bigint unsigned                                                    | YES  |     | NULL    |       |
+| MAX_DATA_LENGTH | bigint unsigned                                                    | YES  |     | NULL    |       |
+| INDEX_LENGTH    | bigint unsigned                                                    | YES  |     | NULL    |       |
+| DATA_FREE       | bigint unsigned                                                    | YES  |     | NULL    |       |
+| AUTO_INCREMENT  | bigint unsigned                                                    | YES  |     | NULL    |       |
+| CREATE_TIME     | timestamp                                                          | NO   |     | NULL    |       |
+| UPDATE_TIME     | datetime                                                           | YES  |     | NULL    |       |
+| CHECK_TIME      | datetime                                                           | YES  |     | NULL    |       |
+| TABLE_COLLATION | varchar(64)                                                        | YES  |     | NULL    |       |
+| CHECKSUM        | bigint                                                             | YES  |     | NULL    |       |
+| CREATE_OPTIONS  | varchar(256)                                                       | YES  |     | NULL    |       |
+| TABLE_COMMENT   | text                                                               | YES  |     | NULL    |       |
++-----------------+--------------------------------------------------------------------+------+-----+---------+-------+
+21 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> show emgines;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emgines' at line 1
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> set default_storage_engine = csv;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> show engines;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | DEFAULT | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | YES     | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql>

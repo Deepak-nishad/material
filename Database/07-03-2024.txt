@@ -1,0 +1,2614 @@
+create table xx(c1 int primary key auto_increment, c2 int) auto_increment=10;
+
+SET @@auto_increment_increment=10;
+
+only One record
+insert into emp values()
+insert into emp(column_list) values()
+
+Multi Reco
+
+insert into emp values(), (), (), (), ... 17, 18
+insert into emp(column_list) values(), (), (), (), ...
+
+19, 20
+
+3.	insert into emp(id, fname) values(0, -10);
+2.	insert into emp(id, fname) values(null, -10);
+	
+ 1.  insert into emp(id, fname) values(12, -10);
+ 4.  insert into emp(fname) values(-10);
+ 
+ Microsoft Windows [Version 10.0.19045.4046]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mysql--host=192.168.100.80 --port=3306 --user=saleel --password=saleel
+'mysql--host' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 --user=saleel --password=saleel
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 66
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
++--------------------+
+128 rows in set (0.04 sec)
+
+mysql> create database z;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
+| z                  |
++--------------------+
+129 rows in set (0.00 sec)
+
+mysql> create database z1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
+| z                  |
+| z1                 |
++--------------------+
+130 rows in set (0.00 sec)
+
+mysql> create table a(c1 int, c1 int);
+ERROR 1046 (3D000): No database selected
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use z;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| z          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table a(c1 int, c1 int);
+ERROR 1060 (42S21): Duplicate column name 'c1'
+mysql> create table a(c1 int(4), c2 int);
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> create table a(id int, firstName varchar(10), gender char, salary float(7,2));
+ERROR 1050 (42S01): Table 'a' already exists
+mysql> create table if not exists a(id int, firstName varchar(10), gender char, salary float(7,2));
+Query OK, 0 rows affected, 2 warnings (0.00 sec)
+
+mysql> show warnings;
++---------+------+------------------------------------------------------------------------------------------------------------------+
+| Level   | Code | Message                                                                                                          |
++---------+------+------------------------------------------------------------------------------------------------------------------+
+| Warning | 1681 | Specifying number of digits for floating point data types is deprecated and will be removed in a future release. |
+| Note    | 1050 | Table 'a' already exists                                                                                         |
++---------+------+------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table if not exists emp(id int, firstName varchar(10), gender char, salary float(7,2));
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | YES  |     | NULL    |       |
+| firstName | varchar(10) | YES  |     | NULL    |       |
+| gender    | char(1)     | YES  |     | NULL    |       |
+| salary    | float(7,2)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(1,'saleel', "m", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp(id, firstName, gender,salary) values(2,'sharmin', "f", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp(firstName, salary, id, gender) values('ruhan', 555, 3, 'm');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(7.56,'saleelqwer', "m", 1234.56);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(8.88,'saleelqwerq', "m", 1234.56);
+ERROR 1406 (22001): Data too long for column 'firstName' at row 1
+mysql>
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
++------+------------+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(7.56,'saleelqwer', "m", 1234.56);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
++------+------------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp values(8.1,'saleelqwerq', "m", 1234.56);
+ERROR 1406 (22001): Data too long for column 'firstName' at row 1
+mysql> insert into emp values(8.1,'saleel', "m", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
++------+------------+--------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into emp values(8,'saleelqwer', "m", -1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
++------+------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
++------+------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> insert into emp(id, firstName, gender) value(10, 'suraj', 'M');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
++------+------------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | YES  |     | NULL    |       |
+| firstName | varchar(10) | YES  |     | NULL    |       |
+| gender    | char(1)     | YES  |     | NULL    |       |
+| salary    | float(7,2)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(11, 'asd','m');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>
+mysql> insert into emp values(11, 'asd','m',1919,10);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>
+mysql>
+mysql> select * from em;
+ERROR 1146 (42S02): Table 'z.em' doesn't exist
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
++------+------------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> insert into emp values("11", 'asd','m',1919);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
++------+------------+--------+---------+
+9 rows in set (0.00 sec)
+
+mysql> insert into emp values("A11", 'asd','m',1919);
+ERROR 1366 (HY000): Incorrect integer value: 'A11' for column 'id' at row 1
+mysql> insert into emp values(12, '12','m',1919);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(12, 'A12','m',1919);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
++------+------------+--------+---------+
+11 rows in set (0.00 sec)
+
+mysql> insert into emp values("11", 'asd','m',"1919");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
++------+------------+--------+---------+
+12 rows in set (0.00 sec)
+
+mysql> insert into emp values(14, 'A12','m',"1918");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
++------+------------+--------+---------+
+13 rows in set (0.00 sec)
+
+mysql> insert into emp values("15", 'asd','m',"135.79");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
++------+------------+--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
++------+------------+--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> insert into emp values(17, 'A12','m',"1918"), (18, 'A12','m',"1918");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into emp(id, firstName) values(19, 'A12'), (20, 'A12');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
+|   17 | A12        | m      | 1918.00 |
+|   18 | A12        | m      | 1918.00 |
+|   19 | A12        | NULL   |    NULL |
+|   20 | A12        | NULL   |    NULL |
++------+------------+--------+---------+
+18 rows in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table emp(id int auto_increment primary key, fname varchar(10) not null, city varchar(10) default 'Pune');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| fname | varchar(10) | NO   |     | NULL    |                |
+| city  | varchar(10) | YES  |     | Pune    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname, city) values(null,'saleel', 'baroda');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++----+--------+--------+
+| id | fname  | city   |
++----+--------+--------+
+|  1 | saleel | baroda |
++----+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp(id, fname, city) values(null,'saleel', null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+--------+--------+
+| id | fname  | city   |
++----+--------+--------+
+|  1 | saleel | baroda |
+|  2 | saleel | NULL   |
++----+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('sharmin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+---------+--------+
+| id | fname   | city   |
++----+---------+--------+
+|  1 | saleel  | baroda |
+|  2 | saleel  | NULL   |
+|  3 | sharmin | Pune   |
++----+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('sharmin1'),('sharmin2');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+--------+
+| id | fname    | city   |
++----+----------+--------+
+|  1 | saleel   | baroda |
+|  2 | saleel   | NULL   |
+|  3 | sharmin  | Pune   |
+|  4 | sharmin1 | Pune   |
+|  5 | sharmin2 | Pune   |
++----+----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(100, 'ram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp(fname) values('sham');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(7, '7');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(10, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('aaa');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
++-----+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(12, -10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
++-----+----------+--------+
+11 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(null, -10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
++-----+----------+--------+
+12 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(0, -10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
++-----+----------+--------+
+13 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values(-10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
++-----+----------+--------+
+14 rows in set (0.00 sec)
+
+mysql>
+
+------------------------------
+
+Microsoft Windows [Version 10.0.19045.4046]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mysql--host=192.168.100.80 --port=3306 --user=saleel --password=saleel
+'mysql--host' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 --user=saleel --password=saleel
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 66
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
++--------------------+
+128 rows in set (0.04 sec)
+
+mysql> create database z;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
+| z                  |
++--------------------+
+129 rows in set (0.00 sec)
+
+mysql> create database z1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| group001           |
+| group001_campus    |
+| group002           |
+| group002_campus    |
+| group003           |
+| group003_campus    |
+| group004           |
+| group004_campus    |
+| group005           |
+| group005_campus    |
+| group006           |
+| group006_campus    |
+| group007           |
+| group007_campus    |
+| group008           |
+| group008_campus    |
+| group009           |
+| group009_campus    |
+| group010           |
+| group010_campus    |
+| group011           |
+| group011_campus    |
+| group012           |
+| group012_campus    |
+| group013           |
+| group013_campus    |
+| group014           |
+| group014_campus    |
+| group015           |
+| group015_campus    |
+| group016           |
+| group016_campus    |
+| group017           |
+| group017_campus    |
+| group018           |
+| group018_campus    |
+| group019           |
+| group019_campus    |
+| group020           |
+| group020_campus    |
+| group021           |
+| group021_campus    |
+| group022           |
+| group022_campus    |
+| group023           |
+| group023_campus    |
+| group024           |
+| group024_campus    |
+| group025           |
+| group025_campus    |
+| group026           |
+| group026_campus    |
+| group027           |
+| group027_campus    |
+| group028           |
+| group028_campus    |
+| group029           |
+| group029_campus    |
+| group030           |
+| group030_campus    |
+| group031           |
+| group031_campus    |
+| group032           |
+| group032_campus    |
+| group033           |
+| group033_campus    |
+| group034           |
+| group034_campus    |
+| group035           |
+| group035_campus    |
+| group036           |
+| group036_campus    |
+| group037           |
+| group037_campus    |
+| group038           |
+| group038_campus    |
+| group039           |
+| group039_campus    |
+| group040           |
+| group040_campus    |
+| group041           |
+| group041_campus    |
+| group042           |
+| group042_campus    |
+| group043           |
+| group043_campus    |
+| group044           |
+| group044_campus    |
+| group045           |
+| group045_campus    |
+| group046           |
+| group046_campus    |
+| group047           |
+| group047_campus    |
+| group048           |
+| group048_campus    |
+| group049           |
+| group049_campus    |
+| group050           |
+| group050_campus    |
+| group051           |
+| group051_campus    |
+| group052           |
+| group052_campus    |
+| group053           |
+| group053_campus    |
+| group054           |
+| group054_campus    |
+| group055           |
+| group055_campus    |
+| group056           |
+| group056_campus    |
+| group057           |
+| group057_campus    |
+| group058           |
+| group058_campus    |
+| group059           |
+| group059_campus    |
+| group060           |
+| group060_campus    |
+| information_schema |
+| infoway            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| saleel             |
+| sys                |
+| world              |
+| z                  |
+| z1                 |
++--------------------+
+130 rows in set (0.00 sec)
+
+mysql> create table a(c1 int, c1 int);
+ERROR 1046 (3D000): No database selected
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use z;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| z          |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table a(c1 int, c1 int);
+ERROR 1060 (42S21): Duplicate column name 'c1'
+mysql> create table a(c1 int(4), c2 int);
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.02 sec)
+
+mysql> create table a(id int, firstName varchar(10), gender char, salary float(7,2));
+ERROR 1050 (42S01): Table 'a' already exists
+mysql> create table if not exists a(id int, firstName varchar(10), gender char, salary float(7,2));
+Query OK, 0 rows affected, 2 warnings (0.00 sec)
+
+mysql> show warnings;
++---------+------+------------------------------------------------------------------------------------------------------------------+
+| Level   | Code | Message                                                                                                          |
++---------+------+------------------------------------------------------------------------------------------------------------------+
+| Warning | 1681 | Specifying number of digits for floating point data types is deprecated and will be removed in a future release. |
+| Note    | 1050 | Table 'a' already exists                                                                                         |
++---------+------+------------------------------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table if not exists emp(id int, firstName varchar(10), gender char, salary float(7,2));
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | YES  |     | NULL    |       |
+| firstName | varchar(10) | YES  |     | NULL    |       |
+| gender    | char(1)     | YES  |     | NULL    |       |
+| salary    | float(7,2)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(1,'saleel', "m", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp(id, firstName, gender,salary) values(2,'sharmin', "f", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into emp(firstName, salary, id, gender) values('ruhan', 555, 3, 'm');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(7.56,'saleelqwer', "m", 1234.56);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(8.88,'saleelqwerq', "m", 1234.56);
+ERROR 1406 (22001): Data too long for column 'firstName' at row 1
+mysql>
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
++------+------------+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(7.56,'saleelqwer', "m", 1234.56);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
++------+------------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp values(8.1,'saleelqwerq', "m", 1234.56);
+ERROR 1406 (22001): Data too long for column 'firstName' at row 1
+mysql> insert into emp values(8.1,'saleel', "m", 1234.56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
++------+------------+--------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into emp values(8,'saleelqwer', "m", -1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
++------+------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
++------+------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> insert into emp(id, firstName, gender) value(10, 'suraj', 'M');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
++------+------------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| id        | int         | YES  |     | NULL    |       |
+| firstName | varchar(10) | YES  |     | NULL    |       |
+| gender    | char(1)     | YES  |     | NULL    |       |
+| salary    | float(7,2)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into emp values(11, 'asd','m');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>
+mysql> insert into emp values(11, 'asd','m',1919,10);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>
+mysql>
+mysql> select * from em;
+ERROR 1146 (42S02): Table 'z.em' doesn't exist
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
++------+------------+--------+---------+
+8 rows in set (0.00 sec)
+
+mysql> insert into emp values("11", 'asd','m',1919);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
++------+------------+--------+---------+
+9 rows in set (0.00 sec)
+
+mysql> insert into emp values("A11", 'asd','m',1919);
+ERROR 1366 (HY000): Incorrect integer value: 'A11' for column 'id' at row 1
+mysql> insert into emp values(12, '12','m',1919);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp values(12, 'A12','m',1919);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
++------+------------+--------+---------+
+11 rows in set (0.00 sec)
+
+mysql> insert into emp values("11", 'asd','m',"1919");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
++------+------------+--------+---------+
+12 rows in set (0.00 sec)
+
+mysql> insert into emp values(14, 'A12','m',"1918");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
++------+------------+--------+---------+
+13 rows in set (0.00 sec)
+
+mysql> insert into emp values("15", 'asd','m',"135.79");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
++------+------------+--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
++------+------------+--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> insert into emp values(17, 'A12','m',"1918"), (18, 'A12','m',"1918");
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> insert into emp(id, firstName) values(19, 'A12'), (20, 'A12');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++------+------------+--------+---------+
+| id   | firstName  | gender | salary  |
++------+------------+--------+---------+
+|    1 | saleel     | m      | 1234.56 |
+|    2 | sharmin    | f      | 1234.56 |
+|    3 | ruhan      | m      |  555.00 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleelqwer | m      | 1234.56 |
+|    8 | saleel     | m      | 1234.56 |
+|    8 | saleelqwer | m      |   -1.00 |
+|   10 | suraj      | M      |    NULL |
+|   11 | asd        | m      | 1919.00 |
+|   12 | 12         | m      | 1919.00 |
+|   12 | A12        | m      | 1919.00 |
+|   11 | asd        | m      | 1919.00 |
+|   14 | A12        | m      | 1918.00 |
+|   15 | asd        | m      |  135.79 |
+|   17 | A12        | m      | 1918.00 |
+|   18 | A12        | m      | 1918.00 |
+|   19 | A12        | NULL   |    NULL |
+|   20 | A12        | NULL   |    NULL |
++------+------------+--------+---------+
+18 rows in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table emp(id int auto_increment primary key, fname varchar(10) not null, city varchar(10) default 'Pune');
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| fname | varchar(10) | NO   |     | NULL    |                |
+| city  | varchar(10) | YES  |     | Pune    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname, city) values(null,'saleel', 'baroda');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++----+--------+--------+
+| id | fname  | city   |
++----+--------+--------+
+|  1 | saleel | baroda |
++----+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp(id, fname, city) values(null,'saleel', null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+--------+--------+
+| id | fname  | city   |
++----+--------+--------+
+|  1 | saleel | baroda |
+|  2 | saleel | NULL   |
++----+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('sharmin');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++----+---------+--------+
+| id | fname   | city   |
++----+---------+--------+
+|  1 | saleel  | baroda |
+|  2 | saleel  | NULL   |
+|  3 | sharmin | Pune   |
++----+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('sharmin1'),('sharmin2');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+--------+
+| id | fname    | city   |
++----+----------+--------+
+|  1 | saleel   | baroda |
+|  2 | saleel   | NULL   |
+|  3 | sharmin  | Pune   |
+|  4 | sharmin1 | Pune   |
+|  5 | sharmin2 | Pune   |
++----+----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(100, 'ram');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into emp(fname) values('sham');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+7 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(7, '7');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(10, 10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
++-----+----------+--------+
+9 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values('aaa');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
++-----+----------+--------+
+10 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(12, -10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
++-----+----------+--------+
+11 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(null, -10);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
++-----+----------+--------+
+12 rows in set (0.00 sec)
+
+mysql> insert into emp(id, fname) values(0, -10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
++-----+----------+--------+
+13 rows in set (0.00 sec)
+
+mysql> insert into emp(fname) values(-10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
++-----+----------+--------+
+14 rows in set (0.00 sec)
+
+mysql>                       desc emp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| fname | varchar(10) | NO   |     | NULL    |                |
+| city  | varchar(10) | YES  |     | Pune    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
++-----+----------+--------+
+14 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| fname | varchar(10) | NO   |     | NULL    |                |
+| city  | varchar(10) | YES  |     | Pune    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp(city, fname) values('zzz','yyy');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
+| 106 | yyy      | zzz    |
++-----+----------+--------+
+15 rows in set (0.00 sec)
+
+mysql> insert into emp values('zzz','yyy');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into emp values(null,'null','');
+Query OK, 1 row affected (0.39 sec)
+
+mysql> insert into emp values(0,'null','');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
+| 106 | yyy      | zzz    |
+| 107 | null     |        |
+| 108 | null     |        |
++-----+----------+--------+
+17 rows in set (0.00 sec)
+
+mysql> insert into emp values(null,null,'');
+ERROR 1048 (23000): Column 'fname' cannot be null
+mysql>
+mysql> insert into emp values(null,'',null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp;
++-----+----------+--------+
+| id  | fname    | city   |
++-----+----------+--------+
+|   1 | saleel   | baroda |
+|   2 | saleel   | NULL   |
+|   3 | sharmin  | Pune   |
+|   4 | sharmin1 | Pune   |
+|   5 | sharmin2 | Pune   |
+|   7 | 7        | Pune   |
+|  10 | 10       | Pune   |
+|  12 | -10      | Pune   |
+| 100 | ram      | Pune   |
+| 101 | sham     | Pune   |
+| 102 | aaa      | Pune   |
+| 103 | -10      | Pune   |
+| 104 | -10      | Pune   |
+| 105 | -10      | Pune   |
+| 106 | yyy      | zzz    |
+| 107 | null     |        |
+| 108 | null     |        |
+| 109 |          | NULL   |
++-----+----------+--------+
+18 rows in set (0.00 sec)
+
+mysql> create table x(c1 int,c2 varchar(10) default 'Pune');
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc x;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | int         | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  |     | Pune    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into x(c2, c1) values('baroda', 1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from x;
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | baroda |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into x(c1) values(2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from x;
++------+--------+
+| c1   | c2     |
++------+--------+
+|    1 | baroda |
+|    2 | Pune   |
++------+--------+
+2 rows in set (0.00 sec)
+
+mysql> create table x1(c1 int auto_increment primary,c2 varchar(10), c3 varchar(10) default 'Pune');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',c2 varchar(10), c3 varchar(10) default 'Pune')' at line 1
+mysql> create table x1(c1 int auto_increment primary key,c2 varchar(10), c3 varchar(10) default 'Pune');
+Query OK, 0 rows affected (0.66 sec)
+
+mysql> desc x1;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| c1    | int         | NO   | PRI | NULL    | auto_increment |
+| c2    | varchar(10) | YES  |     | NULL    |                |
+| c3    | varchar(10) | YES  |     | Pune    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.71 sec)
+
+mysql> insert into x1 values(null,'a','xyz'), (0,'b', default);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from x1;
++----+------+------+
+| c1 | c2   | c3   |
++----+------+------+
+|  1 | a    | xyz  |
+|  2 | b    | Pune |
++----+------+------+
+2 rows in set (0.00 sec)
+
+mysql> create table x2(c1 char(10), c2 varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into x2 values('saleel','saleel');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from x2;
++--------+--------+
+| c1     | c2     |
++--------+--------+
+| saleel | saleel |
++--------+--------+
+1 row in set (0.00 sec)
+
+mysql> select c1, c2, length(c1), length(c2) from x2;
++--------+--------+------------+------------+
+| c1     | c2     | length(c1) | length(c2) |
++--------+--------+------------+------------+
+| saleel | saleel |          6 |          6 |
++--------+--------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> SET sql_mode = 'PAD_CHAR_TO_FULL_LENGTH';
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> select c1, c2, length(c1), length(c2) from x2;
++------------+--------+------------+------------+
+| c1         | c2     | length(c1) | length(c2) |
++------------+--------+------------+------------+
+| saleel     | saleel |         10 |          6 |
++------------+--------+------------+------------+
+1 row in set (0.00 sec)
+
+mysql> desc x2;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| c1    | char(10)    | YES  |     | NULL    |       |
+| c2    | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into x2 values('a','a'),('bb', bb),('c','c');
+ERROR 1054 (42S22): Unknown column 'bb' in 'field list'
+mysql> select * from x2;
++------------+--------+
+| c1         | c2     |
++------------+--------+
+| saleel     | saleel |
++------------+--------+
+1 row in set (0.00 sec)
+
+mysql> create table x3(c1 int auto_increment primary key, c2 varchar(10)) auto_increment = 10;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc x3;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| c1    | int         | NO   | PRI | NULL    | auto_increment |
+| c2    | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> insert into x3 values(null,100);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from x3;
++----+------+
+| c1 | c2   |
++----+------+
+| 10 | 100  |
++----+------+
+1 row in set (0.01 sec)
+
+mysql> create table emp(id int not null, fName varchar(0) not null, salary int not null) engine=csv
+    -> ;
+ERROR 1050 (42S01): Table 'emp' already exists
+mysql> create table employee(id int not null, fName varchar(0) not null, salary int not null) engine=csv
+    -> ;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into employee(1,'saleel', 4000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,'saleel', 4000)' at line 1
+mysql> insert into employee values(1,'saleel', 4000);
+Query OK, 1 row affected, 1 warning (0.02 sec)
+
+mysql> insert into employee values(2,'sharmin', 5000);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> select * from employee;
++----+-------+--------+
+| id | fName | salary |
++----+-------+--------+
+|  1 |       |   4000 |
+|  2 |       |   5000 |
++----+-------+--------+
+2 rows in set (0.01 sec)
+
+mysql> drop table employee;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table employee(id int not null, fName varchar(10) not null, salary int not null) engine=csv
+    -> ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into employee values(1,'saleel', 4000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(2,'sharmin', 5000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++----+---------+--------+
+| id | fName   | salary |
++----+---------+--------+
+|  1 | saleel  |   4000 |
+|  2 | sharmin |   5000 |
++----+---------+--------+
+2 rows in set (0.01 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| z          |
++------------+
+1 row in set (0.01 sec)
+
+mysql> insert into employee values(3,'ruhan', 6000);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from employee;
++----+---------+--------+
+| id | fName   | salary |
++----+---------+--------+
+|  1 | saleel  |   4000 |
+|  2 | sharmin |   5000 |
+|  3 | ruhan   |   6000 |
++----+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2024-03-07 15:11:48 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2024-03-07 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table x4(c1 date default curdate(), c2 int, c3 int default (c2*5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate(), c2 int, c3 int default (c2*5))' at line 1
+mysql> create table x4(c1 date default curdate(), c2 int, c3 int default c2*5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate(), c2 int, c3 int default c2*5)' at line 1
+mysql> create table x4(c1 date default now(), c2 int, c3 int default c2*5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'c2*5)' at line 1
+mysql> create table x4(c1 date default now(), c3 int default c2*5, c2 int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'c2*5, c2 int)' at line 1
+mysql>
+mysql>
+mysql> create table x4(c1 date default now(), c3 int default (c2*5), c2 int);
+ERROR 1067 (42000): Invalid default value for 'c1'
+mysql> create table x4(c1 date default curdate(), c3 int default (c2*5), c2 int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate(), c3 int default (c2*5), c2 int)' at line 1
+mysql> create table x4(c1 datetime default now(), c3 int default (c2*5), c2 int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table x5(c1 date default curdate(),c2 int, c3 int default (c2*5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate(),c2 int, c3 int default (c2*5))' at line 1
+mysql> create table x5(c1 datetime default now(),c2 int, c3 int default (c2*5));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select version();
++-----------+
+| version() |
++-----------+
+| 8.0.36    |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> desc x4;
++-------+----------+------+-----+-------------------+-------------------+
+| Field | Type     | Null | Key | Default           | Extra             |
++-------+----------+------+-----+-------------------+-------------------+
+| c1    | datetime | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| c3    | int      | YES  |     | (`c2` * 5)        | DEFAULT_GENERATED |
+| c2    | int      | YES  |     | NULL              |                   |
++-------+----------+------+-----+-------------------+-------------------+
+3 rows in set (0.02 sec)
+
+mysql> desc x5;
++-------+----------+------+-----+-------------------+-------------------+
+| Field | Type     | Null | Key | Default           | Extra             |
++-------+----------+------+-----+-------------------+-------------------+
+| c1    | datetime | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| c2    | int      | YES  |     | NULL              |                   |
+| c3    | int      | YES  |     | (`c2` * 5)        | DEFAULT_GENERATED |
++-------+----------+------+-----+-------------------+-------------------+
+3 rows in set (0.01 sec)
+
+mysql> insert into x5 values(default, 7, -1)
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into x5 values(default, 7, default);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from x5;
++---------------------+------+------+
+| c1                  | c2   | c3   |
++---------------------+------+------+
+| 2024-03-07 15:24:20 |    7 |   -1 |
+| 2024-03-07 15:24:29 |    7 |   35 |
++---------------------+------+------+
+2 rows in set (0.00 sec)
+
+mysql> insert into x5 values(default, 8, default);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from x5;
++---------------------+------+------+
+| c1                  | c2   | c3   |
++---------------------+------+------+
+| 2024-03-07 15:24:20 |    7 |   -1 |
+| 2024-03-07 15:24:29 |    7 |   35 |
+| 2024-03-07 15:25:17 |    8 |   40 |
++---------------------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> create table ord(oid int, qty int, rate int, total int generated always as (qty* rate));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc ord;
++-------+------+------+-----+---------+-------------------+
+| Field | Type | Null | Key | Default | Extra             |
++-------+------+------+-----+---------+-------------------+
+| oid   | int  | YES  |     | NULL    |                   |
+| qty   | int  | YES  |     | NULL    |                   |
+| rate  | int  | YES  |     | NULL    |                   |
+| total | int  | YES  |     | NULL    | VIRTUAL GENERATED |
++-------+------+------+-----+---------+-------------------+
+4 rows in set (0.01 sec)
+
+mysql> insert into ord values(1, 10, 4,-1);
+ERROR 3105 (HY000): The value specified for generated column 'total' in table 'ord' is not allowed.
+mysql>
+mysql> insert into ord values(1, 10, 4,default);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ord(oid, qty,rate) values(2, 60, 40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from ord;
++------+------+------+-------+
+| oid  | qty  | rate | total |
++------+------+------+-------+
+|    1 |   10 |    4 |    40 |
+|    2 |   60 |   40 |  2400 |
++------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into ord(oid, quantity, rate) values(2, 60, 40);
+ERROR 1054 (42S22): Unknown column 'quantity' in 'field list'
+mysql> select * from ord;
++------+------+------+-------+
+| oid  | qty  | rate | total |
++------+------+------+-------+
+|    1 |   10 |    4 |    40 |
+|    2 |   60 |   40 |  2400 |
++------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into ord(oid) values(10+10)
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from ord;
++------+------+------+-------+
+| oid  | qty  | rate | total |
++------+------+------+-------+
+|    1 |   10 |    4 |    40 |
+|    2 |   60 |   40 |  2400 |
+|   20 | NULL | NULL |  NULL |
++------+------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into ord(oid) values(10+10);

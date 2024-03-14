@@ -1,0 +1,1996 @@
+Microsoft Windows [Version 10.0.19045.4046]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 --user=saleel --password=saleel z
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 241
+Server version: 8.0.36 MySQL Community Server - GPL
+cls
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| emp         |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(c1 int, c3 int, c2 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a change column c2  c2 int after c1;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a change column c3  id int first;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int primary key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int, ename varchar(10), primary key(id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int primary key, ename varchar(10) primary key);
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql> create table a(id int, ename varchar(10), primary key(id, ename));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show index from a;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| a     |          0 | PRIMARY  |            1 | id          | A         |           0 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| a     |          0 | PRIMARY  |            2 | ename       | A         |           0 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+2 rows in set (0.01 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int auto_increment unique key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int auto_increment, ename varchar(10), unique(id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> deac a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deac a' at line 1
+mysql> desc a;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop tablea, b;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tablea, b' at line 1
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int primary key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>  desc a
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, ename) values(null,'saleel');
+ERROR 1048 (23000): Column 'id' cannot be null
+mysql> insert into a(ename) values('saleel');
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int primary key default 1, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | 1       |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, ename) values(1, 'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id, ename) values(1, 'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 'a.PRIMARY'
+mysql> insert into a(id, ename) values(null, 'saleel');
+ERROR 1048 (23000): Column 'id' cannot be null
+mysql>
+mysql> select ( from a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from a' at line 1
+mysql> select * from a;
++----+--------+
+| id | ename  |
++----+--------+
+|  1 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> update a set id=10 where id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from a;
++----+--------+
+| id | ename  |
++----+--------+
+| 10 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into a(ename) values('saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(ename) values('abc');
+ERROR 1062 (23000): Duplicate entry '1' for key 'a.PRIMARY'
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | 1       |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a alter column id drop default;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(ename) values('abc');
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+mysql> drop tabla a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla a' at line 1
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int, ename varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a add primary key(id);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a drop primary key;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a modify id int null;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int, phone int constraint uni_phone unique key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique key)' at line 1
+mysql>
+mysql>
+mysql> create table a(id int, phone int constraint uni_phone unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique)' at line 1
+mysql>
+mysql>
+mysql> create table a(id int, phone int unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int, phone int, constraint uni_phone unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table b(id int, phone int, constraint uni_phone unique key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table b(id int, phone int, constraint uni_phone unique key(phone));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int, phone int unique key);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table b(id int, phone int, constraint uni_phone unique key(phone));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, phone) values(1,111);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id, phone) values(2,111);
+ERROR 1062 (23000): Duplicate entry '111' for key 'a.phone'
+mysql> insert into a(id, phone) values(2,null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id) values(3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++------+-------+
+| id   | phone |
++------+-------+
+|    1 |   111 |
+|    2 |  NULL |
+|    3 |  NULL |
++------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| a           |
+| b           |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> show columns from information_schema.constraints;
+ERROR 1109 (42S02): Unknown table 'CONSTRAINTS' in information_schema
+mysql> show columns from information_schema.constraint;
+ERROR 1109 (42S02): Unknown table 'CONSTRAINT' in information_schema
+mysql> show columns from information_schema.table_constraints;
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| CONSTRAINT_CATALOG | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_SCHEMA  | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_NAME    | varchar(64) | YES  |     | NULL    |       |
+| TABLE_SCHEMA       | varchar(64) | YES  |     | NULL    |       |
+| TABLE_NAME         | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_TYPE    | varchar(11) | NO   |     |         |       |
+| ENFORCED           | varchar(3)  | NO   |     |         |       |
++--------------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> deac a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deac a' at line 1
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a drop index phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> alter table b drop index uni_phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
+Empty set (0.00 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a add unique key(phone);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b add constraint uni_phone unique key(phone);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table b drop index uni_phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b add unique key(phone);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | phone           |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(c1 int, c2 int, c2 int);
+ERROR 1060 (42S21): Duplicate column name 'c2'
+mysql> create table a(c1 int, c2 int, c3 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql>
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a add constraint uni_abc unique key(c2);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table a add constraint uni_abc unique key(c3);
+ERROR 1061 (42000): Duplicate key name 'uni_abc'
+mysql>
+
+
+------------------------------
+
+create table customer(custId int auto_increment primary key, custName varchar(10));
+
+
+create table ord(customerId int, ordId int, ordDate datetime, constraint fk_customerID foreign key(customerId) references customer(custId));
+
+
+
+create table address(customerId int, city varchar(10), constraint fk_customerID_address foreign key(customerId) references customer(custId), constraint uni_customerID_address unique(customerId));
+
+
+
+create table a(c1 int primary key, c2 int); create table b(c1 int, c2 int primary key);
+
+
+alter table a add foreign key(c2) references b(c2);
+alter table b add foreign key(c1) references a(c1);
+
+
+Microsoft Windows [Version 10.0.19045.4046]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 --user=saleel --password=saleel z
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 241
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| emp         |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(c1 int, c3 int, c2 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a change column c2  c2 int after c1;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a change column c3  id int first;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int primary key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int, ename varchar(10), primary key(id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int primary key, ename varchar(10) primary key);
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql> create table a(id int, ename varchar(10), primary key(id, ename));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show index from a;
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| a     |          0 | PRIMARY  |            1 | id          | A         |           0 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| a     |          0 | PRIMARY  |            2 | ename       | A         |           0 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++-------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+2 rows in set (0.01 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int auto_increment unique key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int auto_increment, ename varchar(10), unique(id));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> deac a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deac a' at line 1
+mysql> desc a;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| ename | varchar(10) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop tablea, b;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tablea, b' at line 1
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int primary key, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>  desc a
+    -> ;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, ename) values(null,'saleel');
+ERROR 1048 (23000): Column 'id' cannot be null
+mysql> insert into a(ename) values('saleel');
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int primary key default 1, ename varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | 1       |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, ename) values(1, 'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id, ename) values(1, 'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 'a.PRIMARY'
+mysql> insert into a(id, ename) values(null, 'saleel');
+ERROR 1048 (23000): Column 'id' cannot be null
+mysql>
+mysql> select ( from a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from a' at line 1
+mysql> select * from a;
++----+--------+
+| id | ename  |
++----+--------+
+|  1 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> update a set id=10 where id=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from a;
++----+--------+
+| id | ename  |
++----+--------+
+| 10 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into a(ename) values('saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(ename) values('abc');
+ERROR 1062 (23000): Duplicate entry '1' for key 'a.PRIMARY'
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | 1       |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a alter column id drop default;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(ename) values('abc');
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+mysql> drop tabla a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabla a' at line 1
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int, ename varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a add primary key(id);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a drop primary key;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a modify id int null;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| ename | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int, phone int constraint uni_phone unique key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique key)' at line 1
+mysql>
+mysql>
+mysql> create table a(id int, phone int constraint uni_phone unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique)' at line 1
+mysql>
+mysql>
+mysql> create table a(id int, phone int unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(id int, phone int, constraint uni_phone unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table b(id int, phone int, constraint uni_phone unique key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table b(id int, phone int, constraint uni_phone unique key(phone));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(id int, phone int unique key);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table b(id int, phone int, constraint uni_phone unique key(phone));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a(id, phone) values(1,111);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id, phone) values(2,111);
+ERROR 1062 (23000): Duplicate entry '111' for key 'a.phone'
+mysql> insert into a(id, phone) values(2,null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a(id) values(3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++------+-------+
+| id   | phone |
++------+-------+
+|    1 |   111 |
+|    2 |  NULL |
+|    3 |  NULL |
++------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| a           |
+| b           |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> show columns from information_schema.constraints;
+ERROR 1109 (42S02): Unknown table 'CONSTRAINTS' in information_schema
+mysql> show columns from information_schema.constraint;
+ERROR 1109 (42S02): Unknown table 'CONSTRAINT' in information_schema
+mysql> show columns from information_schema.table_constraints;
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| CONSTRAINT_CATALOG | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_SCHEMA  | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_NAME    | varchar(64) | YES  |     | NULL    |       |
+| TABLE_SCHEMA       | varchar(64) | YES  |     | NULL    |       |
+| TABLE_NAME         | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_TYPE    | varchar(11) | NO   |     |         |       |
+| ENFORCED           | varchar(3)  | NO   |     |         |       |
++--------------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> deac a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deac a' at line 1
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a drop index phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> alter table b drop index uni_phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
+Empty set (0.00 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| phone | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a add unique key(phone);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b add constraint uni_phone unique key(phone);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | uni_phone       |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table b drop index uni_phone;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b add unique key(phone);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | UNIQUE          | phone           |
+| b          | UNIQUE          | phone           |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a, b;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a(c1 int, c2 int, c2 int);
+ERROR 1060 (42S21): Duplicate column name 'c2'
+mysql> create table a(c1 int, c2 int, c3 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
+mysql>
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
+| c3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table a add constraint uni_abc unique key(c2);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table a add constraint uni_abc unique key(c3);
+ERROR 1061 (42000): Duplicate key name 'uni_abc'
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> drop table a;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> drop table b;
+ERROR 1051 (42S02): Unknown table 'z.b'
+mysql>
+mysql>
+mysql>
+mysql> create table a(c1 int, c2 int not null unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table b(c1 int primary key, c2 int not null unique key);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table c(c1 int auto_increment unique, c2 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    |       |
+| c2    | int  | NO   | UNI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc c;
++-------+------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra          |
++-------+------+------+-----+---------+----------------+
+| c1    | int  | NO   | PRI | NULL    | auto_increment |
+| c2    | int  | YES  |     | NULL    |                |
++-------+------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> create table d(c1 int primary key, c2 int auto_increment primary key);
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql> create table d(c1 int primary key, c2 int auto_increment unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc d;
++-------+------+------+-----+---------+----------------+
+| Field | Type | Null | Key | Default | Extra          |
++-------+------+------+-----+---------+----------------+
+| c1    | int  | NO   | PRI | NULL    |                |
+| c2    | int  | NO   | UNI | NULL    | auto_increment |
++-------+------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table a,b,c,d;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table a(id int, sal int constraint chk_salary check(sal>5000));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table b(id int, sal int constraint uni_sal unique key);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique key)' at line 1
+mysql>
+mysql>
+mysql> create table b(id int, sal int, constraint chk_salary check(sal>5000));
+ERROR 3822 (HY000): Duplicate check constraint name 'chk_salary'.
+mysql> create table b(id int, sal int, constraint chk_salary1 check(sal>5000));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
+| sal   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> insert into a(id,sal) values(1,1000);
+ERROR 3819 (HY000): Check constraint 'chk_salary' is violated.
+mysql> insert into a(id,sal) values(1,5000);
+ERROR 3819 (HY000): Check constraint 'chk_salary' is violated.
+mysql> insert into a(id,sal) values(1,5001);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(id int, userName varchar(10) constraint chk_userName check(length(userName)>=5));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into a values(1,'s');
+ERROR 3819 (HY000): Check constraint 'chk_userName' is violated.
+mysql> insert into a values(1,'saleel');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| a           |
+| b           |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | CHECK           | chk_userName    |
+| b          | CHECK           | chk_salary1     |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> create table c(id int, sal int, check(sal>5000));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | CHECK           | chk_userName    |
+| b          | CHECK           | chk_salary1     |
+| c          | CHECK           | c_chk_1         |
++------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> create table a1(id int, phone int unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table a2(id int, phone int unique key);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | CHECK           | chk_userName    |
+| a1         | UNIQUE          | phone           |
+| a2         | UNIQUE          | phone           |
+| b          | CHECK           | chk_salary1     |
+| c          | CHECK           | c_chk_1         |
++------------+-----------------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> create table d(id int, sal int, check(sal>5000));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | CHECK           | chk_userName    |
+| a1         | UNIQUE          | phone           |
+| a2         | UNIQUE          | phone           |
+| b          | CHECK           | chk_salary1     |
+| c          | CHECK           | c_chk_1         |
+| d          | CHECK           | d_chk_1         |
++------------+-----------------+-----------------+
+6 rows in set (0.00 sec)
+
+mysql> create table E(C1 int, C2 int check(C2>5), C3 INT CHECK(C3>10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| a          | CHECK           | chk_userName    |
+| a1         | UNIQUE          | phone           |
+| a2         | UNIQUE          | phone           |
+| b          | CHECK           | chk_salary1     |
+| c          | CHECK           | c_chk_1         |
+| d          | CHECK           | d_chk_1         |
+| e          | CHECK           | e_chk_1         |
+| e          | CHECK           | e_chk_2         |
++------------+-----------------+-----------------+
+8 rows in set (0.00 sec)
+
+mysql> USE INFORMATION_SCHEMA;
+Database changed
+mysql> SHOW TABLES;
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ADMINISTRABLE_ROLE_AUTHORIZATIONS     |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        |
+| CHECK_CONSTRAINTS                     |
+| COLLATION_CHARACTER_SET_APPLICABILITY |
+| COLLATIONS                            |
+| COLUMN_PRIVILEGES                     |
+| COLUMN_STATISTICS                     |
+| COLUMNS                               |
+| COLUMNS_EXTENSIONS                    |
+| ENABLED_ROLES                         |
+| ENGINES                               |
+| EVENTS                                |
+| FILES                                 |
+| INNODB_BUFFER_PAGE                    |
+| INNODB_BUFFER_PAGE_LRU                |
+| INNODB_BUFFER_POOL_STATS              |
+| INNODB_CACHED_INDEXES                 |
+| INNODB_CMP                            |
+| INNODB_CMP_PER_INDEX                  |
+| INNODB_CMP_PER_INDEX_RESET            |
+| INNODB_CMP_RESET                      |
+| INNODB_CMPMEM                         |
+| INNODB_CMPMEM_RESET                   |
+| INNODB_COLUMNS                        |
+| INNODB_DATAFILES                      |
+| INNODB_FIELDS                         |
+| INNODB_FOREIGN                        |
+| INNODB_FOREIGN_COLS                   |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_FT_CONFIG                      |
+| INNODB_FT_DEFAULT_STOPWORD            |
+| INNODB_FT_DELETED                     |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_INDEXES                        |
+| INNODB_METRICS                        |
+| INNODB_SESSION_TEMP_TABLESPACES       |
+| INNODB_TABLES                         |
+| INNODB_TABLESPACES                    |
+| INNODB_TABLESPACES_BRIEF              |
+| INNODB_TABLESTATS                     |
+| INNODB_TEMP_TABLE_INFO                |
+| INNODB_TRX                            |
+| INNODB_VIRTUAL                        |
+| KEY_COLUMN_USAGE                      |
+| KEYWORDS                              |
+| OPTIMIZER_TRACE                       |
+| PARAMETERS                            |
+| PARTITIONS                            |
+| PLUGINS                               |
+| PROCESSLIST                           |
+| PROFILING                             |
+| REFERENTIAL_CONSTRAINTS               |
+| RESOURCE_GROUPS                       |
+| ROLE_COLUMN_GRANTS                    |
+| ROLE_ROUTINE_GRANTS                   |
+| ROLE_TABLE_GRANTS                     |
+| ROUTINES                              |
+| SCHEMA_PRIVILEGES                     |
+| SCHEMATA                              |
+| SCHEMATA_EXTENSIONS                   |
+| ST_GEOMETRY_COLUMNS                   |
+| ST_SPATIAL_REFERENCE_SYSTEMS          |
+| ST_UNITS_OF_MEASURE                   |
+| STATISTICS                            |
+| TABLE_CONSTRAINTS                     |
+| TABLE_CONSTRAINTS_EXTENSIONS          |
+| TABLE_PRIVILEGES                      |
+| TABLES                                |
+| TABLES_EXTENSIONS                     |
+| TABLESPACES                           |
+| TABLESPACES_EXTENSIONS                |
+| TRIGGERS                              |
+| USER_ATTRIBUTES                       |
+| USER_PRIVILEGES                       |
+| VIEW_ROUTINE_USAGE                    |
+| VIEW_TABLE_USAGE                      |
+| VIEWS                                 |
++---------------------------------------+
+79 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> DESC CHECK_CONSTRAINTS;
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| CONSTRAINT_CATALOG | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_SCHEMA  | varchar(64) | YES  |     | NULL    |       |
+| CONSTRAINT_NAME    | varchar(64) | NO   |     | NULL    |       |
+| CHECK_CLAUSE       | longtext    | NO   |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select CONSTRAINT_NAME,CHECK_CLAUSE from information_schema.CHECK_constraints where CONSTRAINT_SCHEMA='Z';
++-----------------+---------------------------+
+| CONSTRAINT_NAME | CHECK_CLAUSE              |
++-----------------+---------------------------+
+| chk_userName    | (length(`userName`) >= 5) |
+| chk_salary1     | (`sal` > 5000)            |
+| c_chk_1         | (`sal` > 5000)            |
+| d_chk_1         | (`sal` > 5000)            |
+| e_chk_1         | (`C2` > 5)                |
+| e_chk_2         | (`C3` > 10)               |
++-----------------+---------------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT DATABASE();
++--------------------+
+| DATABASE()         |
++--------------------+
+| information_schema |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> DESC Z.E;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| C1    | int  | YES  |     | NULL    |       |
+| C2    | int  | YES  |     | NULL    |       |
+| C3    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> USE Z;
+Database changed
+mysql>  show tables;
++-------------+
+| Tables_in_z |
++-------------+
+| a           |
+| a1          |
+| a2          |
+| b           |
+| c           |
+| d           |
+| e           |
++-------------+
+7 rows in set (0.00 sec)
+
+mysql> drop database z;
+Query OK, 7 rows affected (0.10 sec)
+
+mysql> create database z;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use z;
+Database changed
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table customer(custId int auto_increment primary key, custName varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table ord(customerId int, ordId int, ordDate datetime, constraint fk_customerID foreign key(customerId) references customer(custId));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc customer;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+student
+| custId   | int         | NO   | PRI | NULL    | auto_increment |
+| custName | varchar(10) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc ord;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| customerId | int      | YES  | MUL | NULL    |       |
+| ordId      | int      | YES  |     | NULL    |       |
+| ordDate    | datetime | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> drop table cutomer;
+ERROR 1051 (42S02): Unknown table 'z.cutomer'
+mysql> drop table customer;
+ERROR 3730 (HY000): Cannot drop table 'customer' referenced by a foreign key constraint 'fk_customerID' on table 'ord'.
+mysql> drop table ord;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop table customer;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table customer(custId int auto_increment primary key, custName varchar(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create table ord(customerId int, ordId int, ordDate datetime, constraint fk_customerID foreign key(customerId) references customer(custId));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc customer;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| custId   | int         | NO   | PRI | NULL    | auto_increment |
+| custName | varchar(10) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc ord;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| customerId | int      | YES  | MUL | NULL    |       |
+| ordId      | int      | YES  |     | NULL    |       |
+| ordDate    | datetime | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table ord rename column customerId to c;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table customer rename column custID to id;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc customer;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| custName | varchar(10) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc ord;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| c       | int      | YES  | MUL | NULL    |       |
+| ordId   | int      | YES  |     | NULL    |       |
+| ordDate | datetime | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table customer modify column id varchar(10);
+ERROR 3780 (HY000): Referencing column 'c' and referenced column 'id' in foreign key constraint 'fk_customerID' are incompatible.
+mysql> drop table ord, customer;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table customer(custId int auto_increment primary key, custName varchar(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table ord(customerId int, ordId int, ordDate datetime, constraint fk_customerID foreign key(customerId) references customer(custId));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc customer;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| custId   | int         | NO   | PRI | NULL    | auto_increment |
+| custName | varchar(10) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc ord;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| customerId | int      | YES  | MUL | NULL    |       |
+| ordId      | int      | YES  |     | NULL    |       |
+| ordDate    | datetime | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into ord(customerId, ordId, ordDate) values(1,1, now());
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`z`.`ord`, CONSTRAINT `fk_customerID` FOREIGN KEY (`customerId`) REFERENCES `customer` (`custId`))
+mysql>
+mysql> insert into ord(customerId, ordId, ordDate) values(null,1, now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into ord(customerId, ordId, ordDate) values(null,1, now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
+Empty set (0.00 sec)
+
+mysql> select * from ord;
++------------+-------+---------------------+
+| customerId | ordId | ordDate             |
++------------+-------+---------------------+
+|       NULL |     1 | 2024-03-09 11:51:12 |
+|       NULL |     1 | 2024-03-09 11:51:14 |
++------------+-------+---------------------+
+2 rows in set (0.01 sec)
+
+mysql> insert into customer(custName) values('saleel'), ('sharmin');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from customer;
++--------+----------+
+| custId | custName |
++--------+----------+
+|      1 | saleel   |                                                                                  |      2 | sharmin  |                                                                                  +--------+----------+                                                                                  2 rows in set (0.00 sec)                                                                                                                                                                                      mysql> insert into ord(customerId, ordId, ordDate) values(1,1, now());                                 Query OK, 1 row affected (0.00 sec)                                                                                                                                                                           mysql> insert into ord(customerId, ordId, ordDate) values(1,2, now());                                 Query OK, 1 row affected (0.00 sec)                                                                                                                                                                           mysql> insert into ord(customerId, ordId, ordDate) values(1,3, now());                                 Query OK, 1 row affected (0.00 sec)                                                                                                                                                                           mysql> insert into ord(customerId, ordId, ordDate) values(2,1, now());                                 Query OK, 1 row affected (0.00 sec)                                                                                                                                                                           mysql> select * from customer;                                                                         +--------+----------+                                                                                  | custId | custName |                                                                                  +--------+----------+                                                                                  |      1 | saleel   |                                                                                  |      2 | sharmin  |                                                                                  +--------+----------+                                                                                  2 rows in set (0.00 sec)                                                                               
+mysql> select * from ord;
++------------+-------+---------------------+
+| customerId | ordId | ordDate             |
++------------+-------+---------------------+
+|       NULL |     1 | 2024-03-09 11:51:12 |
+|       NULL |     1 | 2024-03-09 11:51:14 |
+|          1 |     1 | 2024-03-09 11:53:18 |
+|          1 |     2 | 2024-03-09 11:53:38 |
+|          1 |     3 | 2024-03-09 11:53:47 |
+|          2 |     1 | 2024-03-09 11:54:03 |
++------------+-------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into ord(customerId, ordId, ordDate) values(3,1, now());
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`z`.`ord`, CONSTRAINT `fk_customerID` FOREIGN KEY (`customerId`) REFERENCES `customer` (`custId`))
+mysql> select * from customer;
++--------+----------+
+| custId | custName |
++--------+----------+
+|      1 | saleel   |
+|      2 | sharmin  |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from ord wherecustomerId is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null' at line 1
+mysql> delete from ord where customerId is null;
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select * from customer;
++--------+----------+
+| custId | custName |
++--------+----------+
+|      1 | saleel   |
+|      2 | sharmin  |
++--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from ord;
++------------+-------+---------------------+
+| customerId | ordId | ordDate             |
++------------+-------+---------------------+
+|          1 |     1 | 2024-03-09 11:53:18 |
+|          1 |     2 | 2024-03-09 11:53:38 |
+|          1 |     3 | 2024-03-09 11:53:47 |
+|          2 |     1 | 2024-03-09 11:54:03 |
++------------+-------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> create table address(customerId int, city varchar(10), constraint fk_customerID_address foreign key(customerId) references customer(custId), constraint uni_customerID_address unique(customerId));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into address values(3,'pune');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`z`.`address`, CONSTRAINT `fk_customerID_address` FOREIGN KEY (`customerId`) REFERENCES `customer` (`custId`))
+mysql> insert into address values(1,'pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into address values(1,'baroda');
+ERROR 1062 (23000): Duplicate entry '1' for key 'address.uni_customerID_address'
+mysql> desc customer;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| custId   | int         | NO   | PRI | NULL    | auto_increment |
+| custName | varchar(10) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc address;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| customerId | int         | YES  | UNI | NULL    |       |
+| city       | varchar(10) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc ord;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| customerId | int      | YES  | MUL | NULL    |       |
+| ordId      | int      | YES  |     | NULL    |       |
+| ordDate    | datetime | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql> create table a(c1 int primary key, c2 int, foreign key(c2) references b(c2));
+ERROR 1824 (HY000): Failed to open the referenced table 'b'
+mysql> create table b(c1 int, c2 int primary key, foreign key(c1) references a(c1));
+ERROR 1824 (HY000): Failed to open the referenced table 'a'
+mysql> create table a(c1 int primary key, c2 int); create table b(c1 int, c2 int primary key);
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table a add foreign key(c2) references b(c2);
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b add foreign key(c1) references a(c1);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    |       |
+| c2    | int  | YES  | MUL | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  | MUL | NULL    |       |
+| c2    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a values(1,null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into b values(null,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 | NULL |
++----+------+
+1 row in set (0.00 sec)
+
+mysql> select * from b;
++------+----+
+| c1   | c2 |
++------+----+
+| NULL |  1 |
++------+----+
+1 row in set (0.00 sec)
+
+mysql> insert into a values(2,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 | NULL |
+|  2 |    1 |
++----+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from b;                                                                                +------+----+                                                                                          | c1   | c2 |                                                                                          +------+----+                                                                                          | NULL |  1 |                                                                                          +------+----+                                                                                          1 row in set (0.00 sec)                                                                                                                                                                                       mysql> insert into b values(2,2);                                                                      Query OK, 1 row affected (0.00 sec)                                                                                                                                                                           mysql> drop table a;                                                                                   ERROR 3730 (HY000): Cannot drop table 'a' referenced by a foreign key constraint 'b_ibfk_1' on table 'b'.                                                                                                     mysql> drop table b;                                                                                   ERROR 3730 (HY000): Cannot drop table 'b' referenced by a foreign key constraint 'a_ibfk_1' on table 'a'.                                                                                                     mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+------------------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME        |
++------------+-----------------+------------------------+
+| a          | PRIMARY KEY     | PRIMARY                |
+| a          | FOREIGN KEY     | a_ibfk_1               |
+| address    | UNIQUE          | uni_customerID_address |
+| address    | FOREIGN KEY     | fk_customerID_address  |
+| b          | PRIMARY KEY     | PRIMARY                |
+| b          | FOREIGN KEY     | b_ibfk_1               |
+| customer   | PRIMARY KEY     | PRIMARY                |
+| ord        | FOREIGN KEY     | fk_customerID          |
++------------+-----------------+------------------------+
+8 rows in set (0.00 sec)
+
+mysql> alter table a drop foreign key a_ibfk_1;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table b drop foreign key b_ibfk_1;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select TABLE_NAME,CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA='z';
++------------+-----------------+------------------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME        |
++------------+-----------------+------------------------+
+| a          | PRIMARY KEY     | PRIMARY                |
+| address    | UNIQUE          | uni_customerID_address |
+| address    | FOREIGN KEY     | fk_customerID_address  |
+| b          | PRIMARY KEY     | PRIMARY                |
+| customer   | PRIMARY KEY     | PRIMARY                |
+| ord        | FOREIGN KEY     | fk_customerID          |
++------------+-----------------+------------------------+
+6 rows in set (0.00 sec)
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop table b;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table a(c1 int primary key, c2 int); create table b(c1 int, c2 int primary key);
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table a_b(c1 int, c2 int, foreign key(c1) references a(c1),foreign key(c2) references b(c2));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc a;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | NO   | PRI | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc c;
+ERROR 1146 (42S02): Table 'z.c' doesn't exist
+mysql> desc a_b;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  | MUL | NULL    |       |
+| c2    | int  | YES  | MUL | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> insert into a values(1,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a values(2,2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into b values(-1,-1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into b values(-2,-2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from a; select * from b;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 |    1 |
+|  2 |    2 |
++----+------+
+2 rows in set (0.00 sec)
+
++------+----+
+| c1   | c2 |
++------+----+
+|   -2 | -2 |
+|   -1 | -1 |
++------+----+
+2 rows in set (0.00 sec)
+
+mysql> insert into a_b values(1,-2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a_b values(1,-1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a_b values(2,-1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a_b values(2,-2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a_b values(1,-1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into a_b values(1,11);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`z`.`a_b`, CONSTRAINT `a_b_ibfk_2` FOREIGN KEY (`c2`) REFERENCES `b` (`c2`))
+mysql>
+mysql>
+mysql>
+mysql> insert into a_b values(11,-1);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`z`.`a_b`, CONSTRAINT `a_b_ibfk_1` FOREIGN KEY (`c1`) REFERENCES `a` (`c1`))
+mysql> select * from a;
++----+------+
+| c1 | c2   |
++----+------+
+|  1 |    1 |
+|  2 |    2 |
++----+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from b;
++------+----+
+| c1   | c2 |
++------+----+
+|   -2 | -2 |
+|   -1 | -1 |
++------+----+
+2 rows in set (0.00 sec)
+
+mysql> select * from a_b;
++------+------+
+| c1   | c2   |
++------+------+
+|    1 |   -2 |
+|    1 |   -1 |
+|    2 |   -1 |
+|    2 |   -2 |
+|    1 |   -1 |
++------+------+
+5 rows in set (0.00 sec)
+
+mysql> create table a_b(c1 int, c2 int, foreign key(c1) references a(c1),foreign key(c2) references b(c2));
