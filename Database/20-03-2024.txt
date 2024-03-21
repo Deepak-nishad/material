@@ -1,0 +1,6011 @@
+/*
+
+function f2(x, y) {
+	return (x+y);
+}
+
+
+
+
+function f3(x) {
+	return db.emp.find({job:x}, {
+		_id:false,
+		ename:true,
+		job:true
+	});
+}
+
+*/
+
+
+function f4() {
+		db.emp.find().forEach(function(x) {
+			if(x.sal>=5000)
+			{
+				print(x.ename, x.job, x.sal);
+			}
+	});
+}
+
+
+Microsoft Windows [Version 10.0.19045.4170]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mongosh --host=192.168.100.57 --port=27017
+Current Mongosh Log ID: 65fa523c0ba881859a06efa7
+Connecting to:          mongodb://192.168.100.57:27017/?directConnection=true&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-03-20T08:29:46.979+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs;
+admin    40.00 KiB
+config   72.00 KiB
+db1     120.00 KiB
+local    72.00 KiB
+db1>
+switched to db db1
+db1> db.getCollectionNames();
+[ 'emp', 'dept' ]
+db1> db.emp.find()
+[
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060c"),
+    empid: 1022,
+    ename: 'james',
+    address: {
+      building: '351',
+      coord: [ -73.98513559999999, 40.7676919 ],
+      street: 'West   57 Street',
+      zipcode: '10019'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Red', 'Blue', 'Green', 'Yellow' ],
+    fruit: [ 'Indian Fig' ],
+    cards: [
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { aadhar: { 'aadhar-No': '73826', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1981-07-09T00:00:00.000Z"),
+    sal: 4700,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060d"),
+    empid: 1021,
+    ename: 'smith',
+    address: {
+      building: '469',
+      coord: [ -73.961704, 40.662942 ],
+      street: 'Flatbush Avenue',
+      zipcode: '11225'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'red', 'cyan', 'gray' ],
+    fruit: [ 'grapes', 'Orange' ],
+    cards: [
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'smh838', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '43564', isActive: true } }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1981-05-01T00:00:00.000Z"),
+    sal: 3400,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060e"),
+    empid: 1020,
+    ename: 'king',
+    address: {
+      building: '1007',
+      coord: [ -73.856077, 40.848447 ],
+      street: 'Morris Park Ave',
+      zipcode: '10462'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'blue', 'black' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '93478', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'president',
+    mgr: null,
+    hiredate: ISODate("1981-11-17T00:00:00.000Z"),
+    sal: 5000,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060f"),
+    empid: 1023,
+    ename: 'jack',
+    address: {
+      building: '2780',
+      coord: [ -73.98241999999999, 40.579505 ],
+      street: 'Stillwell Avenue',
+      zipcode: '11224'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Air Force Blue', 'Apple Green' ],
+    fruit: [ 'Orange' ],
+    cards: [
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '12321', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'accountant',
+    mgr: 1022,
+    hiredate: ISODate("1981-04-02T00:00:00.000Z"),
+    sal: 2700,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130610"),
+    empid: 1024,
+    ename: 'martin',
+    address: {
+      building: '8825',
+      coord: [ -73.8803827, 40.7643124 ],
+      street: 'Astoria Boulevard',
+      zipcode: '11369'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Banana Yellow' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '72877', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-02-20T00:00:00.000Z"),
+    sal: 2900,
+    comm: 735,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130611"),
+    empid: 1023,
+    ename: 'scott',
+    address: {
+      building: '97-22',
+      coord: [ -73.8601152, 40.7311739 ],
+      street: '63 Road',
+      zipcode: '11374'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Ash Grey', 'White' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '93872', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-09-28T00:00:00.000Z"),
+    sal: 2500,
+    comm: 350,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130612"),
+    empid: 1025,
+    ename: 'crow',
+    address: {
+      building: '2206',
+      coord: [ -74.1377286, 40.6119572 ],
+      street: 'Victory Boulevard',
+      zipcode: '10314'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Apple Green', 'Ash Grey' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '77876', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-09-08T00:00:00.000Z"),
+    sal: 3200,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130613"),
+    empid: 1026,
+    ename: 'blake',
+    address: {
+      building: '7114',
+      coord: [ -73.9068506, 40.6199034 ],
+      street: 'Avenue U',
+      zipcode: '11234'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Brass', 'Bright Green' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '12321', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1024,
+    hiredate: ISODate("1981-12-03T00:00:00.000Z"),
+    sal: 1200,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130614"),
+    empid: 1027,
+    ename: 'richards',
+    address: {
+      building: '6409',
+      coord: [ -74.00528899999999, 40.628886 ],
+      street: '11 Avenue',
+      zipcode: '11219'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Charcoal', 'Cherry' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '83972', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1024,
+    hiredate: ISODate("1981-02-22T00:00:00.000Z"),
+    sal: 1500,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130615"),
+    empid: 1028,
+    ename: 'peter',
+    address: {
+      building: '1839',
+      coord: [ -73.9482609, 40.6408271 ],
+      street: 'Nostrand Avenue',
+      zipcode: '11226'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Brown' ],
+    fruit: [ 'banana', 'Jackfruit' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '92783', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'analyst',
+    mgr: 1025,
+    hiredate: ISODate("1981-12-03T00:00:00.000Z"),
+    sal: 3500,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130616"),
+    empid: 1031,
+    ename: 'sharmin',
+    address: {
+      building: '1269',
+      coord: [ -73.871194, 40.6730975 ],
+      street: 'Sutter Avenue',
+      zipcode: '11208'
+    },
+    isDocActive: false,
+    gender: 'female',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Cream' ],
+    fruit: [ 'Indian Fig' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '16523', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'programmer',
+    mgr: 1020,
+    hiredate: ISODate("1983-01-12T00:00:00.000Z"),
+    sal: 4999,
+    comm: null,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130617"),
+    empid: 1030,
+    ename: 'saleel',
+    address: {
+      building: '7715',
+      coord: [ -73.9973325, 40.61174889999999 ],
+      street: '18 Avenue',
+      zipcode: '11214'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Coral' ],
+    fruit: [ 'Dates', 'Orange' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '73822', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { voter: { voterID: 'Ind03o3', isActive: true } }
+    ],
+    job: 'programmer',
+    mgr: 1020,
+    hiredate: ISODate("1982-12-09T00:00:00.000Z"),
+    sal: 2900,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130618"),
+    empid: 1032,
+    ename: 'vrushali',
+    address: {
+      building: '1',
+      coord: [ -73.96926909999999, 40.7685235 ],
+      street: 'East   66 Street',
+      zipcode: '10065'
+    },
+    isDocActive: true,
+    gender: 'female',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Iceberg' ],
+    fruit: [ 'Orange', 'Papaya', 'Kiwi' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '22343', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'analyst',
+    mgr: 1030,
+    hiredate: ISODate("1982-02-23T00:00:00.000Z"),
+    sal: 4999,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130619"),
+    empid: 1033,
+    ename: 'vasant',
+    address: {
+      building: '705',
+      coord: [ -73.9653967, 40.6064339 ],
+      street: 'Kings Highway',
+      zipcode: '11223'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Bright Green' ],
+    fruit: [],
+    cards: [
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '93824', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } }
+    ],
+    job: 'salesman',
+    mgr: 1029,
+    hiredate: ISODate("1982-02-24T00:00:00.000Z"),
+    sal: 2200,
+    comm: 0,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061a"),
+    empid: 1034,
+    ename: 'vasu',
+    address: {
+      building: '203',
+      coord: [ -73.97822040000001, 40.6435254 ],
+      street: 'Church Avenue',
+      zipcode: '11218'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'India Green' ],
+    fruit: [ 'Dates' ],
+    cards: [
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { aadhar: { 'aadhar-No': '19826', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { debit: { bank: 'BOI', isActive: true } }
+    ],
+    job: 'salesman',
+    mgr: 1029,
+    hiredate: ISODate("1980-02-14T00:00:00.000Z"),
+    sal: 2200,
+    comm: 250,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061b"),
+    empid: 1035,
+    ename: 'rahul',
+    address: {
+      building: '265-15',
+      coord: [ -73.7032601, 40.7386417 ],
+      street: 'Hillside Avenue',
+      zipcode: '11004'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Indian Red' ],
+    fruit: [ 'Lychee', 'Indian Fig' ],
+    cards: [
+      { credit: { bank: 'SBI', isActive: true } },
+      { aadhar: { 'aadhar-No': '00998', isActive: true } },
+      { OCI: { country: 'usa', state: 'NJ', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1029,
+    hiredate: ISODate("1981-12-31T00:00:00.000Z"),
+    sal: 1200,
+    comm: null,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061c"),
+    empid: 1029,
+    ename: 'bob',
+    address: {
+      building: '2300',
+      coord: [ -73.8786113, 40.8502883 ],
+      street: 'Southern Boulevard',
+      zipcode: '10460'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Copper' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '73122', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1980-12-17T00:00:00.000Z"),
+    sal: 4900,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061d"),
+    empid: 1036,
+    ename: 'raju',
+    address: {
+      building: '6909',
+      coord: [ -74.0259567, 40.6353674 ],
+      street: '3 Avenue',
+      zipcode: '11209'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Indian Yellow' ],
+    fruit: [ 'Crab apples' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '55622', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { OCI: { country: 'usa', state: 'NJ', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'administrator',
+    mgr: 1031,
+    hiredate: ISODate("1983-06-15T00:00:00.000Z"),
+    sal: 3400,
+    comm: null,
+    deptno: 50
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061e"),
+    empid: 1038,
+    ename: 'neel',
+    address: {
+      building: '284',
+      coord: [ -73.9829239, 40.6580753 ],
+      street: 'Prospect Park West',
+      zipcode: '11215'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Apple Green' ],
+    fruit: [],
+    cards: [
+      { OCI: { country: 'usa', state: 'IN', isActive: true } },
+      { aadhar: { 'aadhar-No': '00098', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'administrator',
+    mgr: 1030,
+    hiredate: ISODate("1983-03-14T00:00:00.000Z"),
+    sal: 4200,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061f"),
+    empid: 1037,
+    ename: 'ramu',
+    address: {
+      building: '522',
+      coord: [ -73.95171, 40.767461 ],
+      street: 'East   74 Street',
+      zipcode: '10021'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Lemon' ],
+    fruit: [ 'Jackfruit', 'banana', 'Apple' ],
+    cards: [
+      {
+        ATM: {
+          bank: 'canara',
+          from: '2021-10-20',
+          to: '2025:12:21',
+          isActive: true
+        }
+      },
+      { aadhar: { 'aadhar-No': '00983', isActive: true } },
+      {
+        ATM: {
+          bank: 'BOI',
+          from: '2021-10-04',
+          to: '2027:12:21',
+          isActive: true
+        }
+      },
+      { OCI: { country: 'usa', state: 'CA', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1031,
+    hiredate: ISODate("1983-07-12T00:00:00.000Z"),
+    sal: 1400,
+    comm: null,
+    deptno: 50
+  }
+]
+Type "it" for more
+db1> db.getCollectionNames();
+[ 'emp', 'dept' ]
+db1> db.createCollection('books');
+{ ok: 1 }
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books' ]
+db1> db.books.find()
+
+db1> objectId();
+ReferenceError: objectId is not defined
+db1> objectId;
+ReferenceError: objectId is not defined
+db1> ObjectId;
+[Function: ObjectId] {
+  getInc: [Function (anonymous)],
+  generate: [Function (anonymous)],
+  createPk: [Function (anonymous)],
+  createFromTime: [Function (anonymous)],
+  createFromHexString: [Function (anonymous)],
+  isValid: [Function (anonymous)],
+  fromExtendedJSON: [Function (anonymous)],
+  index: 1496254,
+  help: [Function (anonymous)] Help
+}
+db1> ObjectId();
+ObjectId("65fa5443aa83a4d45916d4bf")
+db1> ObjectId();
+ObjectId("65fa5454aa83a4d45916d4c0")
+db1> ObjectId();
+ObjectId("65fa5456aa83a4d45916d4c1")
+db1> db.books.insertOne({title:'Javascript CR', price:1500, pages:1000, cover:'hard copy'});
+{
+  acknowledged: true,
+  insertedId: ObjectId("65fa5678aa83a4d45916d4c2")
+}
+db1> db.books.find();
+[
+  {
+    _id: ObjectId("65fa5678aa83a4d45916d4c2"),
+    title: 'Javascript CR',
+    price: 1500,
+    pages: 1000,
+    cover: 'hard copy'
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> exit
+
+C:\Users\Admn>mongosh --host=192.168.100.57 --port=27017
+Current Mongosh Log ID: 65fa56ebec7846146c550df2
+Connecting to:          mongodb://192.168.100.57:27017/?directConnection=true&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-03-20T08:29:46.979+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> use db1;
+switched to db db1
+db1> edit
+Opening an editor...
+
+db1>  edit db.books.insertOne({title:'Javascript CR', price:1500, pages:1000, cover:'hard copy'});
+Opening an editor...
+
+db1> db.books.insertOne({ _id=1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite ='www.redis.com/redis', cost :{ price=1700, currency='R1'  } });
+Uncaught:
+SyntaxError: Invalid shorthand property initializer. (1:24)
+
+> 1 | db.books.insertOne({ _id=1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite ='www.redis.com/redis', cost :{ price=1700, currency='R1'  } });
+    |                         ^
+  2 |
+
+db1> edi
+ReferenceError: edi is not defined
+db1> edit db.books.insertOne({ _id=1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite ='www.redis.com/redis', cost :{ price=1700, currency='R1'  } });
+Opening an editor...
+
+db1> db.books.insertOne({ _id = 1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite = 'www.redis.com\redis', cost: { price = 1700, currency = 'R1' } });
+Uncaught:
+SyntaxError: Invalid shorthand property initializer. (1:25)
+
+> 1 | db.books.insertOne({ _id = 1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite = 'www.redis.com\redis', cost: { price = 1700, currency = 'R1' } });
+    |                          ^
+  2 |
+
+db1> edit db.books.insertOne({ _id = 1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName = 'Redis eBook', webSite = 'www.redis.com\redis', cost: { price = 1700, currency = 'R1' } });
+Opening an editor...
+
+db1> db.books.insertOne({ _id: 1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName: 'Redis eBook', webSite: 'www.redis.com/redis', cost: { price: 1700, currency: 'R1' } });
+{ acknowledged: true, insertedId: 1 }
+db1> db.books.find();
+[
+  {
+    _id: ObjectId("65fa5678aa83a4d45916d4c2"),
+    title: 'Javascript CR',
+    price: 1500,
+    pages: 1000,
+    cover: 'hard copy'
+  },
+  {
+    _id: 1,
+    title: 'Redis',
+    pages: 1000,
+    cover: 'soft copy',
+    ebookName: 'Redis eBook',
+    webSite: 'www.redis.com/redis',
+    cost: { price: 1700, currency: 'R1' }
+  }
+]
+db1> edit db.books.insertOne({ _id: 1, title: 'Redis', pages: 1000, cover: 'soft copy', ebookName: 'Redis eBook', webSite: 'www.redis.com/redis', cost: { price: 1700, currency: 'R1' } });
+Opening an editor...
+
+db1> db.books.insertOne({ _id: 2, title: 'JAVA CR', pages: 1200, cover: ['soft copy', 'hard copy'], ebebookName: 'java eBook', webSite: 'www.java.com/java', cost: { price: 1300, currency: 'Rs.' } });
+{ acknowledged: true, insertedId: 2 }
+db1> db.books.find();
+[
+  {
+    _id: ObjectId("65fa5678aa83a4d45916d4c2"),
+    title: 'Javascript CR',
+    price: 1500,
+    pages: 1000,
+    cover: 'hard copy'
+  },
+  {
+    _id: 1,
+    title: 'Redis',
+    pages: 1000,
+    cover: 'soft copy',
+    ebookName: 'Redis eBook',
+    webSite: 'www.redis.com/redis',
+    cost: { price: 1700, currency: 'R1' }
+  },
+  {
+    _id: 2,
+    title: 'JAVA CR',
+    pages: 1200,
+    cover: [ 'soft copy', 'hard copy' ],
+    ebookName: 'java eBook',
+    webSite: 'www.java.com/java',
+    cost: { price: 1300, currency: 'Rs.' }
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.books.insertMany([ { _id:3 title:'orcle' }, { _id:4, title:'.Net' } ]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:30)
+
+> 1 | db.books.insertMany([ { _id:3 title:'orcle' }, { _id:4, title:'.Net' } ]);
+    |                               ^
+  2 |
+
+db1> edit
+Opening an editor...
+
+db1> db.books.insertMany([{ _id: 3, title: 'orcle' }, { _id: 4, title: '.Net' }]);
+{ acknowledged: true, insertedIds: { '0': 3, '1': 4 } }
+db1> db.books.find();
+[
+  {
+    _id: ObjectId("65fa5678aa83a4d45916d4c2"),
+    title: 'Javascript CR',
+    price: 1500,
+    pages: 1000,
+    cover: 'hard copy'
+  },
+  {
+    _id: 1,
+    title: 'Redis',
+    pages: 1000,
+    cover: 'soft copy',
+    ebookName: 'Redis eBook',
+    webSite: 'www.redis.com/redis',
+    cost: { price: 1700, currency: 'R1' }
+  },
+  {
+    _id: 2,
+    title: 'JAVA CR',
+    pages: 1200,
+    cover: [ 'soft copy', 'hard copy' ],
+    ebookName: 'java eBook',
+    webSite: 'www.java.com/java',
+    cost: { price: 1300, currency: 'Rs.' }
+  },
+  { _id: 3, title: 'orcle' },
+  { _id: 4, title: '.Net' }
+]
+db1> db.books.insertMany([{ _id: 3, title: 'orcle' }, { _id: 4, title: '.Net' }]);
+Uncaught:
+MongoBulkWriteError: E11000 duplicate key error collection: db1.books index: _id_ dup key: { _id: 3 }
+Result: BulkWriteResult {
+  result: {
+    ok: 1,
+    writeErrors: [
+      WriteError {
+        err: {
+          index: 0,
+          code: 11000,
+          errmsg: 'E11000 duplicate key error collection: db1.books index: _id_ dup key: { _id: 3 }',
+          errInfo: undefined,
+          op: { _id: 3, title: 'orcle' }
+        }
+      }
+    ],
+    writeConcernErrors: [],
+    insertedIds: [ { index: 0, _id: 3 }, { index: 1, _id: 4 } ],
+    nInserted: 0,
+    nUpserted: 0,
+    nMatched: 0,
+    nModified: 0,
+    nRemoved: 0,
+    upserted: []
+  }
+}
+db1> db.emp.find();
+[
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060c"),
+    empid: 1022,
+    ename: 'james',
+    address: {
+      building: '351',
+      coord: [ -73.98513559999999, 40.7676919 ],
+      street: 'West   57 Street',
+      zipcode: '10019'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Red', 'Blue', 'Green', 'Yellow' ],
+    fruit: [ 'Indian Fig' ],
+    cards: [
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { aadhar: { 'aadhar-No': '73826', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1981-07-09T00:00:00.000Z"),
+    sal: 4700,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060d"),
+    empid: 1021,
+    ename: 'smith',
+    address: {
+      building: '469',
+      coord: [ -73.961704, 40.662942 ],
+      street: 'Flatbush Avenue',
+      zipcode: '11225'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'red', 'cyan', 'gray' ],
+    fruit: [ 'grapes', 'Orange' ],
+    cards: [
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'smh838', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '43564', isActive: true } }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1981-05-01T00:00:00.000Z"),
+    sal: 3400,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060e"),
+    empid: 1020,
+    ename: 'king',
+    address: {
+      building: '1007',
+      coord: [ -73.856077, 40.848447 ],
+      street: 'Morris Park Ave',
+      zipcode: '10462'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'blue', 'black' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '93478', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'president',
+    mgr: null,
+    hiredate: ISODate("1981-11-17T00:00:00.000Z"),
+    sal: 5000,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060f"),
+    empid: 1023,
+    ename: 'jack',
+    address: {
+      building: '2780',
+      coord: [ -73.98241999999999, 40.579505 ],
+      street: 'Stillwell Avenue',
+      zipcode: '11224'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Air Force Blue', 'Apple Green' ],
+    fruit: [ 'Orange' ],
+    cards: [
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '12321', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'accountant',
+    mgr: 1022,
+    hiredate: ISODate("1981-04-02T00:00:00.000Z"),
+    sal: 2700,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130610"),
+    empid: 1024,
+    ename: 'martin',
+    address: {
+      building: '8825',
+      coord: [ -73.8803827, 40.7643124 ],
+      street: 'Astoria Boulevard',
+      zipcode: '11369'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Banana Yellow' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '72877', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-02-20T00:00:00.000Z"),
+    sal: 2900,
+    comm: 735,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130611"),
+    empid: 1023,
+    ename: 'scott',
+    address: {
+      building: '97-22',
+      coord: [ -73.8601152, 40.7311739 ],
+      street: '63 Road',
+      zipcode: '11374'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Ash Grey', 'White' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '93872', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-09-28T00:00:00.000Z"),
+    sal: 2500,
+    comm: 350,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130612"),
+    empid: 1025,
+    ename: 'crow',
+    address: {
+      building: '2206',
+      coord: [ -74.1377286, 40.6119572 ],
+      street: 'Victory Boulevard',
+      zipcode: '10314'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Apple Green', 'Ash Grey' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '77876', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'salesman',
+    mgr: 1023,
+    hiredate: ISODate("1981-09-08T00:00:00.000Z"),
+    sal: 3200,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130613"),
+    empid: 1026,
+    ename: 'blake',
+    address: {
+      building: '7114',
+      coord: [ -73.9068506, 40.6199034 ],
+      street: 'Avenue U',
+      zipcode: '11234'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Brass', 'Bright Green' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '12321', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1024,
+    hiredate: ISODate("1981-12-03T00:00:00.000Z"),
+    sal: 1200,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130614"),
+    empid: 1027,
+    ename: 'richards',
+    address: {
+      building: '6409',
+      coord: [ -74.00528899999999, 40.628886 ],
+      street: '11 Avenue',
+      zipcode: '11219'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Charcoal', 'Cherry' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '83972', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1024,
+    hiredate: ISODate("1981-02-22T00:00:00.000Z"),
+    sal: 1500,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130615"),
+    empid: 1028,
+    ename: 'peter',
+    address: {
+      building: '1839',
+      coord: [ -73.9482609, 40.6408271 ],
+      street: 'Nostrand Avenue',
+      zipcode: '11226'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Brown' ],
+    fruit: [ 'banana', 'Jackfruit' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '92783', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'analyst',
+    mgr: 1025,
+    hiredate: ISODate("1981-12-03T00:00:00.000Z"),
+    sal: 3500,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130616"),
+    empid: 1031,
+    ename: 'sharmin',
+    address: {
+      building: '1269',
+      coord: [ -73.871194, 40.6730975 ],
+      street: 'Sutter Avenue',
+      zipcode: '11208'
+    },
+    isDocActive: false,
+    gender: 'female',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Cream' ],
+    fruit: [ 'Indian Fig' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '16523', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'programmer',
+    mgr: 1020,
+    hiredate: ISODate("1983-01-12T00:00:00.000Z"),
+    sal: 4999,
+    comm: null,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130617"),
+    empid: 1030,
+    ename: 'saleel',
+    address: {
+      building: '7715',
+      coord: [ -73.9973325, 40.61174889999999 ],
+      street: '18 Avenue',
+      zipcode: '11214'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Coral' ],
+    fruit: [ 'Dates', 'Orange' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '73822', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { voter: { voterID: 'Ind03o3', isActive: true } }
+    ],
+    job: 'programmer',
+    mgr: 1020,
+    hiredate: ISODate("1982-12-09T00:00:00.000Z"),
+    sal: 2900,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130618"),
+    empid: 1032,
+    ename: 'vrushali',
+    address: {
+      building: '1',
+      coord: [ -73.96926909999999, 40.7685235 ],
+      street: 'East   66 Street',
+      zipcode: '10065'
+    },
+    isDocActive: true,
+    gender: 'female',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Iceberg' ],
+    fruit: [ 'Orange', 'Papaya', 'Kiwi' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '22343', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'analyst',
+    mgr: 1030,
+    hiredate: ISODate("1982-02-23T00:00:00.000Z"),
+    sal: 4999,
+    comm: null,
+    deptno: 20
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130619"),
+    empid: 1033,
+    ename: 'vasant',
+    address: {
+      building: '705',
+      coord: [ -73.9653967, 40.6064339 ],
+      street: 'Kings Highway',
+      zipcode: '11223'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Bright Green' ],
+    fruit: [],
+    cards: [
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { aadhar: { 'aadhar-No': '93824', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } }
+    ],
+    job: 'salesman',
+    mgr: 1029,
+    hiredate: ISODate("1982-02-24T00:00:00.000Z"),
+    sal: 2200,
+    comm: 0,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061a"),
+    empid: 1034,
+    ename: 'vasu',
+    address: {
+      building: '203',
+      coord: [ -73.97822040000001, 40.6435254 ],
+      street: 'Church Avenue',
+      zipcode: '11218'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'India Green' ],
+    fruit: [ 'Dates' ],
+    cards: [
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { aadhar: { 'aadhar-No': '19826', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      { debit: { bank: 'BOI', isActive: true } }
+    ],
+    job: 'salesman',
+    mgr: 1029,
+    hiredate: ISODate("1980-02-14T00:00:00.000Z"),
+    sal: 2200,
+    comm: 250,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061b"),
+    empid: 1035,
+    ename: 'rahul',
+    address: {
+      building: '265-15',
+      coord: [ -73.7032601, 40.7386417 ],
+      street: 'Hillside Avenue',
+      zipcode: '11004'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Indian Red' ],
+    fruit: [ 'Lychee', 'Indian Fig' ],
+    cards: [
+      { credit: { bank: 'SBI', isActive: true } },
+      { aadhar: { 'aadhar-No': '00998', isActive: true } },
+      { OCI: { country: 'usa', state: 'NJ', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1029,
+    hiredate: ISODate("1981-12-31T00:00:00.000Z"),
+    sal: 1200,
+    comm: null,
+    deptno: 40
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061c"),
+    empid: 1029,
+    ename: 'bob',
+    address: {
+      building: '2300',
+      coord: [ -73.8786113, 40.8502883 ],
+      street: 'Southern Boulevard',
+      zipcode: '10460'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Copper' ],
+    fruit: [],
+    cards: [
+      { aadhar: { 'aadhar-No': '73122', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'manager',
+    mgr: 1020,
+    hiredate: ISODate("1980-12-17T00:00:00.000Z"),
+    sal: 4900,
+    comm: null,
+    deptno: 30
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061d"),
+    empid: 1036,
+    ename: 'raju',
+    address: {
+      building: '6909',
+      coord: [ -74.0259567, 40.6353674 ],
+      street: '3 Avenue',
+      zipcode: '11209'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Indian Yellow' ],
+    fruit: [ 'Crab apples' ],
+    cards: [
+      { aadhar: { 'aadhar-No': '55622', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { OCI: { country: 'usa', state: 'NJ', isActive: true } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'administrator',
+    mgr: 1031,
+    hiredate: ISODate("1983-06-15T00:00:00.000Z"),
+    sal: 3400,
+    comm: null,
+    deptno: 50
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061e"),
+    empid: 1038,
+    ename: 'neel',
+    address: {
+      building: '284',
+      coord: [ -73.9829239, 40.6580753 ],
+      street: 'Prospect Park West',
+      zipcode: '11215'
+    },
+    isDocActive: true,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Apple Green' ],
+    fruit: [],
+    cards: [
+      { OCI: { country: 'usa', state: 'IN', isActive: true } },
+      { aadhar: { 'aadhar-No': '00098', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'administrator',
+    mgr: 1030,
+    hiredate: ISODate("1983-03-14T00:00:00.000Z"),
+    sal: 4200,
+    comm: null,
+    deptno: 10
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061f"),
+    empid: 1037,
+    ename: 'ramu',
+    address: {
+      building: '522',
+      coord: [ -73.95171, 40.767461 ],
+      street: 'East   74 Street',
+      zipcode: '10021'
+    },
+    isDocActive: false,
+    gender: 'male',
+    canVote: true,
+    canDrive: true,
+    color: [ 'Lemon' ],
+    fruit: [ 'Jackfruit', 'banana', 'Apple' ],
+    cards: [
+      {
+        ATM: {
+          bank: 'canara',
+          from: '2021-10-20',
+          to: '2025:12:21',
+          isActive: true
+        }
+      },
+      { aadhar: { 'aadhar-No': '00983', isActive: true } },
+      {
+        ATM: {
+          bank: 'BOI',
+          from: '2021-10-04',
+          to: '2027:12:21',
+          isActive: true
+        }
+      },
+      { OCI: { country: 'usa', state: 'CA', isActive: true } },
+      { PAN: { 'PAN-No': 'Kinj093', isActive: false } },
+      { voter: { voterID: 'Ind03o3', isActive: true } },
+      {
+        licence: {
+          'licence-No': 'LMV9478',
+          issueDate: '2020-01-01',
+          expireDate: '2040-01-01',
+          isActive: true
+        }
+      }
+    ],
+    job: 'clerk',
+    mgr: 1031,
+    hiredate: ISODate("1983-07-12T00:00:00.000Z"),
+    sal: 1400,
+    comm: null,
+    deptno: 50
+  }
+]
+Type "it" for more
+db1>
+
+db1>
+
+db1>
+
+db1> edit db.emp.find();
+Opening an editor...
+
+db1> db.emp.find({}, { ename: true, job: 1 });
+[
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060c"),
+    ename: 'james',
+    job: 'manager'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060d"),
+    ename: 'smith',
+    job: 'manager'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060e"),
+    ename: 'king',
+    job: 'president'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813060f"),
+    ename: 'jack',
+    job: 'accountant'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130610"),
+    ename: 'martin',
+    job: 'salesman'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130611"),
+    ename: 'scott',
+    job: 'salesman'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130612"),
+    ename: 'crow',
+    job: 'salesman'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130613"),
+    ename: 'blake',
+    job: 'clerk'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130614"),
+    ename: 'richards',
+    job: 'clerk'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130615"),
+    ename: 'peter',
+    job: 'analyst'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130616"),
+    ename: 'sharmin',
+    job: 'programmer'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130617"),
+    ename: 'saleel',
+    job: 'programmer'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130618"),
+    ename: 'vrushali',
+    job: 'analyst'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f8130619"),
+    ename: 'vasant',
+    job: 'salesman'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061a"),
+    ename: 'vasu',
+    job: 'salesman'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061b"),
+    ename: 'rahul',
+    job: 'clerk'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061c"),
+    ename: 'bob',
+    job: 'manager'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061d"),
+    ename: 'raju',
+    job: 'administrator'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061e"),
+    ename: 'neel',
+    job: 'administrator'
+  },
+  {
+    _id: ObjectId("65f93c978ae2a7b4f813061f"),
+    ename: 'ramu',
+    job: 'clerk'
+  }
+]
+Type "it" for more
+db1> db.emp.find({}, { _id: false, ename: true, job: true });
+[pening an editor...
+  { ename: 'james', job: 'manager' },
+  { ename: 'smith', job: 'manager' },
+  { ename: 'king', job: 'president' },
+  { ename: 'jack', job: 'accountant' },
+  { ename: 'martin', job: 'salesman' },
+  { ename: 'scott', job: 'salesman' },
+  { ename: 'crow', job: 'salesman' },
+  { ename: 'blake', job: 'clerk' },
+  { ename: 'richards', job: 'clerk' },
+  { ename: 'peter', job: 'analyst' },
+  { ename: 'sharmin', job: 'programmer' },
+  { ename: 'saleel', job: 'programmer' },
+  { ename: 'vrushali', job: 'analyst' },
+  { ename: 'vasant', job: 'salesman' },
+  { ename: 'vasu', job: 'salesman' },
+  { ename: 'rahul', job: 'clerk' },
+  { ename: 'bob', job: 'manager' },
+  { ename: 'raju', job: 'administrator' },
+  { ename: 'neel', job: 'administrator' },
+  { ename: 'ramu', job: 'clerk' }
+]
+Type "it" for more
+db1> it
+[
+  { ename: 'saleel', job: 'analyst' },
+  { ename: 'amit', job: 'administrator' },
+  { ename: 'amit', job: 'administrator' },
+  { ename: 'dinesh', job: 'programmer' },
+  { ename: 'dinesh', job: 'programmer' },
+  { ename: 'rudra', job: 'programmer' },
+  { ename: 'pankaj', job: 'programmer' },
+  { ename: 'nitish', job: 'programmer' },
+  { ename: 'anoop', job: 'programmer' },
+  { ename: 'arjun', job: 'auditor' },
+  { ename: 'neel', job: 'programmer' },
+  { ename: 'amol', job: 'auditor' },
+  { ename: 'sangita', job: 'auditor' },
+  { ename: 'gita', job: 'writer' },
+  { ename: 'sita', job: 'writer' },
+  { ename: 'priti', job: 'Computer Programmer' },
+  { ename: 'pinky', job: 'Computer Programmer' },
+  { ename: 'supriya', job: 'Computer Programmer' },
+  { ename: 'laxman', job: 'Computer Programmer' },
+  { ename: 'sangu', job: 'Computer Programmer' }
+]
+Type "it" for more
+db1> db.emp.find({}, { _id: false, ename: true, job: true, sal: true, comm: true });
+[pening an editor...
+  { ename: 'james', job: 'manager', sal: 4700, comm: null },
+  { ename: 'smith', job: 'manager', sal: 3400, comm: null },
+  { ename: 'king', job: 'president', sal: 5000, comm: null },
+  { ename: 'jack', job: 'accountant', sal: 2700, comm: null },
+  { ename: 'martin', job: 'salesman', sal: 2900, comm: 735 },
+  { ename: 'scott', job: 'salesman', sal: 2500, comm: 350 },
+  { ename: 'crow', job: 'salesman', sal: 3200, comm: null },
+  { ename: 'blake', job: 'clerk', sal: 1200, comm: null },
+  { ename: 'richards', job: 'clerk', sal: 1500, comm: null },
+  { ename: 'peter', job: 'analyst', sal: 3500, comm: null },
+  { ename: 'sharmin', job: 'programmer', sal: 4999, comm: null },
+  { ename: 'saleel', job: 'programmer', sal: 2900, comm: null },
+  { ename: 'vrushali', job: 'analyst', sal: 4999, comm: null },
+  { ename: 'vasant', job: 'salesman', sal: 2200, comm: 0 },
+  { ename: 'vasu', job: 'salesman', sal: 2200, comm: 250 },
+  { ename: 'rahul', job: 'clerk', sal: 1200, comm: null },
+  { ename: 'bob', job: 'manager', sal: 4900, comm: null },
+  { ename: 'raju', job: 'administrator', sal: 3400, comm: null },
+  { ename: 'neel', job: 'administrator', sal: 4200, comm: null },
+  { ename: 'ramu', job: 'clerk', sal: 1400, comm: null }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary :'$sal'; comm: true });
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:68)
+
+> 1 | db.emp.find({}, { _id: false, ename: true, job: true, salary :'$sal'; comm: true });
+    |                                                                     ^
+  2 |
+
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', comm: true });
+[
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'king', job: 'president', comm: null, salary: 5000 },
+  { ename: 'jack', job: 'accountant', comm: null, salary: 2700 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'blake', job: 'clerk', comm: null, salary: 1200 },
+  { ename: 'richards', job: 'clerk', comm: null, salary: 1500 },
+  { ename: 'peter', job: 'analyst', comm: null, salary: 3500 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'vrushali', job: 'analyst', comm: null, salary: 4999 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 },
+  { ename: 'rahul', job: 'clerk', comm: null, salary: 1200 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'raju', job: 'administrator', comm: null, salary: 3400 },
+  { ename: 'neel', job: 'administrator', comm: null, salary: 4200 },
+  { ename: 'ramu', job: 'clerk', comm: null, salary: 1400 }
+]
+Type "it" for more
+db1> edit db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', comm: true });
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', x: '$comm' });
+[
+  { ename: 'james', job: 'manager', salary: 4700, x: null },
+  { ename: 'smith', job: 'manager', salary: 3400, x: null },
+  { ename: 'king', job: 'president', salary: 5000, x: null },
+  { ename: 'jack', job: 'accountant', salary: 2700, x: null },
+  { ename: 'martin', job: 'salesman', salary: 2900, x: 735 },
+  { ename: 'scott', job: 'salesman', salary: 2500, x: 350 },
+  { ename: 'crow', job: 'salesman', salary: 3200, x: null },
+  { ename: 'blake', job: 'clerk', salary: 1200, x: null },
+  { ename: 'richards', job: 'clerk', salary: 1500, x: null },
+  { ename: 'peter', job: 'analyst', salary: 3500, x: null },
+  { ename: 'sharmin', job: 'programmer', salary: 4999, x: null },
+  { ename: 'saleel', job: 'programmer', salary: 2900, x: null },
+  { ename: 'vrushali', job: 'analyst', salary: 4999, x: null },
+  { ename: 'vasant', job: 'salesman', salary: 2200, x: 0 },
+  { ename: 'vasu', job: 'salesman', salary: 2200, x: 250 },
+  { ename: 'rahul', job: 'clerk', salary: 1200, x: null },
+  { ename: 'bob', job: 'manager', salary: 4900, x: null },
+  { ename: 'raju', job: 'administrator', salary: 3400, x: null },
+  { ename: 'neel', job: 'administrator', salary: 4200, x: null },
+  { ename: 'ramu', job: 'clerk', salary: 1400, x: null }
+]
+Type "it" for more
+db1> edit
+Opening an editor...is not defined
+
+db1> db.emp.find({ job: 'MANAGER' }, { _id: false, ename: true, job: true, salary: '$sal', x: '$comm' });
+
+db1> db.emp.find({ job: 'manager' }, { _id: false, ename: true, job: true, salary: '$sal', x: '$comm' });ening an editor...
+[
+  { ename: 'james', job: 'manager', salary: 4700, x: null },
+  { ename: 'smith', job: 'manager', salary: 3400, x: null },
+  { ename: 'bob', job: 'manager', salary: 4900, x: null }
+]
+db1> db.emp.find({ job: 'salesman' }, { _id: false, ename: true, job: true, salary: '$sal', x: '$comm' });ning an editor...
+[
+  { ename: 'martin', job: 'salesman', salary: 2900, x: 735 },
+  { ename: 'scott', job: 'salesman', salary: 2500, x: 350 },
+  { ename: 'crow', job: 'salesman', salary: 3200, x: null },
+  { ename: 'vasant', job: 'salesman', salary: 2200, x: 0 },
+  { ename: 'vasu', job: 'salesman', salary: 2200, x: 250 }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }] }, { _id: false, ename: true, job: trtrue, salary: '$sal', x: '$comm' });
+[
+  { ename: 'james', job: 'manager', salary: 4700, x: null },
+  { ename: 'smith', job: 'manager', salary: 3400, x: null },
+  { ename: 'martin', job: 'salesman', salary: 2900, x: 735 },
+  { ename: 'scott', job: 'salesman', salary: 2500, x: 350 },
+  { ename: 'crow', job: 'salesman', salary: 3200, x: null },
+  { ename: 'vasant', job: 'salesman', salary: 2200, x: 0 },
+  { ename: 'vasu', job: 'salesman', salary: 2200, x: 250 },
+  { ename: 'bob', job: 'manager', salary: 4900, x: null }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', x: '$comm' });
+[
+  { ename: 'james', job: 'manager', salary: 4700, x: null },
+  { ename: 'smith', job: 'manager', salary: 3400, x: null },
+  { ename: 'martin', job: 'salesman', salary: 2900, x: 735 },
+  { ename: 'scott', job: 'salesman', salary: 2500, x: 350 },
+  { ename: 'crow', job: 'salesman', salary: 3200, x: null },
+  { ename: 'sharmin', job: 'programmer', salary: 4999, x: null },
+  { ename: 'saleel', job: 'programmer', salary: 2900, x: null },
+  { ename: 'vasant', job: 'salesman', salary: 2200, x: 0 },
+  { ename: 'vasu', job: 'salesman', salary: 2200, x: 250 },
+  { ename: 'bob', job: 'manager', salary: 4900, x: null },
+  { ename: 'dinesh', job: 'programmer', salary: 3500, x: null },
+  { ename: 'dinesh', job: 'programmer', salary: 3500, x: null },
+  { ename: 'rudra', job: 'programmer', salary: 2400, x: null },
+  { ename: 'pankaj', job: 'programmer', salary: 3600, x: null },
+  { ename: 'nitish', job: 'programmer', salary: 1300, x: 1200 },
+  { ename: 'anoop', job: 'programmer', salary: 2300, x: 1200 },
+  { ename: 'neel', job: 'programmer', salary: 1800, x: 1400 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true });
+[
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true }). sort({ ename: 1 });
+[
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 }
+]
+db1> edit db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: false, ename: true, job: true, salary: '$sal', comm: true }). sort({ ename: 1 });
+Opening an editor...
+
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true }). sort({ ename: -1 });
+[
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true }). sort({ job: 1 });
+[
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true }). sort({ job: 1, ename: 1 });
+[
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: falsfalse, ename: true, job: true, salary: '$sal', comm: true }). sort({ job: 1, ename: -1 });
+[
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 }
+]
+db1> db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: false, ename: true, job: true, salary: '$sal', comm: true }). sort({ job: 1, ename: 1 });
+[
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'neel', job: 'programmer', comm: 1400, salary: 1800 },
+  { ename: 'nitish', job: 'programmer', comm: 1200, salary: 1300 },
+  { ename: 'pankaj', job: 'programmer', comm: null, salary: 3600 },
+  { ename: 'rudra', job: 'programmer', comm: null, salary: 2400 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 }
+]
+db1> db.emp.find({ $or: [{}, { job: 'programmer' }] }, { _id: false, ename: true, job: true, salary: '$sal', comm: true });
+[
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 },
+  { ename: 'smith', job: 'manager', comm: null, salary: 3400 },
+  { ename: 'king', job: 'president', comm: null, salary: 5000 },
+  { ename: 'jack', job: 'accountant', comm: null, salary: 2700 },
+  { ename: 'martin', job: 'salesman', comm: 735, salary: 2900 },
+  { ename: 'scott', job: 'salesman', comm: 350, salary: 2500 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'blake', job: 'clerk', comm: null, salary: 1200 },
+  { ename: 'richards', job: 'clerk', comm: null, salary: 1500 },
+  { ename: 'peter', job: 'analyst', comm: null, salary: 3500 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 },
+  { ename: 'saleel', job: 'programmer', comm: null, salary: 2900 },
+  { ename: 'vrushali', job: 'analyst', comm: null, salary: 4999 },
+  { ename: 'vasant', job: 'salesman', comm: 0, salary: 2200 },
+  { ename: 'vasu', job: 'salesman', comm: 250, salary: 2200 },
+  { ename: 'rahul', job: 'clerk', comm: null, salary: 1200 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'raju', job: 'administrator', comm: null, salary: 3400 },
+  { ename: 'neel', job: 'administrator', comm: null, salary: 4200 },
+  { ename: 'ramu', job: 'clerk', comm: null, salary: 1400 }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> edit db.emp.find({ $or: [{ job: 'salesman' }, { job: 'manager' }, { job: 'programmer' }] }, { _id: false, ename: true, job: true, salary: '$sal', comm: true }). sort({ job: 1, ename: -1 });
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', comm: true }). sort({ ename: 1 });
+[
+  { ename: 'Emily', job: 'WEB Programmer', comm: null, salary: 7600 },
+  { ename: 'Emma', job: 'WEB Programmer', comm: null, salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', comm: null, salary: 7000 },
+  { ename: 'Mia', job: 'WEB Programmer', comm: null, salary: 9500 },
+  { ename: 'Olivia', job: 'WEB Programmer', comm: null, salary: 9000 },
+  { ename: 'aditi', job: 'WEB Programmer', comm: null, salary: 5700 },
+  { ename: 'amit', job: 'administrator', comm: null, salary: 3500 },
+  { ename: 'amit', job: 'administrator', comm: null, salary: 3500 },
+  { ename: 'amol', job: 'auditor', comm: null, salary: 3800 },
+  { ename: 'anoop', job: 'programmer', comm: 1200, salary: 2300 },
+  { ename: 'arjun', job: 'auditor', comm: null, salary: 3200 },
+  { ename: 'bandish', job: 'WEB Programmer', comm: null, salary: 7000 },
+  { ename: 'blake', job: 'clerk', comm: null, salary: 1200 },
+  { ename: 'bob', job: 'manager', comm: null, salary: 4900 },
+  { ename: 'crow', job: 'salesman', comm: null, salary: 3200 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', comm: null, salary: 3500 },
+  { ename: 'gita', job: 'writer', comm: 750, salary: 2150 },
+  { ename: 'jack', job: 'accountant', comm: null, salary: 2700 },
+  { ename: 'james', job: 'manager', comm: null, salary: 4700 }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', comm: true }). sort({ sal: --1 });
+[
+  { ename: 'Mia', job: 'WEB Programmer', comm: null, salary: 9500 },
+  { ename: 'Olivia', job: 'WEB Programmer', comm: null, salary: 9000 },
+  { ename: 'neeraj', job: 'WEB Programmer', comm: null, salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', comm: null, salary: 7700 },
+  { ename: 'Emily', job: 'WEB Programmer', comm: null, salary: 7600 },
+  {
+    ename: 'raj',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 7000
+  },
+  { ename: 'bandish', job: 'WEB Programmer', comm: null, salary: 7000 },
+  { ename: 'Emma', job: 'WEB Programmer', comm: null, salary: 7000 },
+  { ename: 'madhavi', job: 'WEB Programmer', comm: null, salary: 6900 },
+  {
+    ename: 'laxman',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 6500
+  },
+  { ename: 'rupal', job: 'WEB Programmer', comm: null, salary: 6500 },
+  { ename: 'ram', job: 'WEB Programmer', comm: null, salary: 6200 },
+  {
+    ename: 'sangu',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 6000
+  },
+  {
+    ename: 'jasu',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 5800
+  },
+  { ename: 'aditi', job: 'WEB Programmer', comm: null, salary: 5700 },
+  { ename: 'tanvi', job: 'WEB Programmer', comm: null, salary: 5700 },
+  {
+    ename: 'rahsmi',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 5600
+  },
+  {
+    ename: 'priti',
+    job: 'Computer Programmer',
+    comm: null,
+    salary: 5500
+  },
+  { ename: 'king', job: 'president', comm: null, salary: 5000 },
+  { ename: 'sharmin', job: 'programmer', comm: null, salary: 4999 }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). sort({ sal: -1 });
+[
+  { ename: 'Mia', job: 'WEB Programmer', salary: 9500 },
+  { ename: 'Olivia', job: 'WEB Programmer', salary: 9000 },
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 },
+  { ename: 'raj', job: 'Computer Programmer', salary: 7000 },
+  { ename: 'bandish', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'madhavi', job: 'WEB Programmer', salary: 6900 },
+  { ename: 'laxman', job: 'Computer Programmer', salary: 6500 },
+  { ename: 'rupal', job: 'WEB Programmer', salary: 6500 },
+  { ename: 'ram', job: 'WEB Programmer', salary: 6200 },
+  { ename: 'sangu', job: 'Computer Programmer', salary: 6000 },
+  { ename: 'jasu', job: 'Computer Programmer', salary: 5800 },
+  { ename: 'aditi', job: 'WEB Programmer', salary: 5700 },
+  { ename: 'tanvi', job: 'WEB Programmer', salary: 5700 },
+  { ename: 'rahsmi', job: 'Computer Programmer', salary: 5600 },
+  { ename: 'priti', job: 'Computer Programmer', salary: 5500 },
+  { ename: 'king', job: 'president', salary: 5000 },
+  { ename: 'sharmin', job: 'programmer', salary: 4999 }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). limit(4);
+[
+  { ename: 'james', job: 'manager', salary: 4700 },
+  { ename: 'smith', job: 'manager', salary: 3400 },
+  { ename: 'king', job: 'president', salary: 5000 },
+  { ename: 'jack', job: 'accountant', salary: 2700 }
+]
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). limit(4);
+[pening an editor...
+  { ename: 'james', job: 'manager', salary: 4700 },
+  { ename: 'smith', job: 'manager', salary: 3400 },
+  { ename: 'king', job: 'president', salary: 5000 },
+  { ename: 'jack', job: 'accountant', salary: 2700 }
+]
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). limit(8);
+[pening an editor...
+  { ename: 'james', job: 'manager', salary: 4700 },
+  { ename: 'smith', job: 'manager', salary: 3400 },
+  { ename: 'king', job: 'president', salary: 5000 },
+  { ename: 'jack', job: 'accountant', salary: 2700 },
+  { ename: 'martin', job: 'salesman', salary: 2900 },
+  { ename: 'scott', job: 'salesman', salary: 2500 },
+  { ename: 'crow', job: 'salesman', salary: 3200 },
+  { ename: 'blake', job: 'clerk', salary: 1200 }
+]
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', }).skip(2)..limit(8);
+Uncaught:n editor...
+SyntaxError: Unexpected token (1:81)
+
+> 1 | db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal', }).skip(2)..limit(8);
+    |                                                                                  ^
+  2 |
+
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). skip(2).limit(8);
+[
+  { ename: 'king', job: 'president', salary: 5000 },
+  { ename: 'jack', job: 'accountant', salary: 2700 },
+  { ename: 'martin', job: 'salesman', salary: 2900 },
+  { ename: 'scott', job: 'salesman', salary: 2500 },
+  { ename: 'crow', job: 'salesman', salary: 3200 },
+  { ename: 'blake', job: 'clerk', salary: 1200 },
+  { ename: 'richards', job: 'clerk', salary: 1500 },
+  { ename: 'peter', job: 'analyst', salary: 3500 }
+]
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). skip(2).limit(8).count(); pening an editor...
+8
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). skip(2).limit(8).count();
+8
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). count();
+60ening an editor...
+db1> db.emp.find({}, { _id: false, ename: true, job: true, salary: '$sal' }). count();
+60
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ job: 'programmer' }, { _id: false, ename: true, job: true, salary: '$sal' }). count();
+9
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ job: 'programmer' }). count();
+9
+db1> db.emp.find({ job: 'manager' }). count();
+3pening an editor...
+db1> db.emp.find({ job: 'manager' }). count();
+3
+db1> db.emp.find({ job: 'manager' }). count();
+3pening an editor...
+db1> edit db.emp.find({ job: 'programmer' }, { _id: false, ename: true, job: true, salary: '$sal' }). count();
+Opening an editor...
+
+db1> db.emp.find({ sal: { $gt: 7000 } }, { _id: false, ename: true, job: true, salary: '$sal' });
+[
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Olivia', job: 'WEB Programmer', salary: 9000 },
+  { ename: 'Mia', job: 'WEB Programmer', salary: 9500 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ sal: { $gte: 7000 } }, { _id: false, ename: true, job: true, salary: '$sal' });
+[
+  { ename: 'raj', job: 'Computer Programmer', salary: 7000 },
+  { ename: 'bandish', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Olivia', job: 'WEB Programmer', salary: 9000 },
+  { ename: 'Mia', job: 'WEB Programmer', salary: 9500 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ $and: [{ sal: { $gt: 5000 } }, { sal: { $lt: 8000 } }] }, { _id: false, ename: true, job: true, salary: '$sal' });
+[
+  { ename: 'priti', job: 'Computer Programmer', salary: 5500 },
+  { ename: 'laxman', job: 'Computer Programmer', salary: 6500 },
+  { ename: 'sangu', job: 'Computer Programmer', salary: 6000 },
+  { ename: 'raj', job: 'Computer Programmer', salary: 7000 },
+  { ename: 'rupal', job: 'WEB Programmer', salary: 6500 },
+  { ename: 'jasu', job: 'Computer Programmer', salary: 5800 },
+  { ename: 'rahsmi', job: 'Computer Programmer', salary: 5600 },
+  { ename: 'bandish', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'madhavi', job: 'WEB Programmer', salary: 6900 },
+  { ename: 'ram', job: 'WEB Programmer', salary: 6200 },
+  { ename: 'aditi', job: 'WEB Programmer', salary: 5700 },
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'tanvi', job: 'WEB Programmer', salary: 5700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 }
+]
+db1> db.emp.find({ $and: [{ sal: { $gt: 7000 } }, { sal: { $lt: 8000 } }] }, { _id: false, ename: true, job: true, salary: '$sal' });
+[
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 }
+]
+db1> db.emp.find({ $and: [{ sal: { $gte: 7000 } }, { sal: { $lte: 8000 } }] }, { _id: false, ename: trtrue, job: true, salary: '$sal' });
+[
+  { ename: 'raj', job: 'Computer Programmer', salary: 7000 },
+  { ename: 'bandish', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'neeraj', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7700 },
+  { ename: 'Emma', job: 'WEB Programmer', salary: 7000 },
+  { ename: 'Emily', job: 'WEB Programmer', salary: 7600 }
+]
+db1> db.emp.find({ ename: /^a/ }, { _id: false, ename: true, job: true, salary: '$sal' });
+[pening an editor...
+  { ename: 'amit', job: 'administrator', salary: 3500 },
+  { ename: 'amit', job: 'administrator', salary: 3500 },
+  { ename: 'anoop', job: 'programmer', salary: 2300 },
+  { ename: 'arjun', job: 'auditor', salary: 3200 },
+  { ename: 'amol', job: 'auditor', salary: 3800 },
+  { ename: 'aditi', job: 'WEB Programmer', salary: 5700 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.emp.find({ ename: /p$/ }, { _id: false, ename: true, job: true, salary: '$sal' });
+[ { ename: 'anoop', job: 'programmer', salary: 2300 } ]
+db1> db.emp.find({ ename: /h$/ }, { _id: false, ename: true, job: true, salary: '$sal' });
+[pening an editor...
+  { ename: 'smith', job: 'manager', salary: 3400 },
+  { ename: 'dinesh', job: 'programmer', salary: 3500 },
+  { ename: 'dinesh', job: 'programmer', salary: 3500 },
+  { ename: 'nitish', job: 'programmer', salary: 1300 },
+  { ename: 'bandish', job: 'WEB Programmer', salary: 7000 }
+]
+db1> edit db.creatCollection
+Opening an editor...
+Uncaught:
+TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'MongoClient'
+    |     property 's' -> object with constructor 'Object'
+    |     property 'sessionPool' -> object with constructor 'ServerSessionPool'
+    --- property 'client' closes the circle
+db1> edit
+Opening an editor...
+
+db1> db.creatCollection = db.createCollection('a', { capped: true, size: 1000, max: 2 })
+{ ok: 1 }
+db1> db.a.insertOne(_id:1);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:18)
+
+> 1 | db.a.insertOne(_id:1);
+    |                   ^
+  2 |
+
+db1> db.a.insertOne({_id:1});
+{ acknowledged: true, insertedId: 1 }
+db1> db.a.insertOne({_id:2});
+{ acknowledged: true, insertedId: 2 }
+db1> db.a.find();
+[ { _id: 1 }, { _id: 2 } ]
+db1> db.a.insertOne({_id:3});
+{ acknowledged: true, insertedId: 3 }
+db1> db.a.find();
+[ { _id: 2 }, { _id: 3 } ]
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'a' ]
+db1> db.emp.isCapped();;
+
+db1> db.emp.isCapped();
+false
+db1> db.a.isCapped();
+true
+db1> db.getCollectionInfos();
+[
+  {
+    name: 'emp',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("12cf6829-53a1-4ffa-9b3b-fb49efc1278d")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'dept',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("44049136-0a62-40e4-bed4-0ebde4968dab")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'books',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("6cbfae9f-533c-47d1-a34a-1becb512bf9d")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'a',
+    type: 'collection',
+    options: { capped: true, size: 1024, max: 2 },
+    info: {
+      readOnly: false,
+      uuid: new UUID("be63675f-68dc-436c-9fe1-44b0295ec17b")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  }
+]
+db1> db.dept.find();
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db.getCollection('dept').find();
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db['dept'].find();
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db['books'].find();
+[
+  {
+    _id: ObjectId("65fa5678aa83a4d45916d4c2"),
+    title: 'Javascript CR',
+    price: 1500,
+    pages: 1000,
+    cover: 'hard copy'
+  },
+  {
+    _id: 1,
+    title: 'Redis',
+    pages: 1000,
+    cover: 'soft copy',
+    ebookName: 'Redis eBook',
+    webSite: 'www.redis.com/redis',
+    cost: { price: 1700, currency: 'R1' }
+  },
+  {
+    _id: 2,
+    title: 'JAVA CR',
+    pages: 1200,
+    cover: [ 'soft copy', 'hard copy' ],
+    ebookName: 'java eBook',
+    webSite: 'www.java.com/java',
+    cost: { price: 1300, currency: 'Rs.' }
+  },
+  { _id: 3, title: 'orcle' },
+  { _id: 4, title: '.Net' }
+]
+db2> use db2;
+already on db db22
+db2> db.dept.find();
+
+db2> edit db.getSiblingDB
+Opening an editor...
+
+db2> db.getSiblingDB = function(...args) { var _a; const instanceState = getShellInstanceState(this); emitApiCallTelemetry(instanceState, className, fn, false); const interruptFlag = instanceState === null || instanceState === void 0 ? void 0 : instanceState.interrupted; interruptFlag === null || interruptFlag === void 0 ? void 0 : interruptFlag.checkpoint(); let result; try { if (instanceState) { instanceState.apiCallDepth++; } result = fn.call(this, ...args); } catch (e) { throw (_a = instanceState === null || instanceState === void 0 ? void 0 : instanceState.transformError(e)) !== null && _a !== void 0 ? _a : e; } finally { if (instanceState) { instanceState.apiCallDepth--; } } interruptFlag === null || interruptFlag === void 0 ? void 0 : interruptFlag.checkpoint(); return result; }
+[Function (anonymous)]
+db2>
+
+db2>
+
+db2>
+
+db2> edit db.getSiblingDB();
+Opening an editor...
+
+db2> db.getSiblingDB('db1').dept.find();
+ReferenceError: getShellInstanceState is not defined
+db2> edit
+Opening an editor...
+
+db2> db.getSiblingDB('db1').dept.find()
+ReferenceError: getShellInstanceState is not defined
+db2> db.getSiblingDB('db1').getCollection('dept').find()
+ReferenceError: getShellInstanceState is not defined
+db2> edit
+Opening an editor...
+
+db2> db.getSiblingDB('db1').getCollectionNames()
+ReferenceError: getShellInstanceState is not defined
+db2> db
+db2
+db2> use test
+switched to db test
+test> db.getSiblingDB('db1').getCollectionNames();
+[ 'emp', 'dept', 'books', 'a' ]
+test> db.getSiblingDB('db1').getCollection('dept').find()
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+test> use db2
+switched to db db2
+db2> db.getSiblingDB('db1').getCollection('dept').find()
+ReferenceError: getShellInstanceState is not defined
+db2> use test
+switched to db testShellInstanceState is not defined
+test> db.getSiblingDB('db1').getCollection('dept').find();
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+test> use db1;
+switched to db db1
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'a' ]
+db1> db.a.renameCollection('xyz');
+{ ok: 1 }
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'xyz' ]
+db1> db.
+...
+...
+...
+...
+db1> db.xyz.renameCollection('a');
+{ ok: 1 }
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'a' ]
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books' ]
+db1>
+
+db1> db.dept.find();
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    Location: 'CHICAGO',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    Location: 'PUNE',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    Location: 'NEW YORK',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    Location: 'DALLAS',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    Location: 'BOSTON',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db.dept.find({}, {Location:false});
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db.dept.find({}, {Location:false,_id:false});
+[
+  { deptID: 30, deptName: 'SALES', pwd: 'sales@2017' },
+  { deptID: 20, deptName: 'RESEARCH', pwd: 'a12recmpm' },
+  { deptID: 50, deptName: 'HR', pwd: 'PUN@8877' },
+  { deptID: 10, deptName: 'ACCOUNTING', pwd: 'r50mpm' },
+  { deptID: 40, deptName: 'OPERATIONS', pwd: 'opr@123' },
+  { deptID: 30, deptName: 'SALES', pwdexit: 'sales@2017' },
+  { deptID: 50, deptName: 'HR', pwdexit: 'PUN@8877' },
+  { deptID: 10, deptName: 'ACCOUNTING', pwdexit: 'r50mpm' },
+  { deptID: 20, deptName: 'RESEARCH', pwdexit: 'a12recmpm' },
+  { deptID: 40, deptName: 'OPERATIONS', pwdexit: 'opr@123' }
+]
+db1> db.dept.find({}, {Location:false,_id:false});
+[
+  { deptID: 30, deptName: 'SALES', pwd: 'sales@2017' },
+  { deptID: 20, deptName: 'RESEARCH', pwd: 'a12recmpm' },
+  { deptID: 50, deptName: 'HR', pwd: 'PUN@8877' },
+  { deptID: 10, deptName: 'ACCOUNTING', pwd: 'r50mpm' },
+  { deptID: 40, deptName: 'OPERATIONS', pwd: 'opr@123' },
+  { deptID: 30, deptName: 'SALES', pwdexit: 'sales@2017' },
+  { deptID: 50, deptName: 'HR', pwdexit: 'PUN@8877' },
+  { deptID: 10, deptName: 'ACCOUNTING', pwdexit: 'r50mpm' },
+  { deptID: 20, deptName: 'RESEARCH', pwdexit: 'a12recmpm' },
+  { deptID: 40, deptName: 'OPERATIONS', pwdexit: 'opr@123' }
+]
+db1> db.dept.find({}, {Location:false});
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db.dept.find().count();
+10
+db1> db.dept.find({}, {Location:false});
+[
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd8"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwd: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dd9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwd: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45dda"),
+    deptID: 50,
+    deptName: 'HR',
+    pwd: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddb"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwd: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93eb87e10915d15b45ddc"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwd: 'opr@123'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f6"),
+    deptID: 30,
+    deptName: 'SALES',
+    pwdexit: 'sales@2017'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f7"),
+    deptID: 50,
+    deptName: 'HR',
+    pwdexit: 'PUN@8877'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f8"),
+    deptID: 10,
+    deptName: 'ACCOUNTING',
+    pwdexit: 'r50mpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7f9"),
+    deptID: 20,
+    deptName: 'RESEARCH',
+    pwdexit: 'a12recmpm'
+  },
+  {
+    _id: ObjectId("65f93edf4f48ed558545e7fa"),
+    deptID: 40,
+    deptName: 'OPERATIONS',
+    pwdexit: 'opr@123'
+  }
+]
+db1> db.movies.find();
+[
+  {
+    _id: 1,
+    relese: '13-06-1998',
+    color: '',
+    director: 'James Cameron',
+    critic: 723,
+    duration: 178,
+    director_facebook: 0,
+    actor_3_facebook: 855,
+    actor_2_name: 'Joel David Moore',
+    actor_1_facebook_likes: 1000,
+    gross: 760505847,
+    genres: 'Action|Adventure|Fantasy|Sci-Fi',
+    actor_1_name: 'CCH Pounder',
+    movie_title: 'Avatar',
+    num_voted_users: 886204,
+    cast_total_facebook_likes: 4834,
+    actor_3_name: 'Wes Studi',
+    facenumber_in_poster: 0,
+    plot_keywords: 'avatar|future|marine|native|paraplegic',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0499549/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 3054,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 237000001,
+    title_year: 1998,
+    actor_2_facebook_likes: 936,
+    imdb_score: 7.9,
+    aspect_ratio: 1.120835,
+    movie_facebook_likes: 33000,
+    'production houses': 'The Weinstein Company',
+    week1: 28.103,
+    week2: 67.888,
+    week3: 37.319,
+    week4: 48.732,
+    isActive: 1,
+    music: 'James Horner',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 5,
+    relese: '28-02-2001',
+    color: '',
+    director: 'Doug Walker',
+    critic: '',
+    duration: '',
+    director_facebook: 131,
+    actor_3_facebook: '',
+    actor_2_name: 'Rob Walker',
+    actor_1_facebook_likes: 131,
+    gross: '',
+    genres: 'Documentary',
+    actor_1_name: 'Doug Walker',
+    movie_title: 'Star Wars: Episode VII - The Force Awakens',
+    num_voted_users: 8,
+    cast_total_facebook_likes: 143,
+    actor_3_name: '',
+    facenumber_in_poster: 0,
+    plot_keywords: '',
+    movie_imdb_link: 'http://www.imdb.com/title/tt5289954/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: '',
+    language: '',
+    country: 'Canada',
+    content_rating: '',
+    budget: '',
+    title_year: 2001,
+    actor_2_facebook_likes: 12,
+    imdb_score: 7.1,
+    aspect_ratio: 1.323596068,
+    movie_facebook_likes: 0,
+    'production houses': 'Fox',
+    week1: 50.864,
+    week2: 79.767,
+    week3: 25.178,
+    week4: 39.018,
+    isActive: 1,
+    music: 'John Williams',
+    stars: { '0': 1, '1': 1, '2': 0, '3': 0, '4': 1 }
+  },
+  {
+    _id: 3,
+    relese: '01-11-1969',
+    color: 'Color',
+    director: 'Sam Mendes',
+    critic: 602,
+    duration: 148,
+    director_facebook: 0,
+    actor_3_facebook: 161,
+    actor_2_name: 'Rory Kinnear',
+    actor_1_facebook_likes: 11000,
+    gross: 200074175,
+    genres: 'Action|Adventure|Thriller',
+    actor_1_name: 'Christoph Waltz',
+    movie_title: 'Spectre',
+    num_voted_users: 275868,
+    cast_total_facebook_likes: 11700,
+    actor_3_name: 'Stephanie Sigman',
+    facenumber_in_poster: 1,
+    plot_keywords: 'bomb|espionage|sequel|spy|terrorist',
+    movie_imdb_link: 'http://www.imdb.com/title/tt2379713/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 994,
+    language: 'English',
+    country: 'UK',
+    content_rating: 'PG-13',
+    budget: 245000000,
+    title_year: 1969,
+    actor_2_facebook_likes: 393,
+    imdb_score: 6.8,
+    aspect_ratio: 2.022457101,
+    movie_facebook_likes: 85000,
+    'production houses': 'Independent',
+    week1: 29.811,
+    week2: 97.568,
+    week3: 12.883,
+    week4: 0.502,
+    isActive: 0,
+    music: 'Thomas Newman',
+    stars: { '0': 0, '1': 0, '2': 0, '3': 1, '4': 0 }
+  },
+  {
+    _id: 2,
+    relese: '14-11-1968',
+    color: 'Color',
+    director: 'Gore Verbinski',
+    critic: 302,
+    duration: 169,
+    director_facebook: 563,
+    actor_3_facebook: 1000,
+    actor_2_name: 'Orlando Bloom',
+    actor_1_facebook_likes: 40000,
+    gross: 309404152,
+    genres: 'Action|Adventure|Fantasy',
+    actor_1_name: 'Johnny Depp',
+    movie_title: "Pirates of the Caribbean: At World's End",
+    num_voted_users: 471220,
+    cast_total_facebook_likes: 48350,
+    actor_3_name: 'Jack Davenport',
+    facenumber_in_poster: 0,
+    plot_keywords: 'goddess|marriage ceremony|marriage proposal|pirate|singapore',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0449088/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1238,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 300000000,
+    title_year: 1968,
+    actor_2_facebook_likes: 5000,
+    imdb_score: 7.1,
+    aspect_ratio: 2.370591809,
+    movie_facebook_likes: 0,
+    'production houses': 'The Weinstein Company',
+    week1: 0.323,
+    week2: 4.543,
+    week3: 69.805,
+    week4: 2.022,
+    isActive: 0,
+    music: 'Lorne Balfe',
+    stars: { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 4,
+    relese: '13-03-1977',
+    color: 'Color',
+    director: 'Christopher Nolan',
+    critic: 813,
+    duration: 164,
+    director_facebook: 22000,
+    actor_3_facebook: 23000,
+    actor_2_name: 'Christian Bale',
+    actor_1_facebook_likes: 27000,
+    gross: 448130642,
+    genres: 'Action|Thriller',
+    actor_1_name: 'Tom Hardy',
+    movie_title: 'The Dark Knight Rises',
+    num_voted_users: 1144337,
+    cast_total_facebook_likes: 106759,
+    actor_3_name: 'Joseph Gordon-Levitt',
+    facenumber_in_poster: 0,
+    plot_keywords: 'deception|imprisonment|lawlessness|police officer|terrorist plot',
+    movie_imdb_link: 'http://www.imdb.com/title/tt1345836/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 2701,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 250000000,
+    title_year: 1977,
+    actor_2_facebook_likes: 23000,
+    imdb_score: 8.5,
+    aspect_ratio: 1.178821504,
+    movie_facebook_likes: 164000,
+    'production houses': 'Disney',
+    week1: 74.391,
+    week2: 76.182,
+    week3: 62.271,
+    week4: 0.362,
+    isActive: 1,
+    music: '',
+    stars: { '0': 1, '1': 1, '2': 0, '3': 0, '4': 0 }
+  },
+  {
+    _id: 6,
+    relese: '21-07-1965',
+    color: 'Color',
+    director: 'Andrew Stanton',
+    critic: 462,
+    duration: 132,
+    director_facebook: 475,
+    actor_3_facebook: 530,
+    actor_2_name: 'Samantha Morton',
+    actor_1_facebook_likes: 640,
+    gross: 73058679,
+    genres: 'Action|Adventure|Sci-Fi',
+    actor_1_name: 'Daryl Sabara',
+    movie_title: 'John Carter',
+    num_voted_users: 212204,
+    cast_total_facebook_likes: 1873,
+    actor_3_name: 'Polly Walker',
+    facenumber_in_poster: 1,
+    plot_keywords: 'alien|american civil war|male nipple|mars|princess',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0401729/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 738,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 263700000,
+    title_year: 1965,
+    actor_2_facebook_likes: 632,
+    imdb_score: 6.6,
+    aspect_ratio: 2.103939087,
+    movie_facebook_likes: 24000,
+    'production houses': '20th Century Fox',
+    week1: 94.885,
+    week2: 61.663,
+    week3: 64.056,
+    week4: 16.328,
+    isActive: 1,
+    music: 'Michael Giacchino',
+    stars: { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 7,
+    relese: '16-05-1990',
+    color: 'Color',
+    director: 'Sam Raimi',
+    critic: 392,
+    duration: 156,
+    director_facebook: 0,
+    actor_3_facebook: 4000,
+    actor_2_name: 'James Franco',
+    actor_1_facebook_likes: 24000,
+    gross: 336530303,
+    genres: 'Action|Adventure|Romance',
+    actor_1_name: 'J.K. Simmons',
+    movie_title: 'Spider-Man 3',
+    num_voted_users: 383056,
+    cast_total_facebook_likes: 46055,
+    actor_3_name: 'Kirsten Dunst',
+    facenumber_in_poster: 0,
+    plot_keywords: 'sandman|spider man|symbiote|venom|villain',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0413300/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1902,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 258000000,
+    title_year: 1990,
+    actor_2_facebook_likes: 11000,
+    imdb_score: 6.2,
+    aspect_ratio: 2.305530641,
+    movie_facebook_likes: 0,
+    'production houses': 'Disney',
+    week1: 49.352,
+    week2: 88.384,
+    week3: 43.782,
+    week4: 8.155,
+    isActive: 0,
+    music: 'Christopher Young',
+    stars: { '0': 1, '1': 0, '2': 1, '3': 1, '4': 0 }
+  },
+  {
+    _id: 8,
+    relese: '18-07-1971',
+    color: 'Color',
+    director: 'Nathan Greno',
+    critic: 324,
+    duration: 100,
+    director_facebook: 15,
+    actor_3_facebook: 284,
+    actor_2_name: 'Donna Murphy',
+    actor_1_facebook_likes: 799,
+    gross: 200807262,
+    genres: 'Adventure|Animation|Comedy|Family|Fantasy|Musical|Romance',
+    actor_1_name: 'Brad Garrett',
+    movie_title: 'Tangled',
+    num_voted_users: 294810,
+    cast_total_facebook_likes: 2036,
+    actor_3_name: 'M.C. Gainey',
+    facenumber_in_poster: 1,
+    plot_keywords: '17th century|based on fairy tale|disney|flower|tower',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0398286/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 387,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG',
+    budget: 260000000,
+    title_year: 1971,
+    actor_2_facebook_likes: 553,
+    imdb_score: 7.8,
+    aspect_ratio: 2.133924229,
+    movie_facebook_likes: 29000,
+    'production houses': 'Independent',
+    week1: 47.766,
+    week2: 68.111,
+    week3: 32.725,
+    week4: 6.232,
+    isActive: 1,
+    music: 'Alan Menken',
+    stars: { '0': 0, '1': 1, '2': 0, '3': 0, '4': 1 }
+  },
+  {
+    _id: 9,
+    relese: '15-05-1976',
+    color: 'Color',
+    director: 'Joss Whedon',
+    critic: 635,
+    duration: 141,
+    director_facebook: 0,
+    actor_3_facebook: 19000,
+    actor_2_name: 'Robert Downey Jr.',
+    actor_1_facebook_likes: 26000,
+    gross: 458991599,
+    genres: 'Action|Adventure|Sci-Fi',
+    actor_1_name: 'Chris Hemsworth',
+    movie_title: 'Avengers: Age of Ultron',
+    num_voted_users: 462669,
+    cast_total_facebook_likes: 92000,
+    actor_3_name: 'Scarlett Johansson',
+    facenumber_in_poster: 4,
+    plot_keywords: 'artificial intelligence|based on comic book|captain america|marvel cinematic universe|superhero',
+    movie_imdb_link: 'http://www.imdb.com/title/tt2395427/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1117,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 250000000,
+    title_year: 1976,
+    actor_2_facebook_likes: 21000,
+    imdb_score: 7.5,
+    aspect_ratio: 1.877056704,
+    movie_facebook_likes: 118000,
+    'production houses': 'Independent',
+    week1: 61.289,
+    week2: 33.403,
+    week3: 38.954,
+    week4: 22.222,
+    isActive: 1,
+    music: 'Brian Tyler',
+    stars: { '0': 1, '1': 0, '2': 0, '3': 1, '4': 1 }
+  },
+  {
+    _id: 10,
+    relese: '05-06-1964',
+    color: 'Color',
+    director: 'David Yates',
+    critic: 375,
+    duration: 153,
+    director_facebook: 282,
+    actor_3_facebook: 10000,
+    actor_2_name: 'Daniel Radcliffe',
+    actor_1_facebook_likes: 25000,
+    gross: 301956980,
+    genres: 'Adventure|Family|Fantasy|Mystery',
+    actor_1_name: 'Alan Rickman',
+    movie_title: 'Harry Potter and the Half-Blood Prince',
+    num_voted_users: 321795,
+    cast_total_facebook_likes: 58753,
+    actor_3_name: 'Rupert Grint',
+    facenumber_in_poster: 3,
+    plot_keywords: 'blood|book|love|potion|professor',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0417741/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 973,
+    language: 'English',
+    country: 'UK',
+    content_rating: 'PG',
+    budget: 250000000,
+    title_year: 1964,
+    actor_2_facebook_likes: 11000,
+    imdb_score: 7.5,
+    aspect_ratio: 1.206639454,
+    movie_facebook_likes: 10000,
+    'production houses': 'Warner Bros.',
+    week1: 0.062,
+    week2: 89.447,
+    week3: 53.728,
+    week4: 21.924,
+    isActive: 1,
+    music: 'Nicholas Hooper',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 0, '4': 1 }
+  },
+  {
+    _id: 11,
+    relese: '23-09-1982',
+    color: 'Color',
+    director: 'Zack Snyder',
+    critic: 673,
+    duration: 183,
+    director_facebook: 0,
+    actor_3_facebook: 2000,
+    actor_2_name: 'Lauren Cohan',
+    actor_1_facebook_likes: 15000,
+    gross: 330249062,
+    genres: 'Action|Adventure|Sci-Fi',
+    actor_1_name: 'Henry Cavill',
+    movie_title: 'Batman v Superman: Dawn of Justice',
+    num_voted_users: 371639,
+    cast_total_facebook_likes: 24450,
+    actor_3_name: 'Alan D. Purwin',
+    facenumber_in_poster: 0,
+    plot_keywords: 'based on comic book|batman|sequel to a reboot|superhero|superman',
+    movie_imdb_link: 'http://www.imdb.com/title/tt2975590/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 3018,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 250000000,
+    title_year: 1982,
+    actor_2_facebook_likes: 4000,
+    imdb_score: 6.9,
+    aspect_ratio: 2.40581849,
+    movie_facebook_likes: 197000,
+    'production houses': 'Independent',
+    week1: 30.245,
+    week2: 8.061,
+    week3: 51.964,
+    week4: 3.523,
+    isActive: 0,
+    music: 'WaterTower',
+    stars: { '0': 0, '1': 1, '2': 1, '3': 0, '4': 1 }
+  },
+  {
+    _id: 12,
+    relese: '01-09-2005',
+    color: 'Color',
+    director: 'Bryan Singer',
+    critic: 434,
+    duration: 169,
+    director_facebook: 0,
+    actor_3_facebook: 903,
+    actor_2_name: 'Marlon Brando',
+    actor_1_facebook_likes: 18000,
+    gross: 200069408,
+    genres: 'Action|Adventure|Sci-Fi',
+    actor_1_name: 'Kevin Spacey',
+    movie_title: 'Superman Returns',
+    num_voted_users: 240396,
+    cast_total_facebook_likes: 29991,
+    actor_3_name: 'Frank Langella',
+    facenumber_in_poster: 0,
+    plot_keywords: 'crystal|epic|lex luthor|lois lane|return to earth',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0348150/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 2367,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 209000000,
+    title_year: 2005,
+    actor_2_facebook_likes: 10000,
+    imdb_score: 6.1,
+    aspect_ratio: 2.50176606,
+    movie_facebook_likes: 0,
+    'production houses': 'Independent',
+    week1: 83.261,
+    week2: 0.707,
+    week3: 3.825,
+    week4: 5.379,
+    isActive: 1,
+    music: 'John Williams',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 13,
+    relese: '25-05-1984',
+    color: 'Color',
+    director: 'Marc Forster',
+    critic: 403,
+    duration: 106,
+    director_facebook: 395,
+    actor_3_facebook: 393,
+    actor_2_name: 'Mathieu Amalric',
+    actor_1_facebook_likes: 451,
+    gross: 168368427,
+    genres: 'Action|Adventure',
+    actor_1_name: 'Giancarlo Giannini',
+    movie_title: 'Quantum of Solace',
+    num_voted_users: 330784,
+    cast_total_facebook_likes: 2023,
+    actor_3_name: 'Rory Kinnear',
+    facenumber_in_poster: 1,
+    plot_keywords: 'action hero|attempted rape|bond girl|official james bond series|revenge',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0830515/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1243,
+    language: 'English',
+    country: 'UK',
+    content_rating: 'PG-13',
+    budget: 200000000,
+    title_year: 1984,
+    actor_2_facebook_likes: 412,
+    imdb_score: 6.7,
+    aspect_ratio: 2.921944859,
+    movie_facebook_likes: 0,
+    'production houses': 'Summit',
+    week1: 65.496,
+    week2: 81.995,
+    week3: 45.36,
+    week4: 36.368,
+    isActive: 1,
+    music: 'David Arnold',
+    stars: { '0': 0, '1': 1, '2': 0, '3': 1, '4': 0 }
+  },
+  {
+    _id: 14,
+    relese: '14-02-1988',
+    color: 'Color',
+    director: 'Gore Verbinski',
+    critic: 313,
+    duration: 151,
+    director_facebook: 563,
+    actor_3_facebook: 1000,
+    actor_2_name: 'Orlando Bloom',
+    actor_1_facebook_likes: 40000,
+    gross: 423032628,
+    genres: 'Action|Adventure|Fantasy',
+    actor_1_name: 'Johnny Depp',
+    movie_title: "Pirates of the Caribbean: Dead Man's Chest",
+    num_voted_users: 522040,
+    cast_total_facebook_likes: 48486,
+    actor_3_name: 'Jack Davenport',
+    facenumber_in_poster: 2,
+    plot_keywords: "box office hit|giant squid|heart|liar's dice|monster",
+    movie_imdb_link: 'http://www.imdb.com/title/tt0383574/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1832,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 225000000,
+    title_year: 1988,
+    actor_2_facebook_likes: 5000,
+    imdb_score: 7.3,
+    aspect_ratio: 2.516786459,
+    movie_facebook_likes: 5000,
+    'production houses': 'Independent',
+    week1: 58.51,
+    week2: 87.556,
+    week3: 0.803,
+    week4: 2.497,
+    isActive: 1,
+    music: 'Hans Zimmer',
+    stars: { '0': 1, '1': 0, '2': 0, '3': 0, '4': 1 }
+  },
+  {
+    _id: 15,
+    relese: '07-06-1980',
+    color: '',
+    director: 'Gore Verbinski',
+    critic: '',
+    duration: 150,
+    director_facebook: 563,
+    actor_3_facebook: 1000,
+    actor_2_name: 'Ruth Wilson',
+    actor_1_facebook_likes: 40000,
+    gross: 89289910,
+    genres: 'Action|Adventure|Western',
+    actor_1_name: 'Johnny Depp',
+    movie_title: 'The Lone Ranger',
+    num_voted_users: 181792,
+    cast_total_facebook_likes: 45757,
+    actor_3_name: 'Tom Wilkinson',
+    facenumber_in_poster: 1,
+    plot_keywords: 'horse|outlaw|texas|texas ranger|train',
+    movie_imdb_link: 'http://www.imdb.com/title/tt1210819/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 711,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 215000000,
+    title_year: 1980,
+    actor_2_facebook_likes: 2000,
+    imdb_score: 6.5,
+    aspect_ratio: 2.049508332,
+    movie_facebook_likes: 48000,
+    'production houses': 'Summit',
+    week1: 105.768,
+    week2: 44.445,
+    week3: 74.777,
+    week4: 38.381,
+    isActive: 0,
+    music: 'Hans Zimmer',
+    stars: { '0': 0, '1': 0, '2': 0, '3': 1, '4': 1 }
+  },
+  {
+    _id: 16,
+    relese: '04-08-1998',
+    color: 'Color',
+    director: 'Zack Snyder',
+    critic: 733,
+    duration: 143,
+    director_facebook: 0,
+    actor_3_facebook: 748,
+    actor_2_name: 'Christopher Meloni',
+    actor_1_facebook_likes: 15000,
+    gross: 291021565,
+    genres: 'Action|Adventure|Fantasy|Sci-Fi',
+    actor_1_name: 'Henry Cavill',
+    movie_title: 'Man of Steel',
+    num_voted_users: 548573,
+    cast_total_facebook_likes: 20495,
+    actor_3_name: 'Harry Lennix',
+    facenumber_in_poster: 0,
+    plot_keywords: 'based on comic book|british actor playing american character|final battle|origin of hero|reboot',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0770828/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 2536,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 225000000,
+    title_year: 1998,
+    actor_2_facebook_likes: 3000,
+    imdb_score: 7.2,
+    aspect_ratio: 2.269864721,
+    movie_facebook_likes: 118000,
+    'production houses': 'Paramount',
+    week1: 88.024,
+    week2: 15.52,
+    week3: 19.095,
+    week4: 36.016,
+    isActive: 0,
+    music: 'Hans Zimmer',
+    stars: { '0': 1, '1': 1, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 17,
+    relese: '15-08-1998',
+    color: 'Color',
+    director: 'Andrew Adamson',
+    critic: 258,
+    duration: 150,
+    director_facebook: 80,
+    actor_3_facebook: 201,
+    actor_2_name: 'Pierfrancesco Favino',
+    actor_1_facebook_likes: 22000,
+    gross: 141614023,
+    genres: 'Action|Adventure|Family|Fantasy',
+    actor_1_name: 'Peter Dinklage',
+    movie_title: 'The Chronicles of Narnia: Prince Caspian',
+    num_voted_users: 149922,
+    cast_total_facebook_likes: 22697,
+    actor_3_name: 'Damián Alcázar',
+    facenumber_in_poster: 4,
+    plot_keywords: 'brother brother relationship|brother sister relationship|good versus evil|king|narnia',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0499448/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 438,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG',
+    budget: 225000000,
+    title_year: 1998,
+    actor_2_facebook_likes: 216,
+    imdb_score: 6.6,
+    aspect_ratio: 1.720342257,
+    movie_facebook_likes: 0,
+    'production houses': 'Disney',
+    week1: 98.365,
+    week2: 44.405,
+    week3: 35.247,
+    week4: 26.151,
+    isActive: 1,
+    music: 'Harry Gregson-Williams',
+    stars: { '0': 1, '1': 1, '2': 0, '3': 0, '4': 1 }
+  },
+  {
+    _id: 18,
+    relese: '01-06-1991',
+    color: 'Color',
+    director: 'Joss Whedon',
+    critic: 703,
+    duration: 173,
+    director_facebook: 0,
+    actor_3_facebook: 19000,
+    actor_2_name: 'Robert Downey Jr.',
+    actor_1_facebook_likes: 26000,
+    gross: 623279547,
+    genres: 'Action|Adventure|Sci-Fi',
+    actor_1_name: 'Chris Hemsworth',
+    movie_title: 'The Avengers',
+    num_voted_users: 995415,
+    cast_total_facebook_likes: 87697,
+    actor_3_name: 'Scarlett Johansson',
+    facenumber_in_poster: 3,
+    plot_keywords: 'alien invasion|assassin|battle|iron man|soldier',
+    movie_imdb_link: 'http://www.imdb.com/title/tt0848228/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 1722,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 220000000,
+    title_year: 1991,
+    actor_2_facebook_likes: 21000,
+    imdb_score: 8.1,
+    aspect_ratio: 1.014251209,
+    movie_facebook_likes: 123000,
+    'production houses': 'Warner Bros.',
+    week1: 90.384,
+    week2: 55.017,
+    week3: 72.602,
+    week4: 31.011,
+    isActive: 1,
+    music: 'Alan Silvestri',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 1 }
+  },
+  {
+    _id: 19,
+    relese: '11-12-1987',
+    color: 'Color',
+    director: 'Rob Marshall',
+    critic: 448,
+    duration: 136,
+    director_facebook: 252,
+    actor_3_facebook: 1000,
+    actor_2_name: 'Sam Claflin',
+    actor_1_facebook_likes: 40000,
+    gross: 241063875,
+    genres: 'Action|Adventure|Fantasy',
+    actor_1_name: 'Johnny Depp',
+    movie_title: 'Pirates of the Caribbean: On Stranger Tides',
+    num_voted_users: 370704,
+    cast_total_facebook_likes: 54083,
+    actor_3_name: 'Stephen Graham',
+    facenumber_in_poster: 4,
+    plot_keywords: 'blackbeard|captain|pirate|revenge|soldier',
+    movie_imdb_link: 'http://www.imdb.com/title/tt1298650/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 484,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 250000000,
+    title_year: 1987,
+    actor_2_facebook_likes: 11000,
+    imdb_score: 6.7,
+    aspect_ratio: 1.829249773,
+    movie_facebook_likes: 58000,
+    'production houses': 'Paramount',
+    week1: 74.747,
+    week2: 53.769,
+    week3: 10.221,
+    week4: 37.365,
+    isActive: 1,
+    music: 'Hans Zimmer',
+    stars: { '0': 1, '1': 0, '2': 0, '3': 1, '4': 0 }
+  },
+  {
+    _id: 20,
+    relese: '01-01-1966',
+    color: 'Color',
+    director: 'Barry Sonnenfeld',
+    critic: 451,
+    duration: 106,
+    director_facebook: 188,
+    actor_3_facebook: 718,
+    actor_2_name: 'Michael Stuhlbarg',
+    actor_1_facebook_likes: 10000,
+    gross: 179020854,
+    genres: 'Action|Adventure|Comedy|Family|Fantasy|Sci-Fi',
+    actor_1_name: 'Will Smith',
+    movie_title: 'Men in Black 3',
+    num_voted_users: 268154,
+    cast_total_facebook_likes: 12572,
+    actor_3_name: 'Nicole Scherzinger',
+    facenumber_in_poster: 1,
+    plot_keywords: 'alien|criminal|m.i.b.|maximum security prison|prison',
+    movie_imdb_link: 'http://www.imdb.com/title/tt1409024/?ref_=fn_tt_tt_1',
+    num_user_for_reviews: 341,
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: 225000000,
+    title_year: 1966,
+    actor_2_facebook_likes: 816,
+    imdb_score: 6.8,
+    aspect_ratio: 2.022072222,
+    movie_facebook_likes: 40000,
+    'production houses': 'Paramount',
+    week1: 32.77,
+    week2: 76.435,
+    week3: 71.695,
+    week4: 4.399,
+    isActive: 0,
+    music: 'Danny Elfman',
+    stars: { '0': 1, '1': 1, '2': 1, '3': 0, '4': 1 }
+  }
+]
+Type "it" for more
+db1>
+
+db1>
+
+db1>
+
+db1> edit
+Opening an editor...
+
+db1> edit db.movies.find();
+Opening an editor...
+
+db1> db.movies.find({ genres: /Horror/ }, { _id: 0, movie_title: 1, genres: 1 });
+[
+  {
+    genres: 'Action|Adventure|Horror|Sci-Fi|Thriller',
+    movie_title: 'World War'
+  },
+  {
+    genres: 'Action|Adventure|Fantasy|Horror|Thriller',
+    movie_title: 'The Mummy: Tomb of the Dragon Emperor'
+  },
+  {
+    genres: 'Action|Adventure|Drama|Horror|Sci-Fi',
+    movie_title: 'Godzilla Resurgence'
+  },
+  { genres: 'Drama|Horror|Sci-Fi', movie_title: 'I Am Legend' },
+  { genres: 'Comedy|Fantasy|Horror', movie_title: 'Dark Shadows' },
+  {
+    genres: 'Drama|Fantasy|Horror|Thriller',
+    movie_title: 'The Wolfman'
+  },
+  {
+    genres: 'Action|Adventure|Drama|Horror|Sci-Fi',
+    movie_title: 'Godzilla Resurgence'
+  },
+  {
+    genres: 'Action|Fantasy|Horror|Mystery',
+    movie_title: 'End of Days'
+  },
+  {
+    genres: 'Drama|Fantasy|Horror|Mystery|Thriller',
+    movie_title: 'What Lies Beneath'
+  },
+  {
+    genres: 'Comedy|Family|Fantasy|Horror|Mystery',
+    movie_title: 'The Haunted Mansion'
+  },
+  {
+    genres: 'Action|Horror|Sci-Fi|Thriller',
+    movie_title: 'Hollow Man'
+  },
+  {
+    genres: 'Crime|Drama|Horror|Mystery|Thriller',
+    movie_title: 'Hannibal'
+  },
+  { genres: 'Comedy|Fantasy|Horror', movie_title: 'Creepshow' },
+  {
+    genres: 'Action|Adventure|Fantasy|Horror|Sci-Fi',
+    movie_title: 'Hellboy II: The Golden Army'
+  },
+  {
+    genres: 'Fantasy|Horror|Mystery|Thriller',
+    movie_title: 'The Haunting'
+  },
+  { genres: 'Drama|Horror|Mystery|Sci-Fi', movie_title: 'Evolution' },
+  {
+    genres: 'Action|Adventure|Horror|Sci-Fi|Thriller',
+    movie_title: 'A Sound of Thunder'
+  },
+  {
+    genres: 'Horror|Mystery|Thriller',
+    movie_title: 'Exorcist: The Beginning'
+  },
+  {
+    genres: 'Drama|Fantasy|Horror|Thriller',
+    movie_title: 'Constantine'
+  },
+  { genres: 'Drama|Horror|Sci-Fi|Thriller', movie_title: 'Carriers' }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.movies.find({ genres: /^Horror$/ }, { _id: 0, movie_title: 1, genres: 1 });
+[
+  { genres: 'Horror', movie_title: 'The Final Destination' },
+  { genres: 'Horror', movie_title: 'Final Destination 5' },
+  { genres: 'Horror', movie_title: 'A Nightmare on Elm Street' },
+  { genres: 'Horror', movie_title: 'House of Wax' },
+  { genres: 'Horror', movie_title: 'Stigmata' },
+  { genres: 'Horror', movie_title: '30 Days of Night' },
+  { genres: 'Horror', movie_title: 'Final Destination 3' },
+  { genres: 'Horror', movie_title: 'Jeepers Creepers II' },
+  { genres: 'Horror', movie_title: 'The Ruins' },
+  { genres: 'Horror', movie_title: 'Ghost Ship' },
+  { genres: 'Horror', movie_title: 'Thir13en Ghosts' },
+  { genres: 'Horror', movie_title: 'Land of the Dead' },
+  { genres: 'Horror', movie_title: 'Restoration' },
+  { genres: 'Horror', movie_title: 'Day of the Dead' },
+  { genres: 'Horror', movie_title: 'The Hills Have Eyes' },
+  { genres: 'Horror', movie_title: 'Evil Dead' },
+  {
+    genres: 'Horror',
+    movie_title: 'The Texas Chainsaw Massacre: The Beginning'
+  },
+  { genres: 'Horror', movie_title: 'Halloween II' },
+  { genres: 'Horror', movie_title: 'The Hills Have Eyes II' },
+  { genres: 'Horror', movie_title: 'Exorcist II: The Heretic' }
+]
+Type "it" for more
+db1> edit
+Opening an editor...
+
+db1> db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, movie_title: 1, genres: 1 });
+[
+  {
+    genres: 'Fantasy',
+    movie_title: 'Harry Potter and the Deathly Hallows: Part I'
+  },
+  { genres: 'Fantasy', movie_title: 'Cirque du Soleil: Worlds Away' },
+  {
+    genres: 'Fantasy',
+    movie_title: 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', movie_title: 'Gayab' },
+  { genres: 'Fantasy', movie_title: 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', movie_title: 'Jai Ganesh Deva' },
+  {
+    genres: 'Fantasy',
+    movie_title: 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', movie_title: 'Gayab' },
+  { genres: 'Fantasy', movie_title: 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', movie_title: 'Jai Ganesh Deva' },
+  { genres: 'Fantasy', movie_title: 'Jodi Breakers' }
+]
+db1> db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, "Movie Name": '$movie_title', genres: 1 });
+[
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'Harry Potter and the Deathly Hallows: Part I'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Cirque du Soleil: Worlds Away' },
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  { genres: 'Fantasy', 'Movie Name': 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', 'Movie Name': 'Jai Ganesh Deva' },
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  { genres: 'Fantasy', 'Movie Name': 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', 'Movie Name': 'Jai Ganesh Deva' },
+  { genres: 'Fantasy', 'Movie Name': 'Jodi Breakers' }
+]
+db1> edit db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, "Movie Name": '$movie_title', genres: 1 });
+Opening an editor...
+
+db1> db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, Color: true, "Movie Name": '$movie_title', genregenres: True });
+ReferenceError: True is not defined
+db1> edit
+Opening an editor...
+
+db1> db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, Color: true, "Movie Name": '$movie_title', genregenres: true });
+[
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'Harry Potter and the Deathly Hallows: Part I'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Cirque du Soleil: Worlds Away' },
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  { genres: 'Fantasy', 'Movie Name': 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', 'Movie Name': 'Jai Ganesh Deva' },
+  {
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  { genres: 'Fantasy', 'Movie Name': 'Aabra Ka Daabra' },
+  { genres: 'Fantasy', 'Movie Name': 'Jai Ganesh Deva' },
+  { genres: 'Fantasy', 'Movie Name': 'Jodi Breakers' }
+]
+db1> edit
+Opening an editor...
+
+db1> db.movies.find({ genres: /^Fantasy$/ }, { _id: 0, color: true, "Movie Name": '$movie_title', genregenres: true });
+[
+  {
+    color: 'Eastman',
+    genres: 'Fantasy',
+    'Movie Name': 'Harry Potter and the Deathly Hallows: Part I'
+  },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'Cirque du Soleil: Worlds Away'
+  },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { color: 'Color', genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'Aabra Ka Daabra'
+  },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'Jai Ganesh Deva'
+  },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'The Curious Case of Benjamin Button'
+  },
+  { color: 'Color', genres: 'Fantasy', 'Movie Name': 'Gayab' },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'Aabra Ka Daabra'
+  },
+  {
+    color: 'Color',
+    genres: 'Fantasy',
+    'Movie Name': 'Jai Ganesh Deva'
+  },
+  { color: 'Color', genres: 'Fantasy', 'Movie Name': 'Jodi Breakers' }
+]
+db1> db.movies.find({}, { _id: 0, color: true, "Movie Name": '$movie_title', genres: true });
+[
+  {
+    color: '',
+    genres: 'Action|Adventure|Fantasy|Sci-Fi',
+    'Movie Name': 'Avatar'
+  },
+  {
+    color: '',
+    genres: 'Documentary',
+    'Movie Name': 'Star Wars: Episode VII - The Force Awakens'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Thriller',
+    'Movie Name': 'Spectre'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': "Pirates of the Caribbean: At World's End"
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Thriller',
+    'Movie Name': 'The Dark Knight Rises'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'John Carter'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Romance',
+    'Movie Name': 'Spider-Man 3'
+  },
+  {
+    color: 'Color',
+    genres: 'Adventure|Animation|Comedy|Family|Fantasy|Musical|Romance',
+    'Movie Name': 'Tangled'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Avengers: Age of Ultron'
+  },
+  {
+    color: 'Color',
+    genres: 'Adventure|Family|Fantasy|Mystery',
+    'Movie Name': 'Harry Potter and the Half-Blood Prince'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Batman v Superman: Dawn of Justice'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Superman Returns'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure',
+    'Movie Name': 'Quantum of Solace'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': "Pirates of the Caribbean: Dead Man's Chest"
+  },
+  {
+    color: '',
+    genres: 'Action|Adventure|Western',
+    'Movie Name': 'The Lone Ranger'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Fantasy|Sci-Fi',
+    'Movie Name': 'Man of Steel'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Family|Fantasy',
+    'Movie Name': 'The Chronicles of Narnia: Prince Caspian'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'The Avengers'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': 'Pirates of the Caribbean: On Stranger Tides'
+  },
+  {
+    color: 'Color',
+    genres: 'Action|Adventure|Comedy|Family|Fantasy|Sci-Fi',
+    'Movie Name': 'Men in Black 3'
+  }
+]
+Type "it" for more
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true });
+[
+  { genres: 'Action|Adventure|Fantasy|Sci-Fi', 'Movie Name': 'Avatar' },
+  {
+    genres: 'Documentary',
+    'Movie Name': 'Star Wars: Episode VII - The Force Awakens'
+  },
+  { genres: 'Action|Adventure|Thriller', 'Movie Name': 'Spectre' },
+  {
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': "Pirates of the Caribbean: At World's End"
+  },
+  { genres: 'Action|Thriller', 'Movie Name': 'The Dark Knight Rises' },
+  { genres: 'Action|Adventure|Sci-Fi', 'Movie Name': 'John Carter' },
+  { genres: 'Action|Adventure|Romance', 'Movie Name': 'Spider-Man 3' },
+  {
+    genres: 'Adventure|Animation|Comedy|Family|Fantasy|Musical|Romance',
+    'Movie Name': 'Tangled'
+  },
+  {
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Avengers: Age of Ultron'
+  },
+  {
+    genres: 'Adventure|Family|Fantasy|Mystery',
+    'Movie Name': 'Harry Potter and the Half-Blood Prince'
+  },
+  {
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Batman v Superman: Dawn of Justice'
+  },
+  {
+    genres: 'Action|Adventure|Sci-Fi',
+    'Movie Name': 'Superman Returns'
+  },
+  { genres: 'Action|Adventure', 'Movie Name': 'Quantum of Solace' },
+  {
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': "Pirates of the Caribbean: Dead Man's Chest"
+  },
+  {
+    genres: 'Action|Adventure|Western',
+    'Movie Name': 'The Lone Ranger'
+  },
+  {
+    genres: 'Action|Adventure|Fantasy|Sci-Fi',
+    'Movie Name': 'Man of Steel'
+  },
+  {
+    genres: 'Action|Adventure|Family|Fantasy',
+    'Movie Name': 'The Chronicles of Narnia: Prince Caspian'
+  },
+  { genres: 'Action|Adventure|Sci-Fi', 'Movie Name': 'The Avengers' },
+  {
+    genres: 'Action|Adventure|Fantasy',
+    'Movie Name': 'Pirates of the Caribbean: On Stranger Tides'
+  },
+  {
+    genres: 'Action|Adventure|Comedy|Family|Fantasy|Sci-Fi',
+    'Movie Name': 'Men in Black 3'
+  }
+]
+Type "it" for more
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[0];
+
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6];
+
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6].movie_title;
+TypeError: Cannot read properties of undefined (reading 'movie_title')
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6].genres;
+TypeError: Cannot read properties of undefined (reading 'genres')
+db1>
+
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6].[genres];
+Uncaught:
+SyntaxError: Unexpected token (1:77)
+
+> 1 | db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6].[genres];
+    |                                                                              ^
+  2 |
+
+db1> db.movies.find({}, { _id: 0,"Movie Name": '$movie_title', genres: true })[6].genres;
+TypeError: Cannot read properties of undefined (reading 'genres')
+db1> db.movies.find().count();
+8481
+db1> db.movies.countDocuments();
+8481
+db1> db.movies.countDocuments() - 1;
+8480
+db1> db.movies.find().skip(countDocuments() - 1);
+ReferenceError: countDocuments is not defined
+db1> db.movies.find().skip(db.movies.countDocuments() - 1);
+[
+  {
+    _id: 8481,
+    relese: '05-08-2006',
+    color: 'Color',
+    director: 'Charles Barton',
+    critic: 135,
+    duration: 108,
+    director_facebook: 644,
+    actor_3_facebook: 190,
+    actor_2_name: 'Guy Williams',
+    actor_1_facebook_likes: '',
+    gross: 51578781,
+    genres: '',
+    actor_1_name: 'Charles Korvin',
+    movie_title: 'Zorro the Avenger',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'Henry Calvin',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'USA',
+    content_rating: 'R',
+    budget: '',
+    title_year: 2006,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Warner Bros.',
+    week1: 133.905,
+    week2: 93.06,
+    week3: 107.64,
+    week4: 199.798,
+    isActive: 1,
+    music: 'William Lava',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 1 }
+  }
+]
+db1>
+
+db1> db.movies.find().skip(db.movies.countDocuments() - 5);
+[
+  {
+    _id: 8477,
+    relese: '21-12-1995',
+    color: 'Color',
+    director: 'Donald Hall',
+    critic: 229,
+    duration: 145,
+    director_facebook: 382,
+    actor_3_facebook: 302,
+    actor_2_name: 'Bud Luckey',
+    actor_1_facebook_likes: '',
+    gross: 50376102,
+    genres: '',
+    actor_1_name: 'Jim Cummings, Craig Ferguson',
+    movie_title: 'Winnie the Pooh',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'John Cleese',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'UK',
+    content_rating: 'U/A',
+    budget: '',
+    title_year: 1995,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Disney',
+    week1: 95.403,
+    week2: 114.79,
+    week3: 101.74,
+    week4: 155.55,
+    isActive: 1,
+    music: 'Kristen Anderson-Lopez,Henry Jackman,Robert Lopez',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 0 }
+  },
+  {
+    _id: 8478,
+    relese: '17-12-1997',
+    color: 'Eastman',
+    director: 'Richard Moore',
+    critic: 158,
+    duration: 104,
+    director_facebook: 1280,
+    actor_3_facebook: 236,
+    actor_2_name: 'Jack McBrayer, Jane Lynch',
+    actor_1_facebook_likes: '',
+    gross: 77669959,
+    genres: '',
+    actor_1_name: 'Sarah Silverman, John C. Reilly',
+    movie_title: 'Wreck-It Ralph',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'Sarah Silverman, John C. Reilly, Jack McBrayer, Jane Lynch',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'USA',
+    content_rating: 'GP',
+    budget: '',
+    title_year: 1997,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Warner Bros.',
+    week1: 120.819,
+    week2: 79.43,
+    week3: 128.69,
+    week4: 174.087,
+    isActive: 1,
+    music: 'Henry Jackman',
+    stars: { '0': 1, '1': 0, '2': 0, '3': 0, '4': 1 }
+  },
+  {
+    _id: 8479,
+    relese: '04-02-2004',
+    color: 'Color',
+    director: 'Satyajit Bhatkal',
+    critic: 190,
+    duration: 97,
+    director_facebook: 652,
+    actor_3_facebook: 263,
+    actor_2_name: 'Darsheel Safary',
+    actor_1_facebook_likes: '',
+    gross: 93093672,
+    genres: '',
+    actor_1_name: 'Anupam Kher',
+    movie_title: 'Zokkomon',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'Manjari Fadnnis',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'USA',
+    content_rating: 'R',
+    budget: '',
+    title_year: 2004,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Paramount',
+    week1: 137.346,
+    week2: 94.4,
+    week3: 118.89,
+    week4: 162.505,
+    isActive: 1,
+    music: 'Shankar Mahadevan, Shankar�Ehsaan�Loy, Loy Mendonsa, Ehsaan Noorani, Hitesh Sonik',
+    stars: { '0': 0, '1': 1, '2': 0, '3': 1, '4': 1 }
+  },
+  {
+    _id: 8480,
+    relese: '01-06-2006',
+    color: 'Color',
+    director: 'Byron Howard, Rich Moore',
+    critic: 'Rich Moore',
+    duration: 178,
+    director_facebook: 966,
+    actor_3_facebook: 187,
+    actor_2_name: 'Ginnifer Goodwin',
+    actor_1_facebook_likes: '',
+    gross: 64260490,
+    genres: '',
+    actor_1_name: 'Jason Bateman',
+    movie_title: 'Zootopia',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'Don Lake',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'USA',
+    content_rating: 'PG-13',
+    budget: '',
+    title_year: 2006,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Paramount',
+    week1: 86.428,
+    week2: 123.36,
+    week3: 101.54,
+    week4: 148.417,
+    isActive: 0,
+    music: 'Michael Giacchino',
+    stars: { '0': 0, '1': 1, '2': 0, '3': 1, '4': 0 }
+  },
+  {
+    _id: 8481,
+    relese: '05-08-2006',
+    color: 'Color',
+    director: 'Charles Barton',
+    critic: 135,
+    duration: 108,
+    director_facebook: 644,
+    actor_3_facebook: 190,
+    actor_2_name: 'Guy Williams',
+    actor_1_facebook_likes: '',
+    gross: 51578781,
+    genres: '',
+    actor_1_name: 'Charles Korvin',
+    movie_title: 'Zorro the Avenger',
+    num_voted_users: '',
+    cast_total_facebook_likes: '',
+    actor_3_name: 'Henry Calvin',
+    facenumber_in_poster: '',
+    plot_keywords: '',
+    movie_imdb_link: '',
+    num_user_for_reviews: '',
+    language: 'English',
+    country: 'USA',
+    content_rating: 'R',
+    budget: '',
+    title_year: 2006,
+    actor_2_facebook_likes: '',
+    imdb_score: '',
+    aspect_ratio: '',
+    movie_facebook_likes: '',
+    'production houses': 'Warner Bros.',
+    week1: 133.905,
+    week2: 93.06,
+    week3: 107.64,
+    week4: 199.798,
+    isActive: 1,
+    music: 'William Lava',
+    stars: { '0': 0, '1': 0, '2': 1, '3': 1, '4': 1 }
+  }
+]
+db1>
+
+db1>
+
+db1> db.movies.distinct('color');
+[ '', 'Black and White', 'Color', 'Eastman' ]
+db1> db.movies.distinct('color').length;
+4
+db1> db.movies.distinct('color').length();
+TypeError: db.movies.dis ... olor').length is not a function
+db1> db.movies.distinct('color').length;
+4
+db1> db.movies.distinct('color');
+[ '', 'Black and White', 'Color', 'Eastman' ]
+db1> db.movies.distinct('color').length;
+4
+db1> db.getCollectionName();
+TypeError: db.getCollectionName is not a function
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'movies' ]
+db1> db.getCollectionNames().length;
+4
+db1> var x = 10;
+
+db1> print(x);
+10
+
+db1> x =x+10;
+20
+db1> print(x);
+20
+
+db1> var doc = {}
+
+db1> var x = {}
+
+db1> print(x);
+{}
+
+db1> x.ename='saleel';
+saleel
+db1> select (x);
+ReferenceError: select is not defined
+db1> print (x);
+{ ename: 'saleel' }
+
+db1> print (x);
+{ ename: 'saleel' }
+
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'movies' ]
+db1> db.a.insertOne(x);
+{
+  acknowledged: true,
+  insertedId: ObjectId("65fa8901c8caee0de0e3d6c0")
+}
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'movies', 'a' ]
+db1> db.a.find();
+[ { _id: ObjectId("65fa8901c8caee0de0e3d6c0"), ename: 'saleel' } ]
+db1> const query = {job:"manager"}
+
+db1> db.emp.find(query, {_id:0, ename:1, job:1});
+[
+  { ename: 'james', job: 'manager' },
+  { ename: 'smith', job: 'manager' },
+  { ename: 'bob', job: 'manager' }
+]
+db1> const z = {job:"manager"}
+
+db1> const z = {job:"programmer"}
+
+db1> db.emp.find(x, {_id:0, ename:1, job:1});
+[
+  { ename: 'saleel', job: 'programmer' },
+  { ename: 'saleel', job: 'analyst' }
+]
+db1> db.emp.find(z, {_id:0, ename:1, job:1});
+[
+  { ename: 'sharmin', job: 'programmer' },
+  { ename: 'saleel', job: 'programmer' },
+  { ename: 'dinesh', job: 'programmer' },
+  { ename: 'dinesh', job: 'programmer' },
+  { ename: 'rudra', job: 'programmer' },
+  { ename: 'pankaj', job: 'programmer' },
+  { ename: 'nitish', job: 'programmer' },
+  { ename: 'anoop', job: 'programmer' },
+  { ename: 'neel', job: 'programmer' }
+]
+db1> db.emp.find(z, z1);
+ReferenceError: z1 is not defined
+db1> const z1 = {_id:false, ename:true, job:true}
+
+db1> const z = {job:"saleman"}
+
+db1> db.emp.find(z, z1);
+
+db1> db.emp.find(z, z1);
+
+db1> const z = {job:"salesman"}
+
+db1> db.emp.find(z, z1);
+[
+  { ename: 'martin', job: 'salesman' },
+  { ename: 'scott', job: 'salesman' },
+  { ename: 'crow', job: 'salesman' },
+  { ename: 'vasant', job: 'salesman' },
+  { ename: 'vasu', job: 'salesman' }
+]
+...
+db1> edit
+Opening an editor...
+
+db1> function f1() { print("hello World"); }
+[Function: f1]
+db1> f1();
+hello World
+
+db1> load("c:\infoway\app.js")
+Error: ENOENT: no such file or directory, open 'c:\Users\Admn\infowayapp.js'
+db1> load(c":\\infoway\\app.js")
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:6)
+
+> 1 | load(c":\\infoway\\app.js")
+    |       ^
+  2 |
+
+db1> load("c:\\infoway\\app.js")
+true
+db1> f2(3,4);
+7
+db1> load("c:\\infoway\\app.js")
+true
+db1> f3('manager');
+
+db1> load("c:\\infoway\\app.js")
+true
+db1> f3('manager');
+[
+  { ename: 'james', job: 'manager' },
+  { ename: 'smith', job: 'manager' },
+  { ename: 'bob', job: 'manager' }
+]
+db1> f3('salesman');
+[
+  { ename: 'martin', job: 'salesman' },
+  { ename: 'scott', job: 'salesman' },
+  { ename: 'crow', job: 'salesman' },
+  { ename: 'vasant', job: 'salesman' },
+  { ename: 'vasu', job: 'salesman' }
+]
+db1> db.emp.find({}, {_id:0, ename:true});
+[
+  { ename: 'james' },    { ename: 'smith' },
+  { ename: 'king' },     { ename: 'jack' },
+  { ename: 'martin' },   { ename: 'scott' },
+  { ename: 'crow' },     { ename: 'blake' },
+  { ename: 'richards' }, { ename: 'peter' },
+  { ename: 'sharmin' },  { ename: 'saleel' },
+  { ename: 'vrushali' }, { ename: 'vasant' },
+  { ename: 'vasu' },     { ename: 'rahul' },
+  { ename: 'bob' },      { ename: 'raju' },
+  { ename: 'neel' },     { ename: 'ramu' }
+]
+Type "it" for more
+db1> load("c:\\infoway\\app.js")
+true
+db1> f4();
+james manager 4700
+smith manager 3400
+king president 5000
+jack accountant 2700
+martin salesman 2900
+scott salesman 2500
+crow salesman 3200
+blake clerk 1200
+richards clerk 1500
+peter analyst 3500
+sharmin programmer 4999
+saleel programmer 2900
+vrushali analyst 4999
+vasant salesman 2200
+vasu salesman 2200
+rahul clerk 1200
+bob manager 4900
+raju administrator 3400
+neel administrator 4200
+ramu clerk 1400
+saleel analyst 3700
+amit administrator 3500
+amit administrator 3500
+dinesh programmer 3500
+dinesh programmer 3500
+rudra programmer 2400
+pankaj programmer 3600
+nitish programmer 1300
+anoop programmer 2300
+arjun auditor 3200
+neel programmer 1800
+amol auditor 3800
+sangita auditor 3100
+gita writer 2150
+sita writer 3755
+priti Computer Programmer 5500
+pinky Computer Programmer 3500
+supriya Computer Programmer 3500
+laxman Computer Programmer 6500
+sangu Computer Programmer 6000
+roselin Computer Programmer 800
+janhavi Computer Programmer 4700
+raj Computer Programmer 7000
+rupal WEB Programmer 6500
+jasu Computer Programmer 5800
+snehal WEB Programmer 2500
+rahsmi Computer Programmer 5600
+bandish WEB Programmer 7000
+madhavi WEB Programmer 6900
+ram WEB Programmer 6200
+db1> load("c:\\infoway\\app.js")
+db1> load("c:\\infoway\\app.js")
+true
+db1>
+Olivia WEB Programmer 9000
+db1>
+Emma WEB Programmer 7000
+db1>
+
+db1> load("c:\\infoway\\app.js")
+true
+db1> f4();
+Olivia WEB Programmer 9000
+Mia WEB Programmer 9500
+
+db1> load("c:\\infoway\\app.js")
+true
+db1> f4();\
+Uncaught:
+SyntaxError: Expecting Unicode escape sequence \uXXXX. (1:6)
+
+> 1 | f4();\
+    |       ^
+  2 |
+
+db1> f4();
+Olivia WEB Programmer 9000
+Mia WEB Programmer 9500
+
+db1> load("c:\\infoway\\app.js")
+true
+db1> f4()
+king president 5000
+priti Computer Programmer 5500
+laxman Computer Programmer 6500
+sangu Computer Programmer 6000
+raj Computer Programmer 7000
+rupal WEB Programmer 6500
+jasu Computer Programmer 5800
+rahsmi Computer Programmer 5600
+bandish WEB Programmer 7000
+madhavi WEB Programmer 6900
+ram WEB Programmer 6200
+aditi WEB Programmer 5700
+neeraj WEB Programmer 7700
+tanvi WEB Programmer 5700
+Emma WEB Programmer 7700
+Olivia WEB Programmer 9000
+Mia WEB Programmer 9500
+Emma WEB Programmer 7000
+Emily WEB Programmer 7600
+
+db1> f4();
+king president 5000
+priti Computer Programmer 5500
+laxman Computer Programmer 6500
+sangu Computer Programmer 6000
+raj Computer Programmer 7000
+rupal WEB Programmer 6500
+jasu Computer Programmer 5800
+rahsmi Computer Programmer 5600
+bandish WEB Programmer 7000
+madhavi WEB Programmer 6900
+ram WEB Programmer 6200
+aditi WEB Programmer 5700
+neeraj WEB Programmer 7700
+tanvi WEB Programmer 5700
+Emma WEB Programmer 7700
+Olivia WEB Programmer 9000
+Mia WEB Programmer 9500
+Emma WEB Programmer 7000
+Emily WEB Programmer 7600
+
+db1>
+
+-----------------------------------------
+
+C:\Users\Admn>mongosh --host=192.168.100.57 --port=27017 db1
+Current Mongosh Log ID: 65fad67f19c270c8dede9dd1
+Connecting to:          mongodb://192.168.100.57:27017/db1?directConnection=true&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-03-20T08:29:46.979+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+db1> db.getCollectionNames();
+[ 'emp', 'dept', 'books', 'movie', 'movies', 'book' ]
+db1> edit
+Opening an editor...
+
+db1> db.customer.insertMany([{ _id: 1, customerID: 1, customerName: 'saleel', customerCity: 'baroda' }, { _id: 2, customerID: 2, customerName: 'sharmin', customerCity: 'pune' }])
+{ acknowledged: true, insertedIds: { '0': 1, '1': 2 } }
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'saleel',
+    customerCity: 'baroda'
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune'
+  }
+]
+db1> edit db.customer.updateMany({}, {})
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 1 }, { $set: { customerName: 'ruhan' } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda'
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune'
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $set: { salary: 10000 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    salary: 10000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    salary: 10000
+  }
+]
+db1> db.customer.updateMany({}, { $set: { phone: [] } })
+{pening an editor...
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> edit
+Opening an editor...
+
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    salary: 10000,
+    phone: []
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    salary: 10000,
+    phone: []
+  }
+]
+db1> db.customer.find();
+[pening an editor...
+  {cknowledged: true,
+    _id: 1,d: null,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    salary: 10000,
+    phone: []
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    salary: 10000,
+    phone: []
+  }
+]
+db1> db.customer.updateMany({}, { $rename: { salary: 'sal' } })
+{pening an editor...
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    sal: 10000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 10000
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({}, { $rename: { sal: 'salary' } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    salary: 10000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 10000
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({}, { $rename: { salary: sal } })
+ReferenceError: sal is not defined
+db1> db.customer.updateOne({}, { $rename: { salary: 'sal' } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    sal: 10000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 10000
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $inc: { sal: 1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    sal: 10001
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 10001
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $inc: { sal: 999 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    sal: 11000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 11000
+  }
+]
+db1> db.customer.updateMany({}, { $inc: { sal: -1000 } })
+{pening an editor...
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [],
+    sal: 10000
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [],
+    sal: 10000
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $unset: { sal: :true } })
+Uncaught:
+SyntaxError: Unexpected token (1:44)
+
+> 1 | db.customer.updateMany({}, { $unset: { sal: :true } })
+    |                                             ^
+  2 |
+
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $unset: { sal: true } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: []
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: []
+  }
+]
+db1> db.customer.find();
+[pening an editor...
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: []
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: []
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 1 }, { $push: { phone: 55555 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: []
+  }
+]
+db1> db.customer.updateOne({ customerID: 2 }, { $push: { phone: [111, 222] } })
+{pening an editor...
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ [ 111, 222 ] ]
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 2 }, { $set: { phone: [] } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: []
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 2 }, { $push: { phone: { $each: [111, 222] } } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ 111, 222 ]
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 2 }, { $push: { phone: { $each: [333, 444] } } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ 111, 222, 333, 444 ]
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 2 }, { $push: { phone: { $each: [000], $position: 0 } } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ 0, 111, 222, 333, 444 ]
+  }
+]
+db1> db.customer.updateOne({ customerID: 2 }, { $push: { phone: { $each: [-1, -2], $position: 0 } } })
+{pening an editor...
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [
+       -1,  -2,   0, 111,
+      222, 333, 444
+    ]
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateOne({ customerID: 2 }, { $pop: { phone: 1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ -1, -2, 0, 111, 222, 333 ]
+  }
+]
+db1> db.customer.find();
+[
+  {cknowledged: true,
+    _id: 1,d: null,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ -1, -2, 0, 111, 222 ]
+  }
+]
+db1> db.customer.updateOne({ customerID: 2 }, { $pop: { phone: -1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.updateOne({ customerID: 2 }, { $pop: { phone: -1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ 0, 111, 222 ]
+  }
+]
+db1> db.customer.updateOne({ customerID: 2 }, { $pop: { phone: -1 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    phone: [ 55555 ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    phone: [ 111, 222 ]
+  }
+]
+db1> edit
+Opening an editor...
+
+db1> db.customer.updateMany({}, { $unset: { phone: true } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda'
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune'
+  }
+]
+db1> db.orders.insertMany([{ _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 }, { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 }, { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 }, { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 }, { _id: 5, customecustomerID: 2, orderDay: 'Saturday', orderAmount: 1300 }])
+{
+  acknowledged: true,
+  insertedIds: { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+}
+db1> db.customer.find();
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda'
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune'
+  }
+]
+db1> db.orders.find();
+[
+  { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+  { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 },
+  { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 },
+  { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 },
+  { _id: 5, customerID: 2, orderDay: 'Saturday', orderAmount: 1300 }
+]
+db1> db.customer.aggregate({ $lookup:{ from: "orders" localField:"customerID" foreignField:"customerID" as:"orderDetails" } })
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:49)
+
+> 1 | db.customer.aggregate({ $lookup:{ from: "orders" localField:"customerID" foreignField:"customerID" as:"orderDetails" } })
+    |                                                  ^
+  2 |
+
+db1> edit
+Opening an editor...
+
+db1> db.customer.aggregate({ $lookup: { from: "orders", localField: "customerID", foreignField: "customerID", as: "orderDetails" } })
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    orderDetails: [
+      { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+      { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 }
+    ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    orderDetails: [
+      { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 },
+      { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 },
+      {
+        _id: 5,
+        customerID: 2,
+        orderDay: 'Saturday',
+        orderAmount: 1300
+      }
+    ]
+  }
+]
+db1> edit db.customer.aggregate({ $lookup: { from: "orders", localField: "customerID", foreignField: "customerID", as: "orderDetails" } })
+Opening an editor...
+
+db1> db.customer.aggregate({ $lookup: { from: "orders", localField: "customerID", foreignField: "customerID", as: "orderDetails" } })
+[
+  {
+    _id: 1,
+    customerID: 1,
+    customerName: 'ruhan',
+    customerCity: 'baroda',
+    orderDetails: [
+      { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+      { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 }
+    ]
+  },
+  {
+    _id: 2,
+    customerID: 2,
+    customerName: 'sharmin',
+    customerCity: 'pune',
+    orderDetails: [
+      { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 },
+      { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 },
+      {
+        _id: 5,
+        customerID: 2,
+        orderDay: 'Saturday',
+        orderAmount: 1300
+      }
+    ]
+  }
+]
+db1>
+
+db1> db.orders.find();
+[
+  { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+  { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 },
+  { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 },
+  { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 },
+  { _id: 5, customerID: 2, orderDay: 'Saturday', orderAmount: 1300 }
+]
+db1> db.orders.deleteOne({_id:5};)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:27)
+
+> 1 | db.orders.deleteOne({_id:5};)
+    |                            ^
+  2 |
+
+db1> db.orders.deleteOne({_id:5});
+{ acknowledged: true, deletedCount: 1 }
+db1> db.orders.find();
+[
+  { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+  { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 },
+  { _id: 3, customerID: 2, orderDay: 'Tuesday', orderAmount: 450 },
+  { _id: 4, customerID: 2, orderDay: 'Sunday', orderAmount: 1400 }
+]
+db1> edit
+Opening an editor...
+
+db1> db.orders.deletMany({ _id: { $gte: 3 } })
+TypeError: db.orders.deletMany is not a function
+db1> edit
+Opening an editor...
+
+db1> db.orders.deleteMany({ _id: { $gte: 3 } })
+{ acknowledged: true, deletedCount: 2 }
+db1> db.orders.find();
+[
+  { _id: 1, customerID: 1, orderDay: 'Monday', orderAmount: 5000 },
+  { _id: 2, customerID: 1, orderDay: 'Tuesday', orderAmount: 1200 }
+]
+db1> db.orders.deleteMany({});
+{ acknowledged: true, deletedCount: 0 }
+db1> db.orders.find();
+
+db1> edit
+Opening an editor...
+
+db1> db.customer.deleteMany({})
+{ acknowledged: true, deletedCount: 2 }
+db1> db.customer.find();
+
+db1> db.customer.deleteMany({})

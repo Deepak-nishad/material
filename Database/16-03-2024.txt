@@ -1,0 +1,1123 @@
+Microsoft Windows [Version 10.0.19045.4170]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 ==user=saleel --password=saleel
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1045 (28000): Access denied for user 'ODBC'@'192.168.100.57' (using password: YES)
+
+C:\Users\Admn>mysql --host=192.168.100.80 --port=3306 --user=saleel --password=saleel saleel
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 44
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select ename, job, sal from emp where job='manager';
++---------+---------+------+
+| ename   | job     | sal  |
++---------+---------+------+
+| JONES   | MANAGER | 2975 |
+| BLAKE   | MANAGER | 2850 |
+| CLARK   | MANAGER | 2450 |
+| HOFFMAN | MANAGER | 4150 |
+| ALEX    | MANAGER | 1250 |
++---------+---------+------+
+5 rows in set (0.01 sec)
+
+mysql> select ename, job, sal from emp where empno=7788;
++-------+---------+------+
+| ename | job     | sal  |
++-------+---------+------+
+| SCOTT | ANALYST | 3000 |
++-------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where job='manager';
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where empno=7788;
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> create index ind1 on emp(job);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  | MUL | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where job='manager';
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | ref  | ind1          | ind1 | 83      | const |    5 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql>
+mysql>
+mysql> show index from emp;
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name               | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| emp   |          0 | PRIMARY                |            1 | EMPNO       | A         |          28 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_deptno |            1 | DEPTNO      | A         |           4 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_mgr    |            1 | MGR         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | ind1                   |            1 | JOB         | A         |           8 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+4 rows in set (0.01 sec)
+
+mysql> drop index ind1 from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> drop index ind1 on emp;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select ename, job, sal from emp where job='manager';
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain dept
+    -> ;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   | PRI | NULL    |       |
+| DNAME  | varchar(12) | YES  |     | NULL    |       |
+| LOC    | varchar(10) | YES  |     | NULL    |       |
+| PWD    | varchar(20) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create unique index ind1 on emp(job);
+ERROR 1062 (23000): Duplicate entry 'Compliance officers' for key 'emp.ind1'
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select count(distinct *) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from emp' at line 1
+mysql> select count(distinct ename) from emp;
++-----------------------+
+| count(distinct ename) |
++-----------------------+
+|                    28 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> create unique index ind1 on emp(ename);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  | UNI | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  |     | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql> show index from emp;
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table | Non_unique | Key_name               | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| emp   |          0 | PRIMARY                |            1 | EMPNO       | A         |          28 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          0 | ind1                   |            1 | ENAME       | A         |          28 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_deptno |            1 | DEPTNO      | A         |           4 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| emp   |          1 | EMP_FOREIGN_KEY_mgr    |            1 | MGR         | A         |           9 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++-------+------------+------------------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> deop index ind1 on emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deop index ind1 on emp' at line 1
+mysql> drop index ind1 on emp;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select ename, job, sal from emp where job='manager';
++---------+---------+------+
+| ename   | job     | sal  |
++---------+---------+------+
+| JONES   | MANAGER | 2975 |
+| BLAKE   | MANAGER | 2850 |
+| CLARK   | MANAGER | 2450 |
+| HOFFMAN | MANAGER | 4150 |
+| ALEX    | MANAGER | 1250 |
++---------+---------+------+
+5 rows in set (0.00 sec)
+
+mysql> create index ind1 on emp(job, ename);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| EMPNO     | int         | NO   | PRI | NULL    |       |
+| ENAME     | varchar(12) | YES  |     | NULL    |       |
+| GENDER    | char(1)     | YES  |     | NULL    |       |
+| JOB       | varchar(20) | YES  | MUL | NULL    |       |
+| MGR       | int         | YES  | MUL | NULL    |       |
+| HIREDATE  | date        | YES  |     | NULL    |       |
+| SAL       | int         | YES  |     | NULL    |       |
+| COMM      | int         | YES  |     | NULL    |       |
+| DEPTNO    | int         | NO   | MUL | NULL    |       |
+| BONUSID   | int         | YES  |     | NULL    |       |
+| USER NAME | varchar(20) | YES  |     | NULL    |       |
+| PWD       | varchar(20) | YES  |     | NULL    |       |
+| PHONE     | varchar(45) | YES  |     | NULL    |       |
+| isActive  | tinyint(1)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select ename, job, sal from emp where ename='blake';
++-------+---------+------+
+| ename | job     | sal  |
++-------+---------+------+
+| BLAKE | MANAGER | 2850 |
++-------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where ename='blake';
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select ename, job, sal from emp where ename='blake' and job='manager';
++-------+---------+------+
+| ename | job     | sal  |
++-------+---------+------+
+| BLAKE | MANAGER | 2850 |
++-------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where ename='blake' and job='manager';
++----+-------------+-------+------------+------+---------------+------+---------+-------------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref         | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | ref  | ind1          | ind1 | 134     | const,const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where job='manager';
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | emp   | NULL       | ref  | ind1          | ind1 | 83      | const |    5 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select ename, job, sal from emp where sal between 1000 and 3000;
++----------+---------------------+------+
+| ename    | job                 | sal  |
++----------+---------------------+------+
+| GITA     | Compliance officers | 1750 |
+| VRUSHALI | Compliance officers | 1750 |
+| SHARMIN  | Public Relation     | 1750 |
+| BANDISH  | Public Relation     | 1750 |
+| THOMAS   | CLERK               | 1750 |
+| ALLEN    | SALESMAN            | 1600 |
+| WARD     | SALESMAN            | 1250 |
+| JONES    | MANAGER             | 2975 |
+| MARTIN   | SALESMAN            | 1250 |
+| BLAKE    | MANAGER             | 2850 |
+| CLARK    | MANAGER             | 2450 |
+| SCOTT    | ANALYST             | 3000 |
+| TURNER   | SALESMAN            | 1500 |
+| ADAMS    | CLERK               | 1100 |
+| FORD     | ANALYST             | 3000 |
+| GRASS    | SALESMAN            | 2575 |
+| MILLER   | CLERK               | 1300 |
+| AARUSH   | SALESMAN            | 1350 |
+| ALEX     | MANAGER             | 1250 |
+| NATASHA  | CLERK               | 1750 |
+| SANGITA  | Compliance officers | 1750 |
+| SUPRIYA  | ANALYST             | 1750 |
++----------+---------------------+------+
+22 rows in set (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where sal between 1000 and 3000;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | NULL          | NULL | NULL    | NULL |   28 |    11.11 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> create index ind2 on emp(sal);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select ename, job, sal from emp where sal between 1000 and 3000;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | ind2          | NULL | NULL    | NULL |   28 |    78.57 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where sal >1000 and sal<3000;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | emp   | NULL       | ALL  | ind2          | NULL | NULL    | NULL |   28 |    71.43 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where sal=800 and sal=3000;
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+------------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra            |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+------------------+
+|  1 | SIMPLE      | NULL  | NULL       | NULL | NULL          | NULL | NULL    | NULL | NULL |     NULL | Impossible WHERE |
++----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select ename, job, sal from emp where sal=800 or sal=3000;
++----+-------------+-------+------------+-------+---------------+------+---------+------+------+----------+-----------------------+
+| id | select_type | table | partitions | type  | possible_keys | key  | key_len | ref  | rows | filtered | Extra                 |
++----+-------------+-------+------------+-------+---------------+------+---------+------+------+----------+-----------------------+
+|  1 | SIMPLE      | emp   | NULL       | range | ind2          | ind2 | 5       | NULL |    3 |   100.00 | Using index condition |
++----+-------------+-------+------------+-------+---------------+------+---------+------+------+----------+-----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select ename, job, sal from emp where sal=800 or sal=3000;
++-------+---------+------+
+| ename | job     | sal  |
++-------+---------+------+
+| SMITH | CLERK   |  800 |
+| SCOTT | ANALYST | 3000 |
+| FORD  | ANALYST | 3000 |
++-------+---------+------+
+3 rows in set (0.00 sec)
+
+mysql> create table t1(c1 int, c2 int , c3 int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create view v7 as select * from t1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show create view v7;
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                              | character_set_client | collation_connection |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v7   | CREATE ALGORITHM=UNDEFINED DEFINER=`saleel`@`%` SQL SECURITY DEFINER VIEW `v7` AS select `t1`.`c1` AS `c1`,`t1`.`c2` AS `c2`,`t1`.`c3` AS `c3` from `t1` | cp850                | cp850_general_ci     |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from v7;
+Empty set (0.00 sec)
+
+mysql> alter table t1 drop column c3;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show create view v7;
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                              | character_set_client | collation_connection |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v7   | CREATE ALGORITHM=UNDEFINED DEFINER=`saleel`@`%` SQL SECURITY DEFINER VIEW `v7` AS select `t1`.`c1` AS `c1`,`t1`.`c2` AS `c2`,`t1`.`c3` AS `c3` from `t1` | cp850                | cp850_general_ci     |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> desc t1;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from v7;
+ERROR 1356 (HY000): View 'saleel.v7' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them
+mysql>
+mysql> alter table t1 add column c3 char(10);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from v7;
+Empty set (0.00 sec)
+
+mysql> show create view v7;
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                              | character_set_client | collation_connection |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v7   | CREATE ALGORITHM=UNDEFINED DEFINER=`saleel`@`%` SQL SECURITY DEFINER VIEW `v7` AS select `t1`.`c1` AS `c1`,`t1`.`c2` AS `c2`,`t1`.`c3` AS `c3` from `t1` | cp850                | cp850_general_ci     |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table t1 add column c4 char(10);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc t1;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| c1    | int      | YES  |     | NULL    |       |
+| c2    | int      | YES  |     | NULL    |       |
+| c3    | char(10) | YES  |     | NULL    |       |
+| c4    | char(10) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc v7
+    -> ;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| c1    | int      | YES  |     | NULL    |       |
+| c2    | int      | YES  |     | NULL    |       |
+| c3    | char(10) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> show create view v7;
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View | Create View                                                                                                                                              | character_set_client | collation_connection |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| v7   | CREATE ALGORITHM=UNDEFINED DEFINER=`saleel`@`%` SQL SECURITY DEFINER VIEW `v7` AS select `t1`.`c1` AS `c1`,`t1`.`c2` AS `c2`,`t1`.`c3` AS `c3` from `t1` | cp850                | cp850_general_ci     |
++------+----------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into t1 values(1,1,1,1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from t1;
++------+------+------+------+
+| c1   | c2   | c3   | c4   |
++------+------+------+------+
+|    1 |    1 | 1    | 1    |
++------+------+------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from v7;
++------+------+------+
+| c1   | c2   | c3   |
++------+------+------+
+|    1 |    1 | 1    |
++------+------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
+|      3 | 3          | 3        | 3          |
+|      5 | 5          | 5        | NULL       |
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
++--------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> delimiter $
+mysql> select * from dept;
+    -> $
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
+|      3 | 3          | 3        | 3          |
+|      5 | 5          | 5        | NULL       |
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
++--------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> delimiter ;
+mysql> select * from dept;
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
+|      3 | 3          | 3        | 3          |
+|      5 | 5          | 5        | NULL       |
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
++--------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
+|      3 | 3          | 3        | 3          |
+|      5 | 5          | 5        | NULL       |
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
++--------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from dept where false;
+Empty set (0.00 sec)
+
+mysql> select sum(Sal) from emp;
++----------+
+| sum(Sal) |
++----------+
+|    60700 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select max(Sal) from emp;
++----------+
+| max(Sal) |
++----------+
+|     5000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> set @x :='manager';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @y =10;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @x;
++---------+
+| @x      |
++---------+
+| manager |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select @y;
++------+
+| @y   |
++------+
+|   10 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select ename, job from emp where job=@x;
++---------+---------+
+| ename   | job     |
++---------+---------+
+| ALEX    | MANAGER |
+| BLAKE   | MANAGER |
+| CLARK   | MANAGER |
+| HOFFMAN | MANAGER |
+| JONES   | MANAGER |
++---------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select ename, job from emp where deptno=@y;
++--------+-----------+
+| ename  | job       |
++--------+-----------+
+| AARAV  | CLERK     |
+| THOMAS | CLERK     |
+| CLARK  | MANAGER   |
+| KING   | PRESIDENT |
+| MILLER | CLERK     |
++--------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select max(Sal) into @z from emp;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @x, @y, @z;
++---------+------+------+
+| @x      | @y   | @z   |
++---------+------+------+
+| manager |   10 | 5000 |
++---------+------+------+
+1 row in set (0.00 sec)
+
+mysql> select ename, job from emp where sal=@z;
++-------+----------------+
+| ename | job            |
++-------+----------------+
+| KING  | PRESIDENT      |
+| FRED  | vice PRESIDENT |
++-------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> set @a;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> set @a=-1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+mysql> source c:\infoway\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source c:\infoway\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source c:\infoway\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source c:\infoway\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++-------------+
+| Hello World |
++-------------+
+| Hello World |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source c:\infoway\pl1.sql
+ERROR 1304 (42000): PROCEDURE pro1 already exists
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1();
++-------------+
+| R1          |
++-------------+
+| Hello World |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro2();
++-------+
+| x + y |
++-------+
+|   300 |
++-------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '--select x + y;
+        set @z := x + y;
+
+
+end' at line 8
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro2();
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @z;
++------+
+| @z   |
++------+
+|  300 |
++------+
+1 row in set (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro3(1,2);
++------+
+| x+y  |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro4(5,6);
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE saleel.pro4; expected 3, got 2
+mysql> call pro4(5,6, @a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|   11 |
++------+
+1 row in set (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro4(5,6, @a, @b);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @z1, @z2;
++------------+------------+
+| @z1        | @z2        |
++------------+------------+
+| NULL       | NULL       |
++------------+------------+
+1 row in set (0.00 sec)
+
+mysql> select @a, @b;
++------+------+
+| @a   | @b   |
++------+------+
+|   11 |   30 |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> call pro4(54,65, @a, @b);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a, @b;
++------+------+
+| @a   | @b   |
++------+------+
+|  119 | 3510 |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> source c:\infoway\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @q := 4;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro5(@q);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @q;
++------+
+| @q   |
++------+
+|   16 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro5(@q);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @q;
++------+
+| @q   |
++------+
+|  256 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro5(@q);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @q;
++-------+
+| @q    |
++-------+
+| 65536 |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select  ename from emp;
++----------+
+| ename    |
++----------+
+| FORD     |
+| SCOTT    |
+| SUPRIYA  |
+| AARAV    |
+| ADAMS    |
+| JAMES    |
+| MILLER   |
+| NATASHA  |
+| SMITH    |
+| THOMAS   |
+| GITA     |
+| SANGITA  |
+| VRUSHALI |
+| ALEX     |
+| BLAKE    |
+| CLARK    |
+| HOFFMAN  |
+| JONES    |
+| KING     |
+| BANDISH  |
+| SHARMIN  |
+| AARUSH   |
+| ALLEN    |
+| GRASS    |
+| MARTIN   |
+| TURNER   |
+| WARD     |
+| FRED     |
++----------+
+28 rows in set (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp,(select @cnt:=0);
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> select @cnt := @cnt + 1 R1, ename from emp,(select @cnt:=0)t1;
++------+----------+
+| R1   | ename    |
++------+----------+
+|    1 | FORD     |
+|    2 | SCOTT    |
+|    3 | SUPRIYA  |
+|    4 | AARAV    |
+|    5 | ADAMS    |
+|    6 | JAMES    |
+|    7 | MILLER   |
+|    8 | NATASHA  |
+|    9 | SMITH    |
+|   10 | THOMAS   |
+|   11 | GITA     |
+|   12 | SANGITA  |
+|   13 | VRUSHALI |
+|   14 | ALEX     |
+|   15 | BLAKE    |
+|   16 | CLARK    |
+|   17 | HOFFMAN  |
+|   18 | JONES    |
+|   19 | KING     |
+|   20 | BANDISH  |
+|   21 | SHARMIN  |
+|   22 | AARUSH   |
+|   23 | ALLEN    |
+|   24 | GRASS    |
+|   25 | MARTIN   |
+|   26 | TURNER   |
+|   27 | WARD     |
+|   28 | FRED     |
++------+----------+
+28 rows in set, 2 warnings (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp;
++------+----------+
+| R1   | ename    |
++------+----------+
+|   29 | FORD     |
+|   30 | SCOTT    |
+|   31 | SUPRIYA  |
+|   32 | AARAV    |
+|   33 | ADAMS    |
+|   34 | JAMES    |
+|   35 | MILLER   |
+|   36 | NATASHA  |
+|   37 | SMITH    |
+|   38 | THOMAS   |
+|   39 | GITA     |
+|   40 | SANGITA  |
+|   41 | VRUSHALI |
+|   42 | ALEX     |
+|   43 | BLAKE    |
+|   44 | CLARK    |
+|   45 | HOFFMAN  |
+|   46 | JONES    |
+|   47 | KING     |
+|   48 | BANDISH  |
+|   49 | SHARMIN  |
+|   50 | AARUSH   |
+|   51 | ALLEN    |
+|   52 | GRASS    |
+|   53 | MARTIN   |
+|   54 | TURNER   |
+|   55 | WARD     |
+|   56 | FRED     |
++------+----------+
+28 rows in set, 1 warning (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp;
++------+----------+
+| R1   | ename    |
++------+----------+
+|   57 | FORD     |
+|   58 | SCOTT    |
+|   59 | SUPRIYA  |
+|   60 | AARAV    |
+|   61 | ADAMS    |
+|   62 | JAMES    |
+|   63 | MILLER   |
+|   64 | NATASHA  |
+|   65 | SMITH    |
+|   66 | THOMAS   |
+|   67 | GITA     |
+|   68 | SANGITA  |
+|   69 | VRUSHALI |
+|   70 | ALEX     |
+|   71 | BLAKE    |
+|   72 | CLARK    |
+|   73 | HOFFMAN  |
+|   74 | JONES    |
+|   75 | KING     |
+|   76 | BANDISH  |
+|   77 | SHARMIN  |
+|   78 | AARUSH   |
+|   79 | ALLEN    |
+|   80 | GRASS    |
+|   81 | MARTIN   |
+|   82 | TURNER   |
+|   83 | WARD     |
+|   84 | FRED     |
++------+----------+
+28 rows in set, 1 warning (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp, (select @cnt:=0) T;
++------+----------+
+| R1   | ename    |
++------+----------+
+|    1 | FORD     |
+|    2 | SCOTT    |
+|    3 | SUPRIYA  |
+|    4 | AARAV    |
+|    5 | ADAMS    |
+|    6 | JAMES    |
+|    7 | MILLER   |
+|    8 | NATASHA  |
+|    9 | SMITH    |
+|   10 | THOMAS   |
+|   11 | GITA     |
+|   12 | SANGITA  |
+|   13 | VRUSHALI |
+|   14 | ALEX     |
+|   15 | BLAKE    |
+|   16 | CLARK    |
+|   17 | HOFFMAN  |
+|   18 | JONES    |
+|   19 | KING     |
+|   20 | BANDISH  |
+|   21 | SHARMIN  |
+|   22 | AARUSH   |
+|   23 | ALLEN    |
+|   24 | GRASS    |
+|   25 | MARTIN   |
+|   26 | TURNER   |
+|   27 | WARD     |
+|   28 | FRED     |
++------+----------+
+28 rows in set, 2 warnings (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp, (select @cnt:=0) T;
++------+----------+
+| R1   | ename    |
++------+----------+
+|    1 | FORD     |
+|    2 | SCOTT    |
+|    3 | SUPRIYA  |
+|    4 | AARAV    |
+|    5 | ADAMS    |
+|    6 | JAMES    |
+|    7 | MILLER   |
+|    8 | NATASHA  |
+|    9 | SMITH    |
+|   10 | THOMAS   |
+|   11 | GITA     |
+|   12 | SANGITA  |
+|   13 | VRUSHALI |
+|   14 | ALEX     |
+|   15 | BLAKE    |
+|   16 | CLARK    |
+|   17 | HOFFMAN  |
+|   18 | JONES    |
+|   19 | KING     |
+|   20 | BANDISH  |
+|   21 | SHARMIN  |
+|   22 | AARUSH   |
+|   23 | ALLEN    |
+|   24 | GRASS    |
+|   25 | MARTIN   |
+|   26 | TURNER   |
+|   27 | WARD     |
+|   28 | FRED     |
++------+----------+
+28 rows in set, 2 warnings (0.00 sec)
+
+mysql> select @cnt := @cnt + 1 R1, ename from emp, (select @cnt:=0) T;
++------+----------+
+| R1   | ename    |
++------+----------+
+|    1 | FORD     |
+|    2 | SCOTT    |
+|    3 | SUPRIYA  |
+|    4 | AARAV    |
+|    5 | ADAMS    |
+|    6 | JAMES    |
+|    7 | MILLER   |
+|    8 | NATASHA  |
+|    9 | SMITH    |
+|   10 | THOMAS   |
+|   11 | GITA     |
+|   12 | SANGITA  |
+|   13 | VRUSHALI |
+|   14 | ALEX     |
+|   15 | BLAKE    |
+|   16 | CLARK    |
+|   17 | HOFFMAN  |
+|   18 | JONES    |
+|   19 | KING     |
+|   20 | BANDISH  |
+|   21 | SHARMIN  |
+|   22 | AARUSH   |
+|   23 | ALLEN    |
+|   24 | GRASS    |
+|   25 | MARTIN   |
+|   26 | TURNER   |
+|   27 | WARD     |
+|   28 | FRED     |
++------+----------+
+28 rows in set, 2 warnings (0.00 sec)
+
+mysql> select * from dept;
++--------+------------+----------+------------+
+| DEPTNO | DNAME      | LOC      | PWD        |
++--------+------------+----------+------------+
+|      1 | 1          | 1        | 1          |
+|      2 | 2          | 2        | 2          |
+|      3 | 3          | 3        | 3          |
+|      5 | 5          | 5        | NULL       |
+|     10 | ACCOUNTING | NEW YORK | r50mpm     |
+|     20 | RESEARCH   | DALLAS   | a12recmpm  |
+|     30 | SALES      | CHICAGO  | sales@2017 |
+|     40 | OPERATIONS | BOSTON   | opr@123    |
+|     50 | HR         | PUNE     | PUN@8877   |
++--------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> insert into dept select max(deptno) + 1 from dept, 'saleel','saleel','saleel';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''saleel','saleel','saleel'' at line 1
+mysql> insert into dept (select max(deptno) + 1 from dept), 'saleel','saleel','saleel';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', 'saleel','saleel','saleel'' at line 1
+mysql> insert into dept values((select max(deptno) + 1 from dept), 'saleel','saleel','saleel');
+ERROR 1093 (HY000): You can't specify target table 'dept' for update in FROM clause
+mysql>
+mysql>
+mysql>
+mysql> insert into dept values((select max(deptno) + 1 from dept), 'saleel','saleel','saleel');
