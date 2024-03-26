@@ -203,42 +203,42 @@
 -- delimiter ;    
 
 
-create table log (id int auto_increment primary key , curr_date datetime, curr_time datetime, message varchar(30));
+-- create table log (id int auto_increment primary key , curr_date datetime, curr_time datetime, message varchar(30));
 
-drop procedure if exists checkUser;
-delimiter $
-    create procedure checkUser ( in emailID varchar(25))
-begin 
-    declare user_name varchar(20); 
-    declare user_password varchar(20); 
-    select username, password into user_name, user_password from login where email=emailID;
-if user_name is not null and user_password is not null then
-    select user_name, user_password as message;
-else
-    insert into log (curr_date, curr_time, message) values((select current_date), (select current_time),"Record not found");
-    select * from log;
-end if;
-end $
-delimiter ;
+-- drop procedure if exists checkUser;
+-- delimiter $
+--     create procedure checkUser ( in emailID varchar(25))
+-- begin 
+--     declare user_name varchar(20); 
+--     declare user_password varchar(20); 
+--     select username, password into user_name, user_password from login where email=emailID;
+-- if user_name is not null and user_password is not null then
+--     select user_name, user_password as message;
+-- else
+--     insert into log (curr_date, curr_time, message) values((select current_date), (select current_time),"Record not found");
+--     select * from log;
+-- end if;
+-- end $
+-- delimiter ;
 
-drop procedure if exists getQualification ;
-delimiter $
-    create procedure getQualification (in id int )
-BEGIN
-    declare x int;
-    set x=id;
-if x is not null then
-    select  s.*, sq.name from student s join student_qualifications sq on x=s.id and s.id=sq.studentId ;
-else
-select "Record not found";
-end if;
-end $
-delimiter ;
+-- drop procedure if exists getQualification ;
+-- delimiter $
+--     create procedure getQualification (in id int )
+-- BEGIN
+--     declare x int;
+--     set x=id;
+-- if x is not null then
+--     select  s.*, sq.name from student s join student_qualifications sq on x=s.id and s.id=sq.studentId ;
+-- else
+-- select "Record not found";
+-- end if;
+-- end $
+-- delimiter ;
 
-drop procedure if exists addstudent ;
-delimiter $
-    create procedure addstudent ()
-BEGIN
+-- drop procedure if exists addstudent ;
+-- delimiter $
+--     create procedure addstudent ()
+-- BEGIN
 
 
 
