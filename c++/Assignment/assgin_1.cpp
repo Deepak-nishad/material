@@ -11,7 +11,7 @@ int main()
     }
     else if (n > 9)
     {
-        cout << "Greate then 9" << endl;
+        cout << "Greater then 9" << endl;
     }
     else
     {
