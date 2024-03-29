@@ -16,9 +16,13 @@ int main() {
 
 
 
- float per = 250/ 3.0;
- cout<< per;
+// float per = 250/ 3.0;
+// cout<< per;
 //cout<<(8%10);
+
+int a=5, b=5;
+int c=a^b;
+cout<<c;
 
 }
 

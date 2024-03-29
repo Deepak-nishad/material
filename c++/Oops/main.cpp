@@ -3,6 +3,7 @@ using namespace std;
 #include "date_class.h"
 #include "time_class.h"
 #include "student.h"
+#include "scope.h"
 int main()
 {
     // date obj1;
@@ -15,7 +16,21 @@ int main()
     // time_class tc;
     // tc.set_time(3, 11, 40);
     // tc.display();
-    student s1(50, 80, 85, 90);
-    s1.calculate_grade();
-    s1.get_grade();
+
+    // student s1(50, 80, 85, 90);
+    // s1.calculate_grade();
+    // s1.get_grade();
+
+    // circle c(4.5f);
+    // cout << "\n\nGlobal var = " << gl_var;
+    // i = 500;
+    // c.display();
+
+    cout << "\n\nGlobal var = " << gl_var;
+    circle c2(6.5f);
+    // c1.changeColor("Black");
+
+    // c1.display();
+
+    c2.display();
 }
