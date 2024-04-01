@@ -55,5 +55,8 @@ int main()
 
     BankAcc ba;
     BankAcc baa(34931624, 100000, "Deepak", "saving");
+    baa.withdraw(90000);
+    baa.deposit(90000);
+
     baa.display();
 }
