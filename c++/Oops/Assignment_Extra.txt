@@ -1,0 +1,87 @@
+1
+Declare a class item having
+  char itemcode[6];
+  char itemname [20];
+  float rate;
+
+  Write following public functions 
+  
+  constructor and parameterized constructor
+  getters and setters for all class members
+  display to display details of object
+
+Write main, create 2-3 objects of class item and call different functions on those objects
+
+
+
+2. 
+Write a Program to overload following functions and execute them –
+void display(char []);  // print the string passed as argument
+void display(char [], char []);  // print the strings passed as arguments
+
+
+int main()
+{
+   char s[10] = "Prudent";
+   char s1[10] = "Academy";
+   display(s);
+   display(s,s1);    	
+   return 0;
+}
+   
+   
+Output of this program should be -
+
+ Prudent
+ Prudent Academy
+
+
+
+3.
+
+1. Define a class to represent a bank account. Include the following members:
+Data Members
+a. Name of the depositor
+b. Account number
+c. Type of account
+d. Balance amount in the account
+
+Member functions
+a. To assign initial values
+b. To deposit an amount
+c. To withdraw an amount after checking the balance
+d. To display name and balance
+
+
+class BankAcc
+{
+	int balance;
+	int Acc_no;
+	string  name;
+	string type;
+
+public :
+	  BankAcc();
+	  BankAcc(int,int,string,string);
+	  void display();
+	  void withdraw(int);
+	  void deposit(int);
+	  void init(int,int,string,string);
+	  ~BankAcc();
+
+};
+
+
+
+
+
+
+4. Write a class CTime and have appropriate data members and member function. The class should do the following:
+a. Initialize time to 12:00:00
+b. Accept time from user and set it to object
+c. Add number of hours to time
+d. Display time in 24hrs format
+e. Compare two time objects
+
+
+
