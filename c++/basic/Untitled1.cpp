@@ -1,14 +1,67 @@
 #include <iostream>
 using namespace std;
-#include "date_class.h"
-#include "time_class.h"
-#include "student.h"
-#include "scope.h"
-#include "mycomplex.h"
-#include "operator.h"
-#include "2_assignment.h"
-#include "1_assignment.h"
-#include "3_assignment.h"
+
+class BankAcc
+{
+    string name;
+    int Acc_no;
+    string type;
+    int balance;
+
+public:
+    BankAcc()
+    {
+        balance = 0;
+        Acc_no = 0;
+        type = "....";
+        name = "...";
+    }
+    void deposit(int amount)
+    {
+        this->balance = this->balance + amount;
+    }
+    BankAcc(int acountno, int bal, string nam, string typ)
+    {
+        this->Acc_no = acountno;
+        this->balance = bal;
+        this->name = nam;
+        this->type = typ;
+    }
+    void display()
+    {
+        cout << this->balance << endl;
+        cout << this->name << endl;
+    }
+    void withdraw(int am)
+    {
+        if (this->balance > am)
+            this->balance = this->balance - am;
+    }
+    void init(int acountno, int bal, string nam, string typ)
+    {
+        this->Acc_no = acountno;
+        this->balance = bal;
+        this->name = nam;
+        this->type = typ;
+    }
+    ~BankAcc()
+    {
+        cout << "destructor is called";
+    }
+};
+
+
+//#include <iostream>
+//using namespace std;
+//#include "date_class.h"
+//#include "time_class.h"
+//#include "student.h"
+//#include "scope.h"
+//#include "mycomplex.h"
+//#include "operator.h"
+//#include "2_assignment.h"
+//#include "1_assignment.h"
+//#include "3_assignment.h"
 int main()
 {
     // date obj1;
@@ -79,7 +132,9 @@ int main()
     // item itm('1', '2', '3', '4', '5', '6');
     // itm.display();
 
-    // BankAcc ba;
-    BankAcc baa(34931624, 100000, "Deepak", "saving");
-    baa.display();
+     BankAcc ba;
+      ba.display();
+    ba.init(34931624, 100000, "Deepak", "saving");
+    ba.display();
 }
+
