@@ -1,0 +1,11 @@
+* Javascript *
+    - It is use to add functionality and behavior into web page
+    -  it is loosely type language
+    - it is interpreted language
+
+- Javascript is object base language
+- in Javascript window is global object
+
+* There are two ways to use Javascript
+    1. internal Javascript: in html file we use script  and in this we wite js code
+    2. External js : In this we create a separate js file and that js file is import in html file
