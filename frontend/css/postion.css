@@ -1,0 +1,54 @@
+header {
+    background-color: aqua;
+    border-bottom: 5px solid red;
+    position: sticky;
+    top: 2px;
+    z-index: 1;
+}
+
+.logo {
+    border: 3px solid red;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+
+.rel {
+    /* border: 5px solid; */
+    font-weight: 40px;
+    position: relative;
+    font-size: 40px;
+    color: blue;
+    left: 233px;
+    top: -82px;
+}
+
+.parent {
+    top: 20px;
+    border: 5px solid black;
+    width: 420px;
+    height: 200px;
+    background-color: grey;
+    position: relative;
+    left: 30px;
+}
+
+.child {
+    border: 5px solid black;
+    width: 231px;
+    height: 90px;
+    top: 20px;
+    background-color: grey;
+    position: absolute;
+    left: 30px;
+}
+
+.posfixed {
+    margin-top: 25px;
+    position: fixed;
+    left: 0%;
+    width: 50px;
+}

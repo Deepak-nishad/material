@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* descendant combinator */
+        .grandfather p {
+            color: brown;
+            font-size: 20px;
+        }
+
+        /* child combinator */
+
+        .grandfather>p {
+
+            background-color: aqua;
+        }
+
+        /* adjesent sibling selector */
+        .grandfather+p {
+
+            background-color: blue;
+            text-align: center;
+        }
+
+        .grandfather~p {
+
+            color: red;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grandfather">
+        <p>This is child-1 element</p>
+        <p>This is child-2 element</p>
+        <p>This is child-3 element</p>
+        <span>
+            <p>This is sub-child-4</p>
+        </span>
+        <p>This is child-5 element</p>
+
+    </div>
+
+    <p>This is child-6 element</p>
+    <p>This is child-7 element</p>
+    <p>This is child-8 element</p>
+</body>
+
+</html>

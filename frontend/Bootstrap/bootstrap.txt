@@ -1,0 +1,33 @@
+latest version => 5
+It is html, css javascript framework which is use to make webapp attractive and responsive and mobile friendly.
+
+
+* There are two ways to use bootstrap 
+- by using cdn link 
+-by using downloading
+
+offical website
+https://getbootstrap.com/
+
+ * it provide inbuilt classes
+    - display-1 to display-6
+
+.container class => it will take 15px margine from lft and right side of an element 
+                    - as well as it convert element into block 
+
+* how to use carousal
+* how to use accodian
+
+* bootstrap class for image
+
+*Grid:
+    - it is use make webapp responsive
+    - in bootstrap grid it has two classes 1. row and 2. col
+    - in grid row we can create coloumn with size 12 only it coloumn size is less then 12 then that coloumn will come on next row.
+
+* Table class
+    - 
+
+*Card:
+    It is container which include product image wit its information
+    

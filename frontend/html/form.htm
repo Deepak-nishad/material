@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <center>
+
+     <form>
+       <div>
+        <label for="fname">Enter Your First Name:</label>
+        <input type="text" name="fname" id="fname" placeholder="enter your first name" 
+        minlength="2" maxlength="15" pattern="^[a-zA-Z]{2,15}$" required>
+       </div><br>
+
+       <div>
+        <label for="pass">Enter Your Password:</label>
+        <input type="password" name="pass" id="pass" required>
+       </div><br>
+       <div>
+        <label for="uemaul">Enter Your Email:</label>
+        <input type="email" name="uemaul" id="uemaul" required>
+       </div><br>
+       <div>
+        <label for="udob">Enter Your DOB:</label>
+        <input type="date" name="udob" id="udob" required>
+       </div><br>
+       <div>
+        <label for="">Select Your Gender:</label>
+        <input type="radio" name="gender" value="male" required>Male
+        <input type="radio" name="gender" value="female" required>Female
+       </div><br>
+       <div>
+        <label for="">Select Your Qualification:</label>
+        <input type="checkbox" name="edu" value="ssc">SSC
+        <input type="checkbox" name="edu" value="hsc">HSC
+        <input type="checkbox" name="edu" value="ug">UG
+        <input type="checkbox" name="edu" value="pg">PG
+       </div> <br>
+       <div>
+        <label for="">Select Your Course:</label>
+        <select name="course" multiple required>
+            <option value="">Select Your Course</option>
+            <option value="react">React</option>
+            <option value="angular">Angular</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="nodejs">Nodejs</option>
+        </select>
+       </div><br>
+       <div>
+        <label for="">Upload Your Profile:</label>
+        <input type="file" name="profile" required>
+       </div><br>
+       <div>
+        <label for="">Fees:</label>
+        <input type="text" name="fees" value="100000" readonly disabled>
+       </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+     </form>
+
+
+    </center>
+
+</body>
+</html>

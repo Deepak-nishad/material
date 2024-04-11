@@ -1,0 +1,29 @@
+/* ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: grey;
+} */
+
+.ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: grey;
+    overflow: auto;
+}
+
+li>a {
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+li {
+    float: left;
+    padding-left: 10px;
+}
+
+li>a:hover {
+    background-color: red;
+}

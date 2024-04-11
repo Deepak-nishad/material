@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        .block1,
+        .block2,
+        .block3,
+        .block4,
+        .block5 {
+            width: 20%;
+            border: 2px solid;
+            float: left;
+        }
+
+        @media screen and(max-width:992px) {
+
+            .block1,
+            .block2,
+            .block3,
+            .block4,
+            .block5 {
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block1">Hi</div>
+    <div class="block2">Hi</div>
+    <div class="block3">Hi</div>
+    <div class="block4">Hi</div>
+    <div class="block5">Hi</div>
+
+</body>
+
+</html>

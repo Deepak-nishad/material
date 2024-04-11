@@ -1,0 +1,18 @@
+.myborder {
+    border: 2px solid black;
+}
+
+.logo {
+    border-radius: 50%;
+}
+
+.nav {
+    border: 2px solid;
+    position: relative;
+    background-color: gray !important;
+}
+
+.text {
+    position: absolute;
+    left: 225px;
+}
