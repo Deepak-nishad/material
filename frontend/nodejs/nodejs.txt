@@ -1,0 +1,47 @@
+* types of nodejs modules
+    1. core module:- module provide by nodejs to us
+    2. local module:- module created by developer for own use
+    3. third party module:- the module debeloped by third party vender
+
+    - first we need to install it then import it
+
+ => core modules
+     
+     * Path module :- it is use for file realated path operation
+     - in nodejs bt default we have two object
+     __dirname : it will return current director
+     __filename: it will return current filename with directory path
+
+
+* exmaple of core modules
+----------------------------------------------------------------------
+    http : - to create http server in nodejs
+    os: - provide information about operating system
+    path:- to handle the file path
+    url:-  to parse the url string
+    fs:- to handle the file system in computer
+    util:- to acces utility function
+
+----------------------------------------------------------------------
+
+* local module : - local module are created by developer
+
+    task1:- create one class with name student containing stdID, stdName, stdContact, stdAddress, srdgrade and on function with name studentDetails which will display student all information
+
+* NPM:- node package manager
+
+    - node package manager is command line tool that installs, updates, or uninstall Nodejs, package in your application
+    - It is also an online repositry for open source Nodejs package
+    - The node community arround the world creates useful module and publish them as package in this repository
+
+* command use with NPM
+    - npm install module-name --save
+    -npm update module-name -g
+
+* Third party module
+    1.chalk
+    2.validator
+    3.express
+
+ use of validator module
+     -npm i validator

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <img id="1" src="../Assets/images/samosa.jpg" alt=""> <br>
+        <p id="caption"></p>
+        <button type="button" onclick="changeimg()">Change img</button>
+
+    </div>
+    <script>
+        var flag = 1;
+        function changeimg() {
+
+            if (flag == 1) {
+                document.getElementById("1").src = "../Assets/images/vadapav.jpg";
+                document.getElementById("caption").innerHTML = "vadapav.jpg"
+                flag = 2;
+
+            }
+            else {
+                document.getElementById("1").src = "../Assets/images/samosa.jpg";
+                document.getElementById("caption").innerHTML = "samosa.jpg"
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

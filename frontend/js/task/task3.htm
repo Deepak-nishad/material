@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        #container {
+            position: absolute;
+            left: 35%;
+            text-align: center;
+
+        }
+
+        #myImage {
+            /* max-width: 100%;
+            height: auto; */
+            width: 400px;
+            height: 400px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 2px solid;
+            display: block;
+            background-color: beige;
+        }
+
+        #container button {
+            background-color: gray;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <!-- <img id="myImage" src="../Assets/images/samosa.jpg" alt="Original Image"> -->
+        <img id="myImage" src="../Assets/images/bigImage.jpg" alt="Original Image"><br>
+        <button onclick="changeImage(1)">Button 1</button>
+        <button onclick="changeImage(2)">Button 2</button>
+        <button onclick="changeImage(3)">Button 3</button>
+        <button onclick="changeImage(4)">Button 4</button>
+        <button onclick="changeImage(5)">Button 5</button>
+        <!-- <img src="../Assets/images/whatsapp.png" alt=""> -->
+    </div>
+
+
+    </div>
+    <script>
+        function changeImage(btnNumber) {
+            let imagePath;
+            switch (btnNumber) {
+                case 1:
+                    imagePath = "../Assets/images/dosa.jpg";
+                    break;
+                case 2:
+                    imagePath = "../Assets/images/whatsapp.png";
+                    break;
+                case 3:
+                    imagePath = "../Assets/images/facebook.png";
+                    break;
+                case 4:
+                    imagePath = "../Assets/images/vadapav.jpg";
+                    break;
+                case 5:
+                    imagePath = "../Assets/images/bigimg-2.jpg";
+                    break;
+                default:
+                    imagePath = "../Assets/images/samosa.jpg"; // Default image
+            }
+            document.getElementById("myImage").src = imagePath;
+        }
+
+    </script>
+</body>
+
+</html>

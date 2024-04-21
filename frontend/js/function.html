@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // default function
+        function greting() {
+            document.write("<h1>Welcome You all bhailog</h1>");
+        }
+        greting();
+
+        // parametrize funtion
+        function welcome(name) {
+            // document.write("Welcome You all " + name + "</br>");
+            document.write(`welcome to ${name} </br>`)
+        }
+
+        // welcome("Deepak");
+        // welcome("manish");
+        // welcome("sachu");
+
+        // function with return value
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+        // let res = add(5, 3);
+        // document.write(`<h1>addition of two number =  ${res} </br></h1>`)
+
+        // anonymous function : fuction with no name is called anonymous function
+
+        let sub = function () {
+            return 1000 - 200;
+        }
+
+        // it hold return value
+        console.log(sub());
+
+        // it hold function
+        console.log(sub);
+
+        // arrow function : function with no name and no function keyword is called arrow function
+        // default
+
+        // let mul = () => {
+        //     return 5 * 2;
+        // }
+        // console.log(mul());
+
+        // peramterised function
+
+        // let mul = (num1, num2) => {
+        //     return num1 * num2;
+        // }
+        // console.log(mul(8, 6));
+
+
+        // let mul = (num1, num2) => num1 * num2;
+        // console.log(mul(8, 6));
+
+        // optional perametrised function: in this parameter will optional not mendatory to pass value to it, it always write at last.
+        let fullname = (fname, lname, mname = "") => {
+            return fname + lname + mname;
+        }
+        // console.log(fullname("deepak ", "nishad"))
+        // console.log(fullname("deepak ", "nishad ", "kevat"))
+
+        // rest parameterize function: when we do not know how many parmeters are required int that case we us it.
+        // here we use spread opertor (...)
+
+        let stdlist = (...std) => {
+            return std;
+        }
+
+
+        console.log(stdlist("deepak ", "Manish ", "vishal ", "mohit"));
+
+    </script>
+</body>
+
+</html>

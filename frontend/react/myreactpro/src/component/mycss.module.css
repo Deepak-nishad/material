@@ -1,0 +1,11 @@
+.box {
+    border: 5px solid red;
+    width: 300px;
+    height: 400px;
+    background-color: lightgreen;
+    transition: transform 5s;
+}
+
+.box:hover {
+    transform: rotateY(360deg);
+}

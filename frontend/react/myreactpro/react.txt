@@ -1,0 +1,53 @@
+* what is react
+     It is javascript library
+     which is use to create rich UI (User interface)
+     It create single page application
+     It is not aframework
+
+* software pre-requist
+    -nodejs
+    -create-react-application
+
+*Technology aare about
+     html,css,js(basic js, es5 & es6 oops)
+
+* There are two ways to create react project
+    1. By using npx:- (no need to install configure file)
+            npx create-react-app appname
+            cd appname
+            npm run start
+
+    2. By using npm (need to install configure file)
+        npm i  -g create-react-app
+        create-react-app appname
+        cd appname 
+        npm run start
+
+    3. by using vite
+        npm i  -g vite
+        vite  create-react-app --template appname
+        cd appname
+        npm run dev
+
+* Differnce between angular and react
+    - react                                      angular
+    It is library                                   - it is framework
+    we use js and xml for development               -typescript & html
+    it use virtual dom                              - it use real dom
+    it is faster                                    - it is little bit slower
+    we can perform one way data-binding             - we can perform two way databinding
+    facebook developed and maintain it               - google devlope and maintain
+
+
+* State it is used to handle essional data in class component
+        it write always in class constructor
+        it return obejct type of data    
+
+* destructure
+    - creating constant variable and storing data in 
+    - we can destructure array and obejct
+    - while destructure obejct         
+
+     {/* {this.state.isCond ? "Admin login succesfully" : "user login succesfully"} */ }
+        {/* with short circuit */ }
+        {/* {this.state.isCond && "Admin login succesfully"} */ }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="d1">hello everyone</div>
+    <ul id="d2"></ul>
+    <hr>
+    <script>
+        let parentele = document.getElementById("d1");
+        // console.log(parentele);
+
+        let newpara = document.createElement("p");
+        // console.log(newpara);
+        newpara.innerHTML = "This is para-1";
+        parentele.appendChild(newpara);
+
+
+
+        let fruits = ["Apple", "Mango", "graps", "Banana"];
+
+        let parentuitage = document.getElementById("d2");
+        for (let i = 0; i < fruits.length; i++) {
+            let newliTag = document.createElement("li");
+            newliTag.innerHTML = `<li>${fruits[i]}</li>`;
+            parentuitage.appendChild(newliTag);
+        }
+
+    </script>
+</body>
+
+</html>

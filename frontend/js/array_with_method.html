@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="date">
+        <div id="id1"></div>
+        <div id="id2"></div>
+        <div id="id3"></div>
+        <div id="id4"></div>
+        <div id="id5"></div>
+
+    </div>
+    <div id="id6"></div>
+    <script>
+        let student = ["aaaaaaa", "bbbbbbb", "cccccccccc", "ddddddddddd"];
+
+        console.log(student);
+
+        document.write(student, "<br>")
+        document.write(student[1], "<br>")
+        student[1] = "eeeeee"
+        document.write(student[1], "<br>")
+        document.write(student.length, "<br>")
+        document.write("size =", student.length - 1, "<br>") // size
+
+        student.push("fff", "ggg");
+        document.write(student, "<br>")
+        student.pop();
+        document.write(student, "<br>")
+
+        //  unshift() :- it will add values at starting index of the array
+
+        student.unshift("111111", "22222");
+        document.write(student, "<br>")
+
+        // shit() remove from first
+        student.shift();
+        document.write(student, "<br>")
+
+        // splice(startindex, deletecount, data-to-insert) : - it is used to insert and remove values from middle index of an array
+
+        student.splice(2, 0, "mmmm", "nnnnn", "oooo")
+        document.write(student, "<br>")
+
+        student.splice(3, 2)
+        document.write(student, "<br>")
+
+        student.splice(2, 3, "x", "y", "z");
+        document.write(student, "<br>")
+
+        // tostring :- it convert array data into string
+
+        // console.log(student);
+        // console.log(student.toString());
+
+        // join(sperator) :- it convert array data into string and separate with any symbol
+
+        // console.log(student);
+        // console.log(student.join("-"));
+        // console.log(student.join("$"));
+        // console.log(student.join(""));
+
+
+        let course = ["h", 'c', 'b', "j", "R"]
+        // for (let i = 0; i < course.length; i++)
+        //     document.write(course[i], "<br>");
+
+        // for (let i of course) {
+        //     document.write(i + " , " + "<br>");
+        // }
+
+        // for in write index of array
+        // for (let i in course) {
+        //     document.write(i + " , ");
+        // }
+
+        // obeject : it store mulitple values with different datatype
+        // - in object data stoe in key and value paires format
+        // - it is denoted by {}
+        //  we can access object data outside by writing object.keyName
+
+        let emp = {
+            id: 101, name: "Deepak", sal: 10111,
+            address: {
+                city: "pune",
+                pin: 123
+            },
+            details: function () {
+                return `id: ${emp.id}, name:${emp.name}, sal:${emp.sal}`
+            }
+        }
+        // console.log(emp)
+        // document.write(emp.id, emp.name, emp.sal, "<br>");
+        // document.write(emp.address.city, emp.address.pin, "<br>");
+        // document.write(`id: ${emp.id}, name:${emp.name}, sal:${emp.sal} <br>`);
+        // document.write(emp.details());
+
+        // array of object
+        // let fruit = ["apple", "mango", "banana", "grapes"]
+        // for (let i = 0; i < fruit.length; i++)
+        //     document.write(fruit[i], "<br>");
+
+        let std = [
+            { id: 1001, name: "deepak", grade: "A" },
+            { id: 1002, name: "deepak", grade: "B" },
+            { id: 1003, name: "deepak", grade: "C" },
+            { id: 1004, name: "deepak", grade: "D" },
+        ]
+        // for (let i = 0; i < std.length; i++)
+        //     document.write(`Id:${std[i].id} name:${std[i].name} grade:${std[i].grade} <br>`)
+
+        // for (let s of std)
+        //     document.write(`Id:${s.id} name:${s.name} grade:${s.grade} <br>`)
+
+
+        // convert object data into json
+        // let jsondata = JSON.stringify(emp);
+        // console.log(jsondata)
+        // document.write(jsondata)
+
+        // convert json data into javascript object
+        // let objectData = JSON.parse(jsondata);
+        // console.log(objectData)
+
+        // How to insert date and time in webpage
+
+
+        let obj = new Date;
+        console.log(obj);
+        // document.write(obj);
+        document.getElementById("id1").innerHTML = obj
+        document.getElementById("id2").innerHTML = obj.getFullYear()
+        document.getElementById("id3").innerHTML = obj.getDate()
+        document.getElementById("id4").innerHTML = obj.getMinutes()
+        document.getElementById("id5").innerHTML = obj.getMonth()
+        document.getElementById("date").style.backgroundColor = "grey"
+
+
+        // digital clock
+        function myclock() {
+            let d = new Date();
+            document.getElementById("id6").innerHTML = d.toLocaleTimeString();
+
+        }
+        // myclock();
+        setInterval(myclock, 1000)
+
+
+    </script>
+
+</body>
+
+</html>

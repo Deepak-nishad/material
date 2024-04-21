@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id="d1">DOM :- it allows to create , manupulation html element in javascript</h2>
+    <script>
+        let headinge1 = document.getElementById("d1");
+        // console.log(headinge1);
+
+        let headingdata = document.getElementById("d1").innerHTML;
+        // console.log(headingdata);
+
+        let create_ele = document.createElement("p");
+        create_ele.setAttribute("id", "para1");
+
+        create_ele.textContent = "hi 🥉";
+
+        document.write(create_ele.innerHTML);
+        console.log(create_ele);
+
+
+
+    </script>
+
+</body>
+
+</html>

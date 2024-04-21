@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text {
+            background-color: gray;
+            margin-bottom: 5px;
+        }
+
+        #input1 {
+            margin-bottom: 5px;
+        }
+
+        #input2 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="text" cols="30" rows="10"></textarea><br>
+    <input type="text" id="input1"><br>
+    <input type="text" id="input2">
+
+
+
+
+    <div class="btn">
+        <button type="button" onclick="replace()"> Replace</button>
+        <button type="button" onclick="replaceAll()"> ReplaceAll</button>
+
+    </div>
+
+    <script>
+
+
+
+        function replace() {
+            // Get the textarea element
+            var textarea = document.getElementById("text");
+
+            var text = textarea.value;
+
+            console.log(text);
+
+            var replcedold = document.getElementById("input1");
+            var replcedataold = replcedold.value
+            console.log(replcedataold)
+
+
+            var replcednew = document.getElementById("input2");
+            var replcednew = replcednew.value
+            console.log(replcednew)
+
+            document.getElementById("text").value = text.replace(replcedataold, replcednew);
+            document.getElementById("text").value = text.replaceAll(replcedataold, replcednew);
+
+        }
+
+        function replaceAll() {
+            // Get the textarea element
+            var textarea = document.getElementById("text");
+
+            var text = textarea.value;
+
+            console.log(text);
+
+            var replcedold = document.getElementById("input1");
+            var replcedataold = replcedold.value
+            console.log(replcedataold)
+
+
+            var replcednew = document.getElementById("input2");
+            var replcednew = replcednew.value
+            console.log(replcednew)
+
+            document.getElementById("text").value = text.replaceAll(replcedataold, replcednew);
+
+        }
+
+
+        // let data = document.getElementById("text").value;
+        // console.log(data);
+
+    </script>
+
+</body>
+
+</html>

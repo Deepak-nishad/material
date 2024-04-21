@@ -1,0 +1,11 @@
+.textPrimary {
+    color: aquamarine;
+    text-align: center;
+    font-size: large;
+    background-color: blueviolet;
+}
+
+.textSucces {
+    color: greenyellow;
+    background-color: brown;
+}
