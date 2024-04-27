@@ -36,11 +36,12 @@ public:
 int main()
 {
     // Employee e;
-    // Employee e(101, 50000, "deepak");
     // e.display();
+    Employee e(101, 50000, "deepak");
+    e.display();
 
-    Employee e1, e2, e3, e4;
-    Employee emp[4];
+    // Employee e1, e2, e3, e4;
+    // Employee emp[4];
 
     // shallow copy
 
